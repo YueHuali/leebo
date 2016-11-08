@@ -10,11 +10,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent } from './project/project.component';
+import { ConsoleComponent } from './console/console.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ProjectComponent
+    ProjectComponent,
+    ConsoleComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import { ProjectComponent } from './project/project.component';
       {
         path: 'project',
         component: ProjectComponent
+      },
+      {
+        path: 'console',
+        component: ConsoleComponent
       }
     ])
   ],
