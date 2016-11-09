@@ -1,8 +1,8 @@
 import {Component, Injectable, Input} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Project} from "../project";
+import {Project} from "../../shared/services/project";
 import {isUndefined} from "util";
-import {ProjectService} from "../project.service";
+import {ProjectService} from "../../shared/services/project.service";
 
 @Component({
   selector: 'project-delete',
