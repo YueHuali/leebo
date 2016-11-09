@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
+import {DeleteComponent} from "./project/delete/delete.component";
 
 @NgModule({
   declarations: [
