@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
 import {DeleteComponent} from "./project/delete/delete.component";
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {DeleteComponent} from "./project/delete/delete.component";
     routedComponents,
     DashboardComponent,
     ProjectComponent,
-    DeleteComponent
+    DeleteComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

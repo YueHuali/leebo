@@ -1,11 +1,11 @@
-import {Component, Injectable, Input} from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Project} from "../../shared/services/project";
-import {isUndefined} from "util";
-import {ProjectService} from "../../shared/services/project.service";
+import { Component, Input } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Project } from "../../shared/services/project";
+import { isUndefined } from "util";
+import { ProjectService } from "../../shared/services/project.service";
 
 @Component({
-  selector: 'project-delete',
+  selector: 'app-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.css'],
   providers: [ProjectService]
@@ -25,9 +25,7 @@ export class DeleteComponent {
   open(content) {
     this.modalService.open(content).result.then((result) => {
       if(!isUndefined(result)){
-          this.projectService.getProjects().then(projects => {
-            projects.pop();
-          });
+          this.projectService.deleteProject(this.project);
       }
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
