@@ -15,6 +15,7 @@ import { DashboardComponent }  from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
 import {MonitorComponent} from "./monitor/monitor.component";
 import {DeleteComponent} from "./project/delete/delete.component";
+import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {DeleteComponent} from "./project/delete/delete.component";
     DashboardComponent,
     ProjectComponent,
     MonitorComponent,
-    DeleteComponent
+    DeleteComponent,
+    MonitorInfoComponent
   ],
   imports: [
     BrowserModule,
