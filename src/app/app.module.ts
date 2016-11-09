@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
 import {MonitorComponent} from "./monitor/monitor.component";
+import {DeleteComponent} from "./project/delete/delete.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MonitorComponent} from "./monitor/monitor.component";
     routedComponents,
     DashboardComponent,
     ProjectComponent,
-    MonitorComponent
+    MonitorComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
