@@ -2,18 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {RouterModule} from "@angular/router";
+import { RouterModule } from "@angular/router";
 
-
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { UserService } from './shared/services/user.service';
+import { HomeRootComponentGuard } from './home-root/home-root.guard';
+import { UnauthenticatedGuard } from './unauthenticated.guard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProjectComponent } from './project/project.component';
-import { DeleteComponent } from './project/delete/delete.component';
+import { DashboardComponent }  from './dashboard/dashboard.component';
+import { ProjectComponent }  from './project/project.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+    routedComponents,
     DashboardComponent,
     ProjectComponent,
     DeleteComponent
@@ -23,23 +27,15 @@ import { DeleteComponent } from './project/delete/delete.component';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'project',
-        component: ProjectComponent
-      }
-    ])
+    AppRoutingModule
   ],
-  providers: [],
+  exports: [RouterModule],
+  providers: [
+    UserService,
+    HomeRootComponentGuard,
+    UnauthenticatedGuard,
+    {provide: 'apiBase', useValue: '/'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
