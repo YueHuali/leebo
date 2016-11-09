@@ -4,20 +4,57 @@
 
     <!-- Page Heading -->
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-xl-12">
         <h1 class="page-header">
-          Project <small>Statistics Overview</small>
+          Project
         </h1>
         <ol class="breadcrumb">
+          <li>
+            <i class="fa fa-dashboard"></i>
+            <a> Dashboard</a>
+          </li>
           <li class="active">
-            <i class="fa fa-dashboard"></i> Project
+            <i class="fa fa-th-list"></i> Project
           </li>
         </ol>
       </div>
     </div>
-
+    <div class="row mb-10">
+      <div class="col-xl-12">
+        <label>Projects</label>
+        <button type="button" class="btn btn-primary pull-right">New Project</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-default">
+          <div class="card-block">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Display Name</th>
+                  <th>Description</th>
+                  <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of projects; let i=index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{project.name}}</td>
+                  <td>{{project.display_name}}</td>
+                  <td>{{project.description}}</td>
+                  <td><i class="fa fa-pencil mr-10" aria-hidden="true"></i>  <project-delete [project]="project"></project-delete> </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.container-fluid -->
-
+  <template ngbModalContainer></template>
 </div>
-<!-- /#page-wrapper -->
