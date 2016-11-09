@@ -1,0 +1,21 @@
+<div class="login-page">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>登录 - 轻元</h1>
+			<form (ngSubmit)="loginUsr()" name="loginForm" role="form">
+				<div class="form-content">
+					<div class="form-group">
+						<input type="text" [(ngModel)]="user.username" name="username" class="form-control input-underline input-lg" placeholder="用户名">
+					</div>
+
+					<div class="form-group">
+						<input type="password" [(ngModel)]="user.password" name="password" class="form-control input-underline input-lg" placeholder="密码">
+					</div>
+				</div>
+				<input type="submit" class="btn btn-primary rounded-btn" value="登录"/>
+				&nbsp;
+				<a class="btn btn-secondary rounded-btn" routerLink="/signup">注册</a>
+			</form>
+		</div>
+	</div>
+</div>
