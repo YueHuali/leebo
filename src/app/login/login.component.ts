@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
   }
 
   loginSuccess(data) {
+    if (data.error) {
+        alert('验证失败');
+        return false;
+    }
     console.log('Login success:', data);
     localStorage.setItem('access_token', data.token.access_token);
     localStorage.setItem('refresh_token', data.token.access_token);

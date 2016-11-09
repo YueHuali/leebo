@@ -17,11 +17,12 @@ exports.addnewusr = function(req, res) {
 exports.loginusr = function(request, response) {
   var user = request.body;
   console.log('request body = ', request.body);
+  console.log('config:', config);
   var options = {
     "method": "POST",
-    "hostname": "localhost",
-    "port": "9999",
-    "path": "/uaa/oauth/token",
+    "hostname": config.OAUTH2_SERVER,
+    "port": config.OAUTH2_PORT,
+    "path": config.OAUTH2_ACCESS_TOKEN,
     "headers": {
       "content-type": "application/x-www-form-urlencoded",
       "authorization": config.OAUTH2_BASIC_AUTH
@@ -37,8 +38,14 @@ exports.loginusr = function(request, response) {
 
     res.on("end", function () {
       var body = Buffer.concat(chunks);
+
+      var jwt = JSON.parse(body.toString());
+      if (jwt.error) {
+        response.status(200).json(jwt);
+        return;
+      }
       response.status(200).json({
-        token : JSON.parse(body.toString()),
+        token : jwt,
         user: {
           username: user.username
         }
@@ -48,7 +55,7 @@ exports.loginusr = function(request, response) {
 
   var postParam = qs.stringify({
     grant_type: 'password',
-    scope: 'openid',
+    scope: 'read',
     username: user.username,
     password: user.password
   });
