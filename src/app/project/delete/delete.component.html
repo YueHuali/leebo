@@ -1,0 +1,20 @@
+<template #content let-c="close" let-d="dismiss">
+  <div class="modal-body">
+    <p>Are you sure you want to delete the project '<strong>{{project.name}} project</strong>'?</p>
+    <p>
+      This will <strong>delete all resources</strong> associated with the project fpl project and <strong>cannot be undone</strong>. Make sure this is something you really want to do!
+
+    </p>
+    <div>
+      <p>Type the name of the project to confirm.</p>
+      <p>
+        <input type="text" [(ngModel)]="name" placeholder="name">
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" *ngIf="name===project.name" class="btn btn-danger" (click)="c(project.id)">Delete</button>
+    <button type="button" class="btn btn-success" (click)="c()">Cancel</button>
+  </div>
+</template>
+<i (click)="open(content)" class="fa fa-trash-o" aria-hidden="true"></i>
