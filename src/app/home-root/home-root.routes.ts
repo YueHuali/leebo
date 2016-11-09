@@ -4,6 +4,7 @@ import { HomeRootComponent } from './home-root.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ProjectComponent } from '../project/project.component';
 import { HomeRootComponentGuard } from './home-root.guard';
+import { MonitorComponent } from "../monitor/monitor.component";
 
 export const HomeRootRoutes: Routes = [
   {
@@ -13,7 +14,11 @@ export const HomeRootRoutes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'project', component: ProjectComponent }
+      { path: 'project', component: ProjectComponent },
+      {
+        path: 'monitor',
+        component: MonitorComponent
+      }
     ]
   }
 ];

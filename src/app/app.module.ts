@@ -13,13 +13,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { DashboardComponent }  from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
+import {MonitorComponent} from "./monitor/monitor.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     routedComponents,
     DashboardComponent,
-    ProjectComponent
+    ProjectComponent,
+    MonitorComponent
   ],
   imports: [
     BrowserModule,
