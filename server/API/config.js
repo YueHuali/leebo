@@ -1,5 +1,5 @@
 var config = {
-	OAUTH2_SERVER: 'http://localhost:9999/uaa',
+	OAUTH2_SERVER: 'http://192.168.1.97:9999/uaa',
   OAUTH2_ACCESS_TOKEN: this.OAUTH2_SERVER + '/oauth2/token',
   OAUTH2_BASIC_AUTH: 'Basic cXktY2xpZW50OjEyMzQ1Ng==',
 	TOKENTIME : 60 * 60,
