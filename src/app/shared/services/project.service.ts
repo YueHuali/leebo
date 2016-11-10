@@ -8,4 +8,15 @@ export class ProjectService {
     return Promise.resolve(PROJECTS);
   }
 
+  createProject( project): boolean{
+    PROJECTS.push(project);
+    return true;
+  }
+
+  deleteProject(project): boolean{
+    console.info(project);
+    PROJECTS.pop();
+    return true;
+  }
+
 }
