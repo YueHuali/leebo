@@ -40,9 +40,15 @@ export class UserService {
   }
 
   logout() {
-    return this.http.get(this._logoutApi, <RequestOptionsArgs> {withCredentials: true})
-                    .map((res: Response) => res.json())
-                    .catch(this.handleError);
+    /**
+     * Total hack until new router is used (for authentication and activation logic)
+     */
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('isAuthenticated');
+
+    return true;
   }
 
   register(user) {
