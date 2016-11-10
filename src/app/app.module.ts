@@ -16,6 +16,8 @@ import { ProjectComponent }  from './project/project.component';
 import {MonitorComponent} from "./monitor/monitor.component";
 import {DeleteComponent} from "./project/delete/delete.component";
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
+import { CliComponent } from './console/cli/cli.component';
+import {ConsoleComponent} from './console/console.component';
 import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
 
 @NgModule({
@@ -26,6 +28,8 @@ import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.compon
     ProjectComponent,
     DeleteComponent,
     ProjectDetailComponent,
+    ConsoleComponent,
+    CliComponent,
     MonitorComponent,
     MonitorInfoComponent
   ],
