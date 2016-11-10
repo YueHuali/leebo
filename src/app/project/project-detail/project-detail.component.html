@@ -23,7 +23,12 @@
     <div class="row">
       <div class="col-xl-12">
         <form role="form">
-          <fieldset class="form-group">
+
+          <fieldset *ngIf="!new_flag" class="form-group">
+            <label>Edit Project <strong>{{project.name}}</strong></label>
+            <p class="help-block">Update the display name and description of your project. The project's unique name cannot be modified.</p>
+          </fieldset>
+          <fieldset *ngIf="new_flag" class="form-group">
             <label>*Name</label>
             <input  [(ngModel)]="project.name"  name="name" class="form-control" placeholder="my-project">
             <p class="help-block">A unique name for the project.</p>
@@ -38,7 +43,7 @@
             <label>Description</label>
             <textarea  [(ngModel)]="project.description" name="description" class="form-control" placeholder="A short description"></textarea>
           </div>
-          <button type="button" (click)="create()" class="btn btn-primary">Submit</button>
+          <button type="button" (click)="submit()" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary">Cancel</button>
         </form>
       </div>

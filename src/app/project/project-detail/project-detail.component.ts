@@ -1,7 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Project } from '../../shared/services/project';
 import { ProjectService } from '../../shared/services/project.service';
-import { Router } from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-project-detail',
@@ -13,22 +14,37 @@ export class ProjectDetailComponent implements OnInit {
 
   projectService: ProjectService;
 
-  project = new Project();
+  project: Project;
 
-  router: Router;
+  new_flag: boolean;
 
-  constructor(ps: ProjectService, router: Router) {
+  constructor(ps: ProjectService, private ar: ActivatedRoute) {
     this.projectService = ps;
-    this.router = router;
   }
 
   ngOnInit() {
+    this.ar.params.forEach((param: Params) => {
+      console.info(param);
+      if(param.hasOwnProperty('name')){
+        this.new_flag = false;
+        this.project = this.projectService.findByName(param['name']);
+      }else{
+        this.new_flag = true;
+        this.project = new Project();
+      }
+    });
   }
 
-  create(): void {
-    var result = this.projectService.createProject(this.project);
+  submit(): void {
+    let result: boolean;
+    if(this.project.hasOwnProperty('id')){
+      result = this.projectService.updateProject(this.project);
+    }else{
+      result = this.projectService.createProject(this.project);
+    }
+
     if(result){
-      this.router.navigate(['/project']);
+      // this.router.navigate(['/project']);
     }else{
 
     }
