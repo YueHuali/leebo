@@ -10,10 +10,11 @@ import { HomeRootComponentGuard } from './home-root/home-root.guard';
 import { UnauthenticatedGuard } from './unauthenticated.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { HomeRootModule } from './home-root/home-root.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent }  from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectComponent }  from './project/project.component';
-import {DeleteComponent} from "./project/delete/delete.component";
+import { DeleteComponent } from './project/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {DeleteComponent} from "./project/delete/delete.component";
     BrowserModule,
     FormsModule,
     HttpModule,
+    HomeRootModule,
     NgbModule.forRoot(),
     AppRoutingModule
   ],
