@@ -1,4 +1,4 @@
 import {Monitor} from "./monitor";
-export class BuildMonitor implements Monitor{
+export class PodMonitor extends Monitor{
 
 }

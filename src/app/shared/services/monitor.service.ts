@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {BuildMonitor} from "../../monitor/build-monitor";
 import {DeploymentMonitor} from "../../monitor/deployment-monitor";
 import {PodMonitor} from "../../monitor/pod-monitor";
+import {BUILDMONITORS, DEPLOYMENTMONITORS, PODSMONITORS} from "./mock-monitor";
 
 @Injectable()
 export class MonitorService {
 
   constructor() { }
 
-  getBuildMonitors():Promise<BuildMonitor[]>{
-
+  getBuildMonitors():BuildMonitor[]{
+    return BUILDMONITORS;
   }
-  getDeploymentMonitors():Promise<DeploymentMonitor[]>{
-
+  getDeploymentMonitors():DeploymentMonitor[]{
+    return DEPLOYMENTMONITORS;
   }
 
-  getPodMonitors():Promise<PodMonitor[]>{
-
+  getPodMonitors():PodMonitor[]{
+    return PODSMONITORS;
   }
 
 }

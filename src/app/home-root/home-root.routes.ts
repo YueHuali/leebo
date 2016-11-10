@@ -16,8 +16,8 @@ export const HomeRootRoutes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'project', component: ProjectComponent },
-      { path: 'project/detail',component: ProjectDetailComponent}
-      { path: 'monitor', component: MonitorComponen}
+      { path: 'project/detail',component: ProjectDetailComponent},
+      { path: 'monitor', component: MonitorComponent}
     ]
   }
 ];
