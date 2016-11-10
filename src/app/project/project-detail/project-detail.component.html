@@ -1,0 +1,49 @@
+<div id="page-wrapper">
+
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-xl-12">
+        <h1 class="page-header">
+          Project
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <i class="fa fa-dashboard"></i>
+            <a> Dashboard</a>
+          </li>
+          <li class="active">
+            <i class="fa fa-th-list"></i> Project
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <form role="form">
+          <fieldset class="form-group">
+            <label>*Name</label>
+            <input  [(ngModel)]="project.name"  name="name" class="form-control" placeholder="my-project">
+            <p class="help-block">A unique name for the project.</p>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Display Name</label>
+            <input  [(ngModel)]="project.display_name" name="display_name" class="form-control" placeholder="My Project">
+          </fieldset>
+
+          <div class="form-group">
+            <label>Description</label>
+            <textarea  [(ngModel)]="project.description" name="description" class="form-control" placeholder="A short description"></textarea>
+          </div>
+          <button type="button" (click)="create()" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>

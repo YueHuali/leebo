@@ -22,7 +22,7 @@
     <div class="row mb-10">
       <div class="col-xl-12">
         <label>Projects</label>
-        <button type="button" class="btn btn-primary pull-right">New Project</button>
+        <button routerLink="detail" type="button" class="btn btn-primary pull-right">New Project</button>
       </div>
     </div>
     <div class="row">
@@ -46,7 +46,7 @@
                   <td>{{project.name}}</td>
                   <td>{{project.display_name}}</td>
                   <td>{{project.description}}</td>
-                  <td><i class="fa fa-pencil mr-10" aria-hidden="true"></i>  <project-delete [project]="project"></project-delete> </td>
+                  <td><i class="fa fa-pencil mr-10" aria-hidden="true"></i>  <app-delete [project]="project"></app-delete> </td>
                 </tr>
                 </tbody>
               </table>
