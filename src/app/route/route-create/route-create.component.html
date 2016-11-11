@@ -1,0 +1,162 @@
+<div id="page-wrapper">
+
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Route
+        </h1>
+        <ol class="breadcrumb">
+          <li class="active">
+            <i class="fa fa-arrows-alt"></i> Route
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12">
+        <form role="form">
+          <fieldset class="form-group">
+            <label class="must-type">* Name</label>
+            <input name="name" class="form-control" placeholder="my-route">
+            <p class="help-block text-describe">A unique name for the project.</p>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Hostname</label>
+            <input class="form-control" placeholder="www.example.com">
+            <p class="help-block text-describe">Public hostname for the route. If not specified, a hostname is
+              generated. The hostname
+              can't be changed after the route is created.</p>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <label>Path</label>
+            <input class="form-control" placeholder="/">
+            <p class="help-block text-describe">Path that the router watches to route traffic to the service.</p>
+          </fieldset>
+
+          <div class="row">
+            <fieldset [ngClass]="{'form-group' : true, 'col-sm-6': spliteServices, 'col-sm-12' : !spliteServices}  ">
+              <label class="must-type">* Service</label>
+              <select class="form-control" name="" id="">
+                <option value="">mongodb</option>
+                <option value="">myservice</option>
+              </select>
+              <p class="help-block text-describe">Service to route to.</p>
+            </fieldset>
+            <fieldset *ngIf="spliteServices" class="form-group col-sm-6">
+              <label class="must-type">* Weight</label>
+              <input class="form-control">
+              <p class="help-block text-describe">Weight is a number between 0 and 256 that specifies the relative
+                weight against other route services.</p>
+            </fieldset>
+          </div>
+
+          <div *ngIf="!spliteServices" (click)="toggleService()" class="mb-16"><a href="javascript:void(0)">Split
+            traffic across
+            multiple services</a></div>
+
+
+          <fieldset class="form-group">
+            <label>Path</label>
+            <select class="form-control" name="">
+              <option value="">27017 -> 27017(TCP)</option>
+              <option value="">1227 -> 231(TCP)</option>
+            </select>
+            <p class="help-block text-describe">Target port for traffic.</p>
+          </fieldset>
+
+          <div class="row" *ngIf="spliteServices">
+            <h5 class="col-sm-12">Alternate Services</h5>
+            <fieldset class="form-group col-sm-6">
+              <label class="must-type">* Service</label>
+              <select class="form-control">
+                <option value="">mongodb</option>
+                <option value="">myservice</option>
+              </select>
+              <p class="help-block text-describe mb-16">Alternate service for route traffic.</p>
+            </fieldset>
+            <fieldset class="form-group col-sm-6">
+              <label class="must-type">* Weight</label>
+              <input class="form-control">
+              <p class="help-block text-describe">Weight is a number between 0 and 256 that specifies the relative
+                weight against other route services.</p>
+            </fieldset>
+          </div>
+
+          <div *ngIf="spliteServices" (click)="toggleService()" class="mb-16"><a href="javascript:void(0)">Remove
+            service</a></div>
+
+
+          <div class="mb-16" *ngIf="!options" (click)="showOptions()"><a href="javascript:void(0)">Show options for
+            secured route Create</a></div>
+          <div *ngIf="options">
+            <h5 class="mb-16">Route Type</h5>
+            <p class="help-block text-describe"> Routes can be secured using several TLS termination types for serving
+              certificates.</p>
+            <fieldset class="form-group">
+              <label>TLS Termination</label>
+              <select class="form-control">
+                <option value="">None</option>
+                <option value="">Edge</option>
+                <option value="">Passthrough</option>
+                <option value="">Re-encrypt</option>
+              </select>
+              <p class="help-block text-describe">Public hostname for the route. If not specified, a hostname is
+                generated. The hostname
+                can't be changed after the route is created.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label>Insecure Traffic</label>
+              <select class="form-control">
+                <option value="">None</option>
+                <option value="">Edge</option>
+                <option value="">Passthrough</option>
+                <option value="">Re-encrypt</option>
+              </select>
+              <p class="help-block text-describe">Policy for traffic on insecure schemes like HTTP for edge termination.</p>
+            </fieldset>
+
+            <h5 class="mb-16">Certificates</h5>
+            <p class="help-block text-describe">TLS certificates for edge and re-encrypt termination. If not specified, the router's default certificate is used.</p>
+
+            <fieldset class="form-group">
+              <label>Certificate</label>
+              <input class="form-control" type="file">
+              <p class="help-block text-describe">The PEM format certificate. Upload file by dragging & dropping, or selecting it.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label>Private Key</label>
+              <input class="form-control" type="file">
+              <p class="help-block text-describe">The PEM format key. Upload file by dragging & dropping, or selecting it.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label>CA Certificate</label>
+              <input class="form-control" type="file">
+              <p class="help-block text-describe">The PEM format CA certificate. Upload file by dragging & dropping, or selecting it.</p>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <label>Destination CA Certificate</label>
+              <input class="form-control" type="file">
+              <p class="help-block text-describe">The PEM format CA certificate to validate the endpoint certificate for re-encrypt termination. Upload file by dragging & dropping, or selecting it.</p>
+            </fieldset>
+          </div>
+
+
+          <button type="button" (click)="create()" class="btn btn-primary">Create</button>
+          <button class="btn btn-secondary" routerLink="/route">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
