@@ -1,5 +1,3 @@
-import { Routes } from '@angular/router';
-
 import {Routes} from "@angular/router";
 import {HomeRootComponent} from "./home-root.component";
 import {HomeRootComponentGuard} from "./home-root.guard";
@@ -12,7 +10,7 @@ import {MonitorComponent} from "../monitor/monitor.component";
 import {RouteComponent} from "../route/route.component";
 import {RouteCreateComponent} from "../route/route-create/route-create.component";
 import {ApplicationServiceComponent} from '../application-service/application-service.component';
-
+import { RouteInfoComponent } from '../route/route-info/route-info.component';
 export const HomeRootRoutes: Routes = [
   {
     path: '',
@@ -29,7 +27,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'monitor', component: MonitorComponent},
       { path: 'route', component: RouteComponent},
       { path: 'route/create-route', component: RouteCreateComponent},
-      { path: 'services', component: ApplicationServiceComponent}
+      { path: 'services', component: ApplicationServiceComponent},
+      { path: 'route/:name', component: RouteInfoComponent}
     ]
   }
 ];

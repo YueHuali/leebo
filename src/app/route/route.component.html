@@ -37,11 +37,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>nodejs-mongodb-example</td>
-                  <td>http://nodejs-mongodb-example-fanpeilun.router.default.svc.cluster.local</td>
-                  <td>nodejs-mongodb-example</td>
-                  <td></td>
+                <tr *ngFor="let route of routes">
+                  <td><a [routerLink]="['/route',route.name]">{{route.name}}</a></td>
+                  <td><a href="javascript:void(0)">{{route.hostName}}</a></td>
+                  <td><a href="javascript:void(0)">{{route.service}}</a></td>
+                  <td><a href="javascript:void(0)">{{route.targetPort}}</a></td>
                   <td></td>
                 </tr>
                 </tbody>
