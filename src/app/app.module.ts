@@ -20,6 +20,8 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
 import { CliComponent } from './console/cli/cli.component';
 import { ConsoleComponent } from './console/console.component';
 import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
+import {RouteComponent} from "./route/route.component";
+import { RouteCreateComponent } from './route/route-create/route-create.component';
 import { ApplicationServiceComponent } from './application-service/application-service.component';
 
 @NgModule({
@@ -34,6 +36,8 @@ import { ApplicationServiceComponent } from './application-service/application-s
     CliComponent,
     MonitorComponent,
     MonitorInfoComponent,
+    RouteComponent,
+    RouteCreateComponent,
     ApplicationServiceComponent
   ],
   imports: [

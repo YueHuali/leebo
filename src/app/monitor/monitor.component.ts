@@ -14,18 +14,18 @@ import {PodMonitor} from "./pod-monitor";
 })
 export class MonitorComponent implements OnInit {
 
-  target:string;
-  selectType:string;
+  target: string;
+  selectType: string;
   buildMonitors: BuildMonitor[] = [];
   deploymentMonitors: DeploymentMonitor[] = [];
   podMonitors: PodMonitor[] = [];
 
-  constructor(private monitorService:MonitorService) {
-    this.target="target1";
+  constructor(private monitorService: MonitorService) {
+    this.target = 'target1';
     this.selectType = 'All';
   }
 
-  toggle(id:string):void{
+  toggle(id: string): void {
 
   }
   ngOnInit() {
