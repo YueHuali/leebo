@@ -23,6 +23,7 @@ import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.compon
 import {RouteComponent} from "./route/route.component";
 import { RouteCreateComponent } from './route/route-create/route-create.component';
 import { ApplicationServiceComponent } from './application-service/application-service.component';
+import { ApplicationServiceDetailComponent } from './application-service/application-service-detail/application-service-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ApplicationServiceComponent } from './application-service/application-s
     MonitorInfoComponent,
     RouteComponent,
     RouteCreateComponent,
-    ApplicationServiceComponent
+    ApplicationServiceComponent,
+    ApplicationServiceDetailComponent
   ],
   imports: [
     BrowserModule,

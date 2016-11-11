@@ -1,0 +1,160 @@
+<div id="page-wrapper">
+
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-xl-12">
+        <h1 class="page-header">
+          Service
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="javascript:void(0)" routerLink="/services"> Services</a>
+          </li>
+          <li class="active">
+            {{appService.name}}
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+          <label><strong>{{appService.name}}</strong>&nbsp;<small> created {{appService.age}} ago</small></label>
+          <div ngbDropdown class="d-inline-block pull-right">
+            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Actions</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <button  class="dropdown-item"><a routerLink="/route/create-route" href="javascript:void(0)">Create route</a></button>
+              <button class="dropdown-item">Edit YAML</button>
+              <button class="dropdown-item">Delete</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12">
+        <div  ngbRadioGroup name="radioBasic">
+          <label class="btn btn-primary">
+            <input type="radio" [value]="1">app
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" value="middle">nodejs-mongodb-example
+          </label>
+        </div>
+        <div  ngbRadioGroup name="radioBasic2">
+          <label class="btn btn-primary">
+            <input type="radio" [value]="1">template
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" value="middle">nodejs-mongodb-example
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 10px">
+       <div class="col-xl-6">
+         <ngb-tabset>
+           <ngb-tab title="Details">
+             <template ngbTabContent>
+               <div class="row">
+                 <div class="col-xl-6">
+                   <strong>Selectors:</strong><label class="pull-right">{{appService.selector}}</label>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-xl-6">
+                   <strong>Type:</strong><label class="pull-right">ClusterIP</label>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-xl-6">
+                   <strong>IP:</strong><label class="pull-right">{{appService.clusterIp}}</label>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-xl-6">
+                   <strong>Session affinity:</strong><label class="pull-right">None</label>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-xl-6">
+                   <strong>Routes:</strong><label class="pull-right"><a routerLink="/route/create-route" href="javascript:void(0)">Create route</a></label>
+                 </div>
+               </div>
+               <div class="row">
+                 <div class="col-lg-12">
+                   <div class="card card-default">
+                     <div class="card-block">
+                       <div class="table-responsive">
+                         <table class="table">
+                           <thead>
+                           <tr>
+                             <th>Node Port</th>
+                             <th>&nbsp;</th>
+                             <th>Service Port</th>
+                             <th>&nbsp;</th>
+                             <th>Target Port</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                             <td>none</td>
+                             <td><i class="fa fa-long-arrow-right" aria-hidden="true"></i></td>
+                             <td>{{appService.ports}}</td>
+                             <td><i class="fa fa-long-arrow-right" aria-hidden="true"></i></td>
+                             <td>27017</td>
+                           </tr>
+                           </tbody>
+                         </table>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </template>
+           </ngb-tab>
+           <ngb-tab title="Events">
+             <template ngbTabContent>
+               <div class="row" style="margin-top: 10px">
+                 <div class="col-xl-12">
+                   <input type="text" placeholder="Filter by keyword">
+                  Sort by <select>
+                     <option>Time</option>
+                     <option>Severity</option>
+                     <option selected>Reason</option>
+                     <option>Message</option>
+                     <option>Count</option>
+                   </select>
+                 </div>
+               </div>
+               <div class="row" style="margin-top: 10px;">
+                 <div class="col-xl-12">
+                   <div class="card card-default">
+                     <div class="card-block">
+                       <div class="table-responsive">
+                         <table class="table">
+                           <thead>
+                           <tr>
+                             <th>Time</th>
+                             <th>Reason</th>
+                             <th>Message</th>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           <tr>
+                            <td colspan="3">No events to show.</td>
+                           </tr>
+                           </tbody>
+                         </table>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </template>
+           </ngb-tab>
+         </ngb-tabset>
+       </div>
+    </div>
+  </div>
+</div>
