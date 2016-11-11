@@ -12,6 +12,7 @@ import {RouteCreateComponent} from "../route/route-create/route-create.component
 import {ApplicationServiceComponent} from '../application-service/application-service.component';
 import { RouteInfoComponent } from '../route/route-info/route-info.component';
 import {ApplicationServiceDetailComponent} from '../application-service/application-service-detail/application-service-detail.component';
+import { CiCdComponent } from '../ci-cd/ci-cd.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -26,6 +27,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'project/:name/edit', component: ProjectDetailComponent},
       { path: 'console', component: ConsoleComponent },
       { path: 'cli', component: CliComponent },
+      { path: 'cicd', component: CiCdComponent },
       { path: 'monitor', component: MonitorComponent},
       { path: 'route', component: RouteComponent},
       { path: 'route/create-route', component: RouteCreateComponent},
