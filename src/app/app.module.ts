@@ -10,14 +10,15 @@ import { HomeRootComponentGuard } from './home-root/home-root.guard';
 import { UnauthenticatedGuard } from './unauthenticated.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { HomeRootModule } from './home-root/home-root.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent }  from './dashboard/dashboard.component';
-import { ProjectComponent }  from './project/project.component';
-import {MonitorComponent} from "./monitor/monitor.component";
-import {DeleteComponent} from "./project/delete/delete.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProjectComponent } from './project/project.component';
+import { MonitorComponent } from "./monitor/monitor.component";
+import { DeleteComponent } from "./project/delete/delete.component";
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { CliComponent } from './console/cli/cli.component';
-import {ConsoleComponent} from './console/console.component';
+import { ConsoleComponent } from './console/console.component';
 import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.compon
     BrowserModule,
     FormsModule,
     HttpModule,
+    HomeRootModule,
     NgbModule.forRoot(),
     AppRoutingModule
   ],

@@ -1,0 +1,42 @@
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-top topnav">
+  <div class="collapse navbar-toggleable-xs clearfix text-center">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">{{ title }}</a>
+
+    <ul class="nav navbar-nav top-nav navbar-right float-xs-right top-right-nav">
+      <li class="dropdown nav-item" ngbDropdown>
+        <!-- <div class="dropdown"> -->
+        <a href="javascript:;" id="name2" class="nav-link dropdown-toggle" ngbDropdownToggle>
+          <i class="fa fa-bell"></i>
+        </a>
+        <ul class="dropdown-menu alert-dropdown" aria-labelledby="name2">
+          <li>
+            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
+          </li>
+          <li>
+            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
+          </li>
+          <li>
+            <a href="javascript:;" class="dropdown-item">Alert Name <span class="label label-default"> Alert Badge</span></a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <a href="javascript:;" class="dropdown-item">View All</a>
+          </li>
+        </ul>
+        <!-- </div> -->
+      </li>
+      <li class="dropdown nav-item" ngbDropdown>
+        <a href="javascript:;" id="single-button" class="nav-link dropdown-toggle" ngbDropdownToggle>
+          <i class="fa fa-user"></i> {{ username }} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="single-button">
+          <li>
+            <a class="dropdown-item" href="javascript:;" (click)="logout()">
+              <i class="fa fa-fw fa-power-off"></i> 注销
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
