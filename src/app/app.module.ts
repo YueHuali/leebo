@@ -23,6 +23,7 @@ import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.compon
 import {RouteComponent} from "./route/route.component";
 import { RouteCreateComponent } from './route/route-create/route-create.component';
 import { ApplicationServiceComponent } from './application-service/application-service.component';
+import { RouteInfoComponent } from './route/route-info/route-info.component';
 import { ApplicationServiceDetailComponent } from './application-service/application-service-detail/application-service-detail.component';
 
 @NgModule({
@@ -40,6 +41,7 @@ import { ApplicationServiceDetailComponent } from './application-service/applica
     RouteComponent,
     RouteCreateComponent,
     ApplicationServiceComponent,
+    RouteInfoComponent,
     ApplicationServiceDetailComponent
   ],
   imports: [
