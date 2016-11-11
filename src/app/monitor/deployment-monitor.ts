@@ -1,4 +1,4 @@
 import {Monitor} from "./monitor";
-export class DeploymentMonitor extends Monitor{
+export class DeploymentMonitor extends Monitor {
 
 }

@@ -41,7 +41,7 @@ export class UserService {
 
   logout() {
     /**
-     * Total hack until new router is used (for authentication and activation logic)
+     * Total hack until new route is used (for authentication and activation logic)
      */
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
