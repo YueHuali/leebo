@@ -25,6 +25,7 @@ import { RouteCreateComponent } from './route/route-create/route-create.componen
 import { ApplicationServiceComponent } from './application-service/application-service.component';
 import { RouteInfoComponent } from './route/route-info/route-info.component';
 import { ApplicationServiceDetailComponent } from './application-service/application-service-detail/application-service-detail.component';
+import { CiCdComponent } from './ci-cd/ci-cd.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ApplicationServiceDetailComponent } from './application-service/applica
     RouteCreateComponent,
     ApplicationServiceComponent,
     RouteInfoComponent,
-    ApplicationServiceDetailComponent
+    ApplicationServiceDetailComponent,
+    CiCdComponent
   ],
   imports: [
     BrowserModule,

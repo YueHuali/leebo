@@ -1,0 +1,14 @@
+.mt-0{
+  margin-top: 0em;
+}
+.mb-0{
+  margin-bottom: 0;
+}
+.vertical-divider{
+  border-left: 1px solid #bbb;
+  display: inline-block;
+  height: 25px;
+  margin: 0 7px;
+  vertical-align: middle;
+  width: 1px;
+}
