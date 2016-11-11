@@ -18,7 +18,8 @@ export const HomeRootRoutes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'project', component: ProjectComponent },
-      { path: 'project/detail',component: ProjectDetailComponent},
+      { path: 'project/create-project',component: ProjectDetailComponent},
+      { path: 'project/:name/edit',component: ProjectDetailComponent},
       { path: 'console', component: ConsoleComponent },
       { path: 'cli', component: CliComponent },
       { path: 'monitor', component: MonitorComponent}
