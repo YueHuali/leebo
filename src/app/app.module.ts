@@ -22,6 +22,7 @@ import { ConsoleComponent } from './console/console.component';
 import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
 import {RouteComponent} from "./route/route.component";
 import { RouteCreateComponent } from './route/route-create/route-create.component';
+import { ApplicationServiceComponent } from './application-service/application-service.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RouteCreateComponent } from './route/route-create/route-create.componen
     MonitorComponent,
     MonitorInfoComponent,
     RouteComponent,
-    RouteCreateComponent
+    RouteCreateComponent,
+    ApplicationServiceComponent
   ],
   imports: [
     BrowserModule,
