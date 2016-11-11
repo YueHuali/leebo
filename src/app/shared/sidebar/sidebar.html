@@ -15,5 +15,17 @@
     <a routerLink="/monitor" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-television"></i> Monitor
     </a>
+    <div class="nested-menu">
+      <a class="list-group-item">
+        <span><i class="fa fa-cubes" aria-hidden="true"></i> &nbsp; Applications</span>
+      </a>
+      <li class="nested">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/services" [routerLinkActive]="['router-link-active']" ><span>Services</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
   </ul>
 </nav>

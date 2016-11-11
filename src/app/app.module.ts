@@ -20,6 +20,7 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
 import { CliComponent } from './console/cli/cli.component';
 import { ConsoleComponent } from './console/console.component';
 import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.component';
+import { ApplicationServiceComponent } from './application-service/application-service.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MonitorInfoComponent } from './monitor/monitor-info/monitor-info.compon
     ConsoleComponent,
     CliComponent,
     MonitorComponent,
-    MonitorInfoComponent
+    MonitorInfoComponent,
+    ApplicationServiceComponent
   ],
   imports: [
     BrowserModule,
