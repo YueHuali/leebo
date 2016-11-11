@@ -11,6 +11,8 @@ import {RouteComponent} from "../route/route.component";
 import {RouteCreateComponent} from "../route/route-create/route-create.component";
 import {ApplicationServiceComponent} from '../application-service/application-service.component';
 import { RouteInfoComponent } from '../route/route-info/route-info.component';
+import {ApplicationServiceDetailComponent} from '../application-service/application-service-detail/application-service-detail.component';
+
 export const HomeRootRoutes: Routes = [
   {
     path: '',
@@ -28,7 +30,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'route', component: RouteComponent},
       { path: 'route/create-route', component: RouteCreateComponent},
       { path: 'services', component: ApplicationServiceComponent},
-      { path: 'route/:name', component: RouteInfoComponent}
+      { path: 'route/:name', component: RouteInfoComponent},
+      { path: 'services/:name', component: ApplicationServiceDetailComponent}
     ]
   }
 ];

@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                  <tr *ngFor="let item of appServices; let i=index">
-                   <td>{{item.name}}</td>
+                   <td><a routerLink="{{item.name}}" href="Javascript:void(0)">{{item.name}}</a></td>
                    <td>{{item.clusterIp}}</td>
                    <td>{{item.externalIp}}</td>
                    <td>{{item.ports}}</td>
