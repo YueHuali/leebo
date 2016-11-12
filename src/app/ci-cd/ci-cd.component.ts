@@ -22,10 +22,6 @@ export class CiCdComponent implements OnInit {
     this.selectType = 'All';
   }
 
-  toggle(id:string):void{
-
-  }
-
   ngOnInit() {
     this.templates = this.ciCdService.getTemplates();
   }

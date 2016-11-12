@@ -27,6 +27,8 @@ import { RouteInfoComponent } from './route/route-info/route-info.component';
 import { ApplicationServiceDetailComponent } from './application-service/application-service-detail/application-service-detail.component';
 import { CiCdComponent } from './ci-cd/ci-cd.component';
 import { ResourcesQuotaComponent } from './resources-quota/resources-quota.component';
+import {TemplateInfoComponent} from './ci-cd/template-info/template-info.component';
+import {ServiceCreateComponent} from './ci-cd/service-create/service-create.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ResourcesQuotaComponent } from './resources-quota/resources-quota.compo
     RouteInfoComponent,
     ApplicationServiceDetailComponent,
     CiCdComponent,
+    TemplateInfoComponent,
+    ServiceCreateComponent,
     ResourcesQuotaComponent
   ],
   imports: [
