@@ -13,6 +13,7 @@ import {ApplicationServiceComponent} from '../application-service/application-se
 import { RouteInfoComponent } from '../route/route-info/route-info.component';
 import {ApplicationServiceDetailComponent} from '../application-service/application-service-detail/application-service-detail.component';
 import { CiCdComponent } from '../ci-cd/ci-cd.component';
+import { ResourcesQuotaComponent } from '../resources-quota/resources-quota.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -33,7 +34,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'route/create-route', component: RouteCreateComponent},
       { path: 'services', component: ApplicationServiceComponent},
       { path: 'route/:name', component: RouteInfoComponent},
-      { path: 'services/:name', component: ApplicationServiceDetailComponent}
+      { path: 'services/:name', component: ApplicationServiceDetailComponent},
+      { path: 'quota', component: ResourcesQuotaComponent}
     ]
   }
 ];
