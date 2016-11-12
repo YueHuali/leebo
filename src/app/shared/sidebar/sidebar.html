@@ -23,12 +23,24 @@
     </a>
     <div class="nested-menu">
       <a class="list-group-item">
-        <span><i class="fa fa-cubes" aria-hidden="true"></i> &nbsp; Applications</span>
+        <span><i class="fa fa-cubes" aria-hidden="true"></i> Applications</span>
       </a>
-      <li class="nested">
+      <li class="nested" [ngClass]="{'expand': true}">
         <ul class="submenu">
           <li>
             <a routerLink="/services" [routerLinkActive]="['router-link-active']" ><span>Services</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <div class="nested-menu">
+      <a class="list-group-item" href="javascript:void(0)">
+        <span><i class="fa fa-files-o" aria-hidden="true"></i> Resources</span>
+      </a>
+      <li class="nested" [ngClass]="{'expand': true}">
+        <ul class="submenu">
+          <li>
+            <a href="javascript:void(0)" routerLink="/quota" [routerLinkActive]="['router-link-active']" ><span>Quota</span></a>
           </li>
         </ul>
       </li>

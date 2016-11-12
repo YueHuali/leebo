@@ -26,6 +26,7 @@ import { ApplicationServiceComponent } from './application-service/application-s
 import { RouteInfoComponent } from './route/route-info/route-info.component';
 import { ApplicationServiceDetailComponent } from './application-service/application-service-detail/application-service-detail.component';
 import { CiCdComponent } from './ci-cd/ci-cd.component';
+import { ResourcesQuotaComponent } from './resources-quota/resources-quota.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CiCdComponent } from './ci-cd/ci-cd.component';
     ApplicationServiceComponent,
     RouteInfoComponent,
     ApplicationServiceDetailComponent,
-    CiCdComponent
+    CiCdComponent,
+    ResourcesQuotaComponent
   ],
   imports: [
     BrowserModule,
