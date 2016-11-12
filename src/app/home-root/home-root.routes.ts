@@ -14,6 +14,7 @@ import { RouteInfoComponent } from '../route/route-info/route-info.component';
 import {ApplicationServiceDetailComponent} from '../application-service/application-service-detail/application-service-detail.component';
 import { CiCdComponent } from '../ci-cd/ci-cd.component';
 import { ResourcesQuotaComponent } from '../resources-quota/resources-quota.component';
+import {ServiceCreateComponent} from '../ci-cd/service-create/service-create.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -29,6 +30,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'console', component: ConsoleComponent },
       { path: 'cli', component: CliComponent },
       { path: 'cicd', component: CiCdComponent },
+      { path: 'serviceCreate', component: ServiceCreateComponent },
       { path: 'monitor', component: MonitorComponent},
       { path: 'route', component: RouteComponent},
       { path: 'route/create-route', component: RouteCreateComponent},

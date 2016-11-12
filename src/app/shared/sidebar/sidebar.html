@@ -4,43 +4,43 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
     <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i> Dashboard
+      <i class="fa fa-fw fa-dashboard"></i> 概况
     </a>
     <a routerLink="/project" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-th-list"></i> Project
+      <i class="fa fa-th-list"></i> 项目管理
     </a>
     <a routerLink="/console" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-th-list"></i> Console
+      <i class="fa fa-th-list"></i> 控制台管理
     </a>
     <a routerLink="/cicd" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-th-list"></i> CI/CD
+      <i class="fa fa-th-list"></i> 持续集成持续部署
     </a>
     <a routerLink="/monitor" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-television"></i> Monitor
+      <i class="fa fa-television"></i> 监控管理
     </a>
     <a routerLink="/route" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-arrows-alt"></i> Route
+      <i class="fa fa-arrows-alt"></i> 路由管理
     </a>
     <div class="nested-menu">
       <a class="list-group-item">
-        <span><i class="fa fa-cubes" aria-hidden="true"></i> Applications</span>
+        <span><i class="fa fa-cubes" aria-hidden="true"></i> 应用管理</span>
       </a>
       <li class="nested" [ngClass]="{'expand': true}">
         <ul class="submenu">
           <li>
-            <a routerLink="/services" [routerLinkActive]="['router-link-active']" ><span>Services</span></a>
+            <a routerLink="/services" [routerLinkActive]="['router-link-active']" ><span>服务管理</span></a>
           </li>
         </ul>
       </li>
     </div>
     <div class="nested-menu">
       <a class="list-group-item" href="javascript:void(0)">
-        <span><i class="fa fa-files-o" aria-hidden="true"></i> Resources</span>
+        <span><i class="fa fa-files-o" aria-hidden="true"></i> 资源管理</span>
       </a>
       <li class="nested" [ngClass]="{'expand': true}">
         <ul class="submenu">
           <li>
-            <a href="javascript:void(0)" routerLink="/quota" [routerLinkActive]="['router-link-active']" ><span>Quota</span></a>
+            <a href="javascript:void(0)" routerLink="/quota" [routerLinkActive]="['router-link-active']" ><span>配额管理</span></a>
           </li>
         </ul>
       </li>
