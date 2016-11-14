@@ -40,7 +40,7 @@
 
   .nav {
 
-    font-size: 14px;
+    font-size: 16px;
 
     // Common styles
     li {
@@ -195,7 +195,8 @@
     text-align: left;
     padding-left: 25px;
     line-height: $header-height;
-    font-size: 16px;
+    font-size: 15px;
+    background: darken($brand-primary, 5%);
 
     @include media-down(sm) {
       line-height: $header-height-xs;
