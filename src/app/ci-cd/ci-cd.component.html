@@ -5,12 +5,12 @@
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
+        <!--<h1 class="page-header">
           持续集成持续部署
-        </h1>
+        </h1>-->
         <ol class="breadcrumb">
           <li class="active">
-            <i class="fa fa-dashboard"></i> CI/CD
+            <i class="fa fa-dashboard"></i> 持续集成持续部署
           </li>
         </ol>
       </div>
@@ -42,7 +42,7 @@
       <div class="row" *ngIf="selectType==='All'|| selectType=='Builds'">
         <div class="col-lg-12">
           <div class="card card-block">
-            <h4 class="card-title">Instant Apps</h4>
+            <h4 class="card-title">应用实例</h4>
             <hr/>
             <div *ngFor="let template of templates">
               <app-template-info [templateTarget]="template"></app-template-info>
