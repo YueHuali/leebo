@@ -5,12 +5,18 @@
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
-          Route
-        </h1>
+        <!--<h1 class="page-header">-->
+        <!--Route-->
+        <!--</h1>-->
         <ol class="breadcrumb">
-          <li class="active">
-            <i class="fa fa-arrows-alt"></i> Route &nbsp;&nbsp;->&nbsp;&nbsp; {{appRoute.name}}
+          <li class="breadcrumb-item">
+            <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/route"><i class="fa fa-arrows-alt"></i> 路由</a>
+          </li>
+          <li class="breadcrumb-item active">
+            {{appRoute.name}}
           </li>
         </ol>
       </div>
@@ -19,14 +25,14 @@
     <div class="row">
       <div class="col-sm-10">
         <span class="info-title">{{appRoute.name}}</span>&nbsp;&nbsp;
-        <small class="">created 3 days ago</small>
+        <small class="">三天前创建</small>
       </div>
       <div class="d-inline-block  col-sm-2 " ngbDropdown #myDrop="ngbDropdown">
-        <button class="btn btn-info btn-sm pull-right" id="dropdownMenu1" ngbDropdownToggle>Action</button>
+        <button class="btn btn-info btn-sm pull-right" id="dropdownMenu1" ngbDropdownToggle>操作</button>
         <div class="dropdown-menu dropdown-right" aria-labelledby="dropdownMenu1">
-          <button class="dropdown-item">Edit</button>
-          <button class="dropdown-item">Edit YAML</button>
-          <button class="dropdown-item">Delete</button>
+          <button class="dropdown-item">编辑</button>
+          <button class="dropdown-item">编辑 YAML</button>
+          <button class="dropdown-item">删除</button>
         </div>
       </div>
     </div>
@@ -34,19 +40,19 @@
     <table class="table mt-10 no-border-table">
       <tbody>
       <tr>
-        <th>Hostname:</th>
+        <th>主机名:</th>
         <td>{{appRoute.hostName}}</td>
       </tr>
       <tr>
-        <th>Path:</th>
+        <th>路径:</th>
         <td>{{appRoute.path}}</td>
       </tr>
       <tr>
-        <th>Service:</th>
+        <th>服务:</th>
         <td>{{appRoute.service}}</td>
       </tr>
       <tr>
-        <th>Target Port:</th>
+        <th>目标端口</th>
         <td>{{appRoute.targetPort}}</td>
       </tr>
       </tbody>
