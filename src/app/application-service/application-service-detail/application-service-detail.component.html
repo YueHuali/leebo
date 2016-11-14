@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col-xl-12">
         <h1 class="page-header">
-          Service
+          服务详情
         </h1>
         <ol class="breadcrumb">
-          <li>
+          <li class="breadcrumb-item">
             <a href="javascript:void(0)" routerLink="/services"> 服务</a>
           </li>
-          <li class="active">
+          <li class="active breadcrumb-item">
             {{appService.name}}
           </li>
         </ol>
@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-xl-12">
-          <label><strong>{{appService.name}}</strong>&nbsp;<small> 创建 {{appService.age}} 之前</small></label>
+          <label><strong>{{appService.name}}</strong>&nbsp;<small> 创建于{{appService.age}}之前</small></label>
           <div ngbDropdown class="d-inline-block pull-right">
             <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>操作</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
