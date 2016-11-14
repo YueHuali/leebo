@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from  '../services/user.service';
+import { DatacentService } from '../services/datacent.service';
+import {Datacent} from '../services/datacent';
 
 @Component({
-    selector: 'top-nav',
-    templateUrl: 'topnav.html',
+  selector: 'top-nav',
+  templateUrl: 'topnav.html',
+  providers: [ DatacentService ]
 })
 
 export class TopNavComponent implements OnInit {
 
   title = 'QY X-Launch';
   username: string;
-
-  constructor(private _userService: UserService, private _router: Router) {
+  datacents: Datacent[];
+  currentDc: Datacent;
+  constructor(private _userService: UserService, private _router: Router, private dcService: DatacentService) {
 
   }
 
   ngOnInit() {
     this.username = localStorage.getItem('username');
+    this.datacents = this.dcService.getDatacents();
+    this.currentDc = this.datacents[0];
   }
 
   logout() {
@@ -46,5 +52,9 @@ export class TopNavComponent implements OnInit {
 		// var mainContainer: any = $('.main-container');
 		// sidebar.toggleClass('sidebar-left-zero');
 		// mainContainer.toggleClass('main-container-ml-zero');
+  }
+
+  chooseDc(name: string): void {
+    this.currentDc = {name: name};
   }
 }
