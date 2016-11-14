@@ -1,3 +1,91 @@
+<aside class="sidebar">
+  <div class="sidebar-container">
+
+    <div class="sidebar-header">
+      <div class="brand">
+        <!-- Logo -->
+        QingYuan - Admin
+      </div>
+    </div>
+
+    <nav class="menu">
+      <ul class="nav metismenu" id="sidebar-menu">
+        <li routerLinkActive="active">
+          <a routerLink="/dashboard">
+            <i class="fa fa-fw fa-dashboard"></i> 概况
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/project">
+            <i class="fa fa-th-list"></i> 项目管理
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/console">
+            <i class="fa fa-th-list"></i> 控制台管理
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/cicd">
+            <i class="fa fa-home"></i> 持续集成持续部署
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/monitor">
+            <i class="fa fa-television"></i> 监控管理
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/route">
+            <i class="fa fa-arrows-alt"></i> 路由管理
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a href="/console">
+            <i class="fa fa-th-large"></i> 应用管理
+            <i class="fa arrow"></i>
+          </a>
+          <ul>
+            <li routerLinkActive="active">
+              <a routerLink="/services">
+                服务管理
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li routerLinkActive="active">
+          <a href="/console">
+            <i class="fa fa-th-large"></i> 资源管理
+            <i class="fa arrow"></i>
+          </a>
+          <ul>
+            <li routerLinkActive="active">
+              <a routerLink="/quota">
+                配额管理
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</aside>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+
+
+<!--
+
+
 <button class="btn btn-default" id="toggle-sidebar" type="button" (click)="eventCalled()">
     &#9776;
 </button>
@@ -47,3 +135,4 @@
     </div>
   </ul>
 </nav>
+-->
