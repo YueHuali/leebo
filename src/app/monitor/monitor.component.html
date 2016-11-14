@@ -5,12 +5,12 @@
     <!-- Page Heading -->
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">
-          监控管理
-        </h1>
         <ol class="breadcrumb">
-          <li class="active">
-            <i class="fa fa-television"></i> Monitoring
+          <li class="breadcrumb-item">
+            <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+          </li>
+          <li class="breadcrumb-item">
+            <i class="fa fa-television"></i> 监控
           </li>
         </ol>
       </div>
@@ -20,18 +20,18 @@
       <div class="col-lg-12">
         <form class="form-inline" role="form">
           <select name="type" [(ngModel)]="selectType" class="form-control">
-            <option>All</option>
-            <option>Builds</option>
-            <option>Pods</option>
-            <option>Deployments</option>
+            <option value="All">所有</option>
+            <option value="Builds">构建</option>
+            <option value="Pods">Pods</option>
+            <option value="Deployments">部署</option>
           </select>
           <div class="vertical-divider"></div>
           <div class="form-group">
-            <input type="search" placeholder="Filter by name" class="form-control">
+            <input type="search" placeholder="根据名字筛选" class="form-control">
           </div>
           <div class="form-check pull-right">
             <label class="mb-0" style="line-height: 38px">
-              <input type="checkbox" value="" class="form-check-input "> Hide older resources
+              <input type="checkbox" value="" class="form-check-input "> 隐藏旧资源
             </label>
           </div>
         </form>
@@ -41,7 +41,7 @@
     <div class="row" *ngIf="selectType==='All'|| selectType=='Builds'">
       <div class="col-lg-12">
         <div class="card card-block">
-          <h4 class="card-title">Builds</h4>
+          <h4 class="card-title">构建</h4>
           <hr/>
           <div *ngFor="let buildMonitor of buildMonitors">
             <app-monitor-info [monitorTarget]="buildMonitor"></app-monitor-info>
@@ -54,7 +54,7 @@
     <div class="row" *ngIf="selectType==='All'|| selectType=='Deployments'">
       <div class="col-lg-12">
         <div class="card card-block">
-          <h4 class="card-title">Deployments</h4>
+          <h4 class="card-title">部署</h4>
           <hr/>
           <div *ngFor="let deploymentMonitor of deploymentMonitors">
             <app-monitor-info [monitorTarget]="deploymentMonitor"></app-monitor-info>
