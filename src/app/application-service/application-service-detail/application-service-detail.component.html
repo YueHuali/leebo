@@ -5,13 +5,13 @@
     <div class="row">
       <div class="col-xl-12">
         <h1 class="page-header">
-          Service
+          服务详情
         </h1>
         <ol class="breadcrumb">
-          <li>
-            <a href="javascript:void(0)" routerLink="/services"> Services</a>
+          <li class="breadcrumb-item">
+            <a href="javascript:void(0)" routerLink="/services"> 服务</a>
           </li>
-          <li class="active">
+          <li class="active breadcrumb-item">
             {{appService.name}}
           </li>
         </ol>
@@ -20,13 +20,13 @@
 
     <div class="row">
         <div class="col-xl-12">
-          <label><strong>{{appService.name}}</strong>&nbsp;<small> created {{appService.age}} ago</small></label>
+          <label><strong>{{appService.name}}</strong>&nbsp;<small> 创建于{{appService.age}}之前</small></label>
           <div ngbDropdown class="d-inline-block pull-right">
-            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Actions</button>
+            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>操作</button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <button  class="dropdown-item"><a routerLink="/route/create-route" href="javascript:void(0)">Create route</a></button>
-              <button class="dropdown-item">Edit YAML</button>
-              <button class="dropdown-item">Delete</button>
+              <button  class="dropdown-item"><a routerLink="/route/create-route" href="javascript:void(0)">创建路由</a></button>
+              <button class="dropdown-item">编辑YAML</button>
+              <button class="dropdown-item">删除</button>
             </div>
           </div>
         </div>
@@ -54,31 +54,31 @@
     <div class="row" style="margin-top: 10px">
        <div class="col-xl-6">
          <ngb-tabset>
-           <ngb-tab title="Details">
+           <ngb-tab title="详细信息">
              <template ngbTabContent>
                <div class="row">
                  <div class="col-xl-6">
-                   <strong>Selectors:</strong><label class="pull-right">{{appService.selector}}</label>
+                   <strong>选择器：</strong><label class="pull-right">{{appService.selector}}</label>
                  </div>
                </div>
                <div class="row">
                  <div class="col-xl-6">
-                   <strong>Type:</strong><label class="pull-right">ClusterIP</label>
+                   <strong>类型：</strong><label class="pull-right">ClusterIP</label>
                  </div>
                </div>
                <div class="row">
                  <div class="col-xl-6">
-                   <strong>IP:</strong><label class="pull-right">{{appService.clusterIp}}</label>
+                   <strong>IP：</strong><label class="pull-right">{{appService.clusterIp}}</label>
                  </div>
                </div>
                <div class="row">
                  <div class="col-xl-6">
-                   <strong>Session affinity:</strong><label class="pull-right">None</label>
+                   <strong>会话关联：</strong><label class="pull-right">None</label>
                  </div>
                </div>
                <div class="row">
                  <div class="col-xl-6">
-                   <strong>Routes:</strong><label class="pull-right"><a routerLink="/route/create-route" href="javascript:void(0)">Create route</a></label>
+                   <strong>路由：</strong><label class="pull-right"><a routerLink="/route/create-route" href="javascript:void(0)">Create route</a></label>
                  </div>
                </div>
                <div class="row">
@@ -89,11 +89,11 @@
                          <table class="table">
                            <thead>
                            <tr>
-                             <th>Node Port</th>
+                             <th>节点端口</th>
                              <th>&nbsp;</th>
-                             <th>Service Port</th>
+                             <th>服务端口</th>
                              <th>&nbsp;</th>
-                             <th>Target Port</th>
+                             <th>目标端口</th>
                            </tr>
                            </thead>
                            <tbody>
@@ -113,17 +113,17 @@
                </div>
              </template>
            </ngb-tab>
-           <ngb-tab title="Events">
+           <ngb-tab title="事件">
              <template ngbTabContent>
                <div class="row" style="margin-top: 10px">
                  <div class="col-xl-12">
                    <input type="text" placeholder="Filter by keyword">
-                  Sort by <select>
-                     <option>Time</option>
-                     <option>Severity</option>
-                     <option selected>Reason</option>
-                     <option>Message</option>
-                     <option>Count</option>
+                  排序方式<select>
+                     <option>时间</option>
+                     <option>严重性</option>
+                     <option selected>原因</option>
+                     <option>消息</option>
+                     <option>计数</option>
                    </select>
                  </div>
                </div>
@@ -135,14 +135,14 @@
                          <table class="table">
                            <thead>
                            <tr>
-                             <th>Time</th>
-                             <th>Reason</th>
-                             <th>Message</th>
+                             <th>时间</th>
+                             <th>原因</th>
+                             <th>消息</th>
                            </tr>
                            </thead>
                            <tbody>
                            <tr>
-                            <td colspan="3">No events to show.</td>
+                            <td colspan="3">没有要显示的事件。</td>
                            </tr>
                            </tbody>
                          </table>
