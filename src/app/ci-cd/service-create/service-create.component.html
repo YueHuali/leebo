@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">
-          jenkins-ephemeral
+          应用：jenkins-ephemeral
         </h1>
         <ol class="breadcrumb">
           <li class="active">
@@ -18,7 +18,7 @@
       </div>
       <div class="col-lg-12">
         <h3 class="page-header">
-          Images
+          镜像
         </h3>
         <ol class="breadcrumb">
           <li class="active">JENKINS_IMAGE_STREAM_TAG
@@ -33,38 +33,38 @@
       <div class="col-xl-12">
         <form role="form">
           <fieldset class="form-group">
-            <label class="must-type">Jenkins Service Name</label>
+            <label class="must-type">Jenkins服务名称</label>
             <input name="name" class="form-control" placeholder="jenkins">
             <p class="help-block text-describe">The name of the OpenShift Service exposed for the Jenkins container.
             </p>
           </fieldset>
 
           <fieldset class="form-group">
-            <label>Jenkins JNLP Service Name</label>
+            <label>Jenkins JNLP 服务名称</label>
             <input class="form-control" placeholder="jenkins-jnlp">
             <p class="help-block text-describe">The name of the service used for master/slave communication.</p>
           </fieldset>
 
           <fieldset class="form-group">
-            <label>* Jenkins Password</label>
+            <label>* Jenkins 密码</label>
             <input class="form-control" placeholder="Generated if empty">
             <p class="help-block text-describe">Password for the Jenkins 'admin' user.</p>
           </fieldset>
 
           <fieldset class="form-group">
-            <label>Memory Limit</label>
+            <label>内存限制</label>
             <input class="form-control" value="512Mi">
             <p class="help-block text-describe">Maximum amount of memory the container can use..</p>
           </fieldset>
 
           <fieldset class="form-group">
-            <label>Jenkins ImageStream Namespace</label>
+            <label>Jenkins 镜像明名空间</label>
             <input class="form-control" value="openshift">
             <p class="help-block text-describe">The OpenShift Namespace where the Jenkins ImageStream resides.</p>
           </fieldset>
 
           <fieldset class="form-group">
-            <label>Jenkins ImageStreamTag</label>
+            <label>Jenkins 镜像标签</label>
             <input class="form-control" value="jenkins:latest">
             <p class="help-block text-describe">Name of the ImageStreamTag to be used for the Jenkins image.</p>
           </fieldset>
@@ -72,18 +72,18 @@
           <hr class="mt-0">
 
           <div class="row">
-            <h5 class="col-sm-12">Labels</h5>
-            <label>The following labels are being added automatically. If you want to override them, you can do so below.</label>
-            <fieldset class="form-group col-sm-6">
-              <input class="form-control" placeholder="template">
-              <input class="form-control" placeholder="jenkins-ephemeral-template">
-              <input class="form-control" placeholder="app">
-              <input class="form-control" placeholder="jenkins-ephemeral">
+            <h5 class="col-sm-12">标签栏</h5>
+            <fieldset class="form-group col-sm-12">
+              <label class="form-group col-sm-12">以下标签将会自动增加. 如果你想更新，请在下面修改.</label>
+              <div class="col-sm-6"><input class="form-control" placeholder="template"></div>
+              <div class="col-sm-6"><input class="form-control" placeholder="jenkins-ephemeral-template"></div>
+              <div class="col-sm-6"><input class="form-control" placeholder="app"></div>
+              <div class="col-sm-6"><input class="form-control" placeholder="jenkins-ephemeral"></div>
             </fieldset>
-            <fieldset class="form-group col-sm-6">
-              <label class="must-type">Each label is applied to each created resource.</label>
-              <input class="form-control" placeholder="Name">
-              <input class="form-control" placeholder="Value">
+            <fieldset class="form-group col-sm-12">
+              <label class="must-type col-sm-12">每一个标签将会被应用到资源中.</label>
+              <div class="col-sm-6"><input class="form-control" placeholder="Name"></div>
+              <div class="col-sm-6"><input class="form-control" placeholder="Value"></div>
             </fieldset>
           </div>
 
