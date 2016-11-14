@@ -1,7 +1,7 @@
 <top-nav></top-nav>
 <sidebar-cmp></sidebar-cmp>
-<section class="main-container" [ngClass]="{sidebarPushRight: isActive}">
-  <div id="page-wrapper">
+<div class="content" data-scrollable="" style="overflow: auto;">
+  <div id="content-container">
     <router-outlet></router-outlet>
   </div>
-</section>
+</div>
