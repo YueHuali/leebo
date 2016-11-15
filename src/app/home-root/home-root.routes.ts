@@ -15,6 +15,8 @@ import {ApplicationServiceDetailComponent} from '../application-service/applicat
 import { CiCdComponent } from '../ci-cd/ci-cd.component';
 import { ResourcesQuotaComponent } from '../resources-quota/resources-quota.component';
 import {ServiceCreateComponent} from '../ci-cd/service-create/service-create.component';
+import {StorageComponent} from "../storage/storage.component";
+import {StorageCreateComponent} from "../storage/storage-create/storage-create.component";
 
 export const HomeRootRoutes: Routes = [
   {
@@ -37,7 +39,9 @@ export const HomeRootRoutes: Routes = [
       { path: 'services', component: ApplicationServiceComponent},
       { path: 'route/:name', component: RouteInfoComponent},
       { path: 'services/:name', component: ApplicationServiceDetailComponent},
-      { path: 'quota', component: ResourcesQuotaComponent}
+      { path: 'quota', component: ResourcesQuotaComponent},
+      { path: 'storage', component: StorageComponent},
+      { path: 'storage/create-storage', component: StorageCreateComponent}
     ]
   }
 ];
