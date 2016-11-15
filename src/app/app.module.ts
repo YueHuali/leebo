@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from "@angular/router";
+import { HttpModule, RequestOptions, XHRBackend, Http } from '@angular/http';
+import { RouterModule, Router } from "@angular/router";
 
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { UserService } from './shared/services/user.service';
@@ -29,6 +29,11 @@ import { CiCdComponent } from './ci-cd/ci-cd.component';
 import { ResourcesQuotaComponent } from './resources-quota/resources-quota.component';
 import {TemplateInfoComponent} from './ci-cd/template-info/template-info.component';
 import {ServiceCreateComponent} from './ci-cd/service-create/service-create.component';
+import { HttpInterceptor } from './shared/interceptor/HttpInterceptor';
+
+export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, userService: UserService, router: Router){
+  return new HttpInterceptor(xhrBackend, requestOptions, userService, router);
+}
 
 @NgModule({
   declarations: [
@@ -65,7 +70,8 @@ import {ServiceCreateComponent} from './ci-cd/service-create/service-create.comp
     UserService,
     HomeRootComponentGuard,
     UnauthenticatedGuard,
-    {provide: 'apiBase', useValue: '/'}
+    {provide: 'apiBase', useValue: '/'},
+    {provide: HttpInterceptor, useFactory: interceptorFactory, deps: [XHRBackend, RequestOptions, UserService, Router]}
   ],
   bootstrap: [AppComponent]
 })
