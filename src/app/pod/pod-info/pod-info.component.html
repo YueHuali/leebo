@@ -8,28 +8,24 @@
           <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
         </li>
         <li class="breadcrumb-item">
-          <a routerLink="/deployment"><i class="fa fa-cube"></i> 部署</a>
+          <a routerLink="/pod"><i class="fa fa-eercast"></i> Pods</a>
         </li>
         <li class="breadcrumb-item active">
-          {{deployment.name}}
+          {{pod.name}}
         </li>
       </ol>
     </div>
   </div>
 
+
   <div class="row">
     <div class="col-xl-12">
-      <label><strong>{{deployment.name}}</strong>&nbsp;
-        <small> 创建于{{deployment.created}}</small>
+      <label><strong>{{pod.name}}</strong>&nbsp;
+        <small> 创建于{{pod.age}}</small>
       </label>
       <div ngbDropdown class="d-inline-block pull-right">
-        <button class="btn btn-info">部署</button>
         <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>操作</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <button class="dropdown-item">附加存储</button>
-          <button class="dropdown-item">设置资源限制</button>
-          <button class="dropdown-item">添加自动伸缩</button>
-          <button class="dropdown-item">编辑健康检查</button>
           <button class="dropdown-item">编辑YAML</button>
           <button class="dropdown-item">删除</button>
         </div>
@@ -39,19 +35,27 @@
   <div class="row">
     <div class="col-xl-12">
       <div ngbRadioGroup name="radioBasic">
-        <label class="btn btn-primary">
-          <input type="radio" [value]="1">app
+        <label class="btn btn-sm btn-primary">
+          <input type="radio" [value]="1">deployment
         </label>
-        <label class="btn btn-secondary">
-          <input type="radio" value="middle">nodejs-mongodb-example
+        <label class="btn btn-sm btn-secondary">
+          <input type="radio" value="middle">mongodb-2
         </label>
       </div>
       <div ngbRadioGroup name="radioBasic2">
-        <label class="btn btn-primary">
-          <input type="radio" [value]="1">template
+        <label class="btn  btn-sm btn-primary">
+          <input type="radio" [value]="1">deploymentconfig
         </label>
-        <label class="btn btn-secondary">
-          <input type="radio" value="middle">nodejs-mongodb-example
+        <label class="btn btn-sm btn-secondary">
+          <input type="radio" value="middle">mongodb
+        </label>
+      </div>
+      <div ngbRadioGroup name="radioBasic2">
+        <label class="btn  btn-sm btn-primary">
+          <input type="radio" [value]="1">name
+        </label>
+        <label class="btn btn-sm btn-secondary">
+          <input type="radio" value="middle">mongodb
         </label>
       </div>
     </div>
@@ -64,88 +68,73 @@
           <template ngbTabContent>
             <div class="col-lg-6">
               <div class="clearfix">
-                <h5 class="mt-10 bottom-line">配置</h5>
+                <h5 class="mt-10 bottom-line">状态</h5>
                 <dl class="dl-horizontal">
-                  <dt>选择器</dt>
-                  <dd>名称=mongodb</dd>
-                  <dt>Replicas</dt>
-                  <dd>1 replicas</dd>
-                  <dt>策略</dt>
-                  <dd>Recreate</dd>
+                  <dt>状态:</dt>
+                  <dd>{{pod.status}}</dd>
+                  <dt>IP:</dt>
+                  <dd>10.130.0.14</dd>
+                  <dt>Node:</dt>
+                  <dd>192.168.2.44</dd>
+                  <dt>重启策略:</dt>
+                  <dd>总是</dd>
                 </dl>
               </div>
 
               <div class="clearfix">
-                <h5 class="mt-10 bottom-line">模板</h5>
-                <div>
-                  <h6>容器： MONGODB</h6>
-                  <ul>
-                    <li><strong>Image:</strong> centos/mongodb-32-centos7</li>
-                    <li><strong>Ports:</strong> 27017/TCP</li>
-                    <li><strong>Mount:</strong> mongodb-data → /var/lib/mongodb/data</li>
-                    <li><strong>Memory:</strong> 512 MiB to 512 MiB</li>
-                    <li><strong>Readiness Probe::</strong></li>
-                    <li><strong>Liveness Probe:</strong> Open socket on port 27017 30s delay, 1s timeout</li>
-                  </ul>
-                </div>
-
+                <h6 class="mt-10 "> 容器 mongodb</h6>
                 <dl class="dl-horizontal">
-                  <dt>类型</dt>
-                  <dd>empty dir</dd>
-                  <dt>Medium</dt>
-                  <dd>node's default</dd>
+                  <dt>状态:</dt>
+                  <dd>Running</dd>
+                  <dt>Ready:</dt>
+                  <dd>true</dd>
+                  <dt>重启次数:</dt>
+                  <dd>0</dd>
                 </dl>
               </div>
             </div>
 
             <div class="col-lg-6">
               <div>
-                <h5 class="mt-10 bottom-line"> 自动伸缩 </h5>
-                <a>增加自动伸缩</a>
+                <h5 class="mt-10 bottom-line"> 模板 </h5>
+              </div>
+              <div>
+                <h6>容器： MONGODB</h6>
+                <ul>
+                  <li><strong>Image:</strong> centos/mongodb-32-centos7</li>
+                  <li><strong>Ports:</strong> 27017/TCP</li>
+                  <li><strong>Mount:</strong> mongodb-data → /var/lib/mongodb/data</li>
+                  <li><strong>Memory:</strong> 512 MiB to 512 MiB</li>
+                  <li><strong>Readiness Probe::</strong></li>
+                  <li><strong>Liveness Probe:</strong> Open socket on port 27017 30s delay, 1s timeout</li>
+                </ul>
               </div>
 
               <div>
-                <h5 class="mt-10 bottom-line"> 触发器 </h5>
-                <dl class="dl-horizontal">
-                  <dt>Manual (CLI):</dt>
-                  <dd></dd>
-                  <dt>New image for:</dt>
-                  <dd>openshift/mongodb:3.2</dd>
-                  <dt>Change of:</dt>
-                  <dd>Config</dd>
-                </dl>
-              </div>
-            </div>
-
-
-            <div class="row mt-10">
-              <div class="col-lg-12">
-                <div class="card card-default">
-                  <div class="card-block">
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                        <tr>
-                          <th>部署</th>
-                          <th>状态</th>
-                          <th>创建时间</th>
-                          <th>触发</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                          <td>#1 (latest)</td>
-                          <td>取消</td>
-                          <td>七天前</td>
-                          <td>镜像改变</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+                <h6>卷</h6>
+                <span class="mt-10">mongodb-data</span>
+                <div class="clearfix">
+                  <h5 class="mt-10 bottom-line">状态</h5>
+                  <dl class="dl-horizontal">
+                    <dt>类型:</dt>
+                    <dd>empty dir</dd>
+                    <dt>Medium:</dt>
+                    <dd>node's default</dd>
+                  </dl>
+                </div>
+                <span class="mt-10">default-token-3z6w8</span>
+                <div class="clearfix">
+                  <h5 class="mt-10 bottom-line">状态</h5>
+                  <dl class="dl-horizontal">
+                    <dt>类型:</dt>
+                    <dd>secret</dd>
+                    <dt>Secret name:</dt>
+                    <dd>default-token-3z6w8</dd>
+                  </dl>
                 </div>
               </div>
             </div>
+
           </template>
         </ngb-tab>
 
@@ -176,6 +165,22 @@
               <button class="btn-sm btn-info">保存</button>
 
             </div>
+          </template>
+        </ngb-tab>
+
+        <ngb-tab title="日志">
+          <template ngbTabContent>
+            <div class="mt-10"><span>Container:</span>mongodb - Running</div>
+            <div class="mt-10" style="height: 500px; background: black"></div>
+          </template>
+        </ngb-tab>
+
+        <ngb-tab title="终端">
+          <template ngbTabContent>
+            <div class="mt-10"> When you navigate away from this pod, any open terminal connections will be closed. This
+              will kill any foreground processes you started from the terminal.
+            </div>
+            <div  class="mt-10 " style="height: 500px; background: black"></div>
           </template>
         </ngb-tab>
 

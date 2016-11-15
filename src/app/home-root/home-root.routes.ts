@@ -17,6 +17,8 @@ import { ResourcesQuotaComponent } from '../resources-quota/resources-quota.comp
 import {ServiceCreateComponent} from '../ci-cd/service-create/service-create.component';
 import { DeploymentComponent } from '../deployment/deployment.component';
 import { DeploymentInfoComponent } from '../deployment/deployment-info/deployment-info.component';
+import { PodComponent } from '../pod/pod.component';
+import { PodInfoComponent } from '../pod/pod-info/pod-info.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -41,7 +43,9 @@ export const HomeRootRoutes: Routes = [
       { path: 'services/:name', component: ApplicationServiceDetailComponent},
       { path: 'quota', component: ResourcesQuotaComponent},
       { path: 'deployment', component: DeploymentComponent},
-      { path: 'deployment/:name', component: DeploymentInfoComponent}
+      { path: 'deployment/:name', component: DeploymentInfoComponent},
+      { path: 'pod', component: PodComponent},
+      { path: 'pod/:name', component: PodInfoComponent}
     ]
   }
 ];
