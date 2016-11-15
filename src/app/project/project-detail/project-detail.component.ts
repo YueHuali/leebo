@@ -24,13 +24,14 @@ export class ProjectDetailComponent implements OnInit {
 
   ngOnInit() {
     this.ar.params.forEach((param: Params) => {
-      console.info(param);
-      if(param.hasOwnProperty('name')){
+      this.project = new Project();
+      if (param.hasOwnProperty('name')) {
         this.new_flag = false;
-        this.project = this.projectService.findByName(param['name']);
-      }else{
+        this.projectService.findByName(param['name']).subscribe(
+          (data) => this.project = data
+        );
+      }else {
         this.new_flag = true;
-        this.project = new Project();
       }
     });
   }
