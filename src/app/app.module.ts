@@ -28,6 +28,8 @@ import { ResourcesQuotaComponent } from './resources-quota/resources-quota.compo
 import { TemplateInfoComponent } from './ci-cd/template-info/template-info.component';
 import { ServiceCreateComponent } from './ci-cd/service-create/service-create.component';
 import { provideHttpInterceptor } from './shared/interceptor/http-interceptor-provider';
+import { ServiceGroupComponent } from './dashboard/overview-service-group/overview-service-group.component';
+import { OverviewServiceComponent } from './dashboard/overview-service/overview-service.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { provideHttpInterceptor } from './shared/interceptor/http-interceptor-pr
     CiCdComponent,
     TemplateInfoComponent,
     ServiceCreateComponent,
-    ResourcesQuotaComponent
+    ResourcesQuotaComponent,
+    ServiceGroupComponent,
+    OverviewServiceComponent
   ],
   imports: [
     BrowserModule,

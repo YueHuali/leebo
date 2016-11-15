@@ -1,0 +1,16 @@
+
+<div class="service-group card">
+  <div class="service-group-header card-header bg-white">
+    <span class="service-collapse" (click)="isCollapsed = !isCollapsed"><i class="fa fa-angle-down"></i> 示例-1</span>
+    <span class="pull-right">
+      <span>
+        <i class="fa fa-external-link small" aria-hidden="true"></i>
+      </span>
+      <a target="_blank" class="ng-binding ng-scope" href="http://nodejs-mongodb-example-fanpeilun.router.default.svc.cluster.local/">http://nodejs-mongodb-example-fanpeilun.router.default.svc.cluster.local</a>
+    </span>
+  </div>
+  <div class="card-footer" [ngbCollapse]="isCollapsed">
+    <overview-service class="col-md-6"></overview-service>
+    <overview-service class="col-md-6"></overview-service>
+  </div>
+</div>
