@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {MonitorService} from "../shared/services/monitor.service";
-import {BuildMonitor} from "./build-monitor";
-import {DeploymentMonitor} from "./deployment-monitor";
-import {PodMonitor} from "./pod-monitor";
+import {MonitorService} from '../shared/services/monitor.service';
+import {BuildMonitor} from './build-monitor';
+import {DeploymentMonitor} from './deployment-monitor';
+import {PodMonitor} from './pod-monitor';
 
 @Component({
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.css'],
-  providers:[
-    MonitorService
-  ]
+  providers: [MonitorService]
 })
 export class MonitorComponent implements OnInit {
 

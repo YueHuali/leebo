@@ -30,6 +30,8 @@ import { ServiceCreateComponent } from './ci-cd/service-create/service-create.co
 import { provideHttpInterceptor } from './shared/interceptor/http-interceptor-provider';
 import { ServiceGroupComponent } from './dashboard/overview-service-group/overview-service-group.component';
 import { OverviewServiceComponent } from './dashboard/overview-service/overview-service.component';
+import { DeploymentComponent } from './deployment/deployment.component';
+import { DeploymentInfoComponent } from './deployment/deployment-info/deployment-info.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { OverviewServiceComponent } from './dashboard/overview-service/overview-
     ServiceCreateComponent,
     ResourcesQuotaComponent,
     ServiceGroupComponent,
-    OverviewServiceComponent
+    OverviewServiceComponent,
+    DeploymentComponent,
+    DeploymentInfoComponent
   ],
   imports: [
     BrowserModule,
