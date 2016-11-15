@@ -34,6 +34,8 @@ import { DeploymentComponent } from './deployment/deployment.component';
 import { DeploymentInfoComponent } from './deployment/deployment-info/deployment-info.component';
 import { StorageComponent } from './storage/storage.component';
 import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
+import { PodComponent } from './pod/pod.component';
+import { PodInfoComponent } from './pod/pod-info/pod-info.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { StorageCreateComponent } from './storage/storage-create/storage-create.
     DeploymentComponent,
     DeploymentInfoComponent,
     StorageComponent,
-    StorageCreateComponent
+    StorageCreateComponent,
+    PodComponent,
+    PodInfoComponent
   ],
   imports: [
     BrowserModule,

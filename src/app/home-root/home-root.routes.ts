@@ -19,6 +19,8 @@ import { DeploymentComponent } from '../deployment/deployment.component';
 import { DeploymentInfoComponent } from '../deployment/deployment-info/deployment-info.component';
 import {StorageComponent} from "../storage/storage.component";
 import {StorageCreateComponent} from "../storage/storage-create/storage-create.component";
+import { PodComponent } from '../pod/pod.component';
+import { PodInfoComponent } from '../pod/pod-info/pod-info.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -45,7 +47,9 @@ export const HomeRootRoutes: Routes = [
       { path: 'deployment', component: DeploymentComponent},
       { path: 'deployment/:name', component: DeploymentInfoComponent},
       { path: 'storage', component: StorageComponent},
-      { path: 'storage/create-storage', component: StorageCreateComponent}
+      { path: 'storage/create-storage', component: StorageCreateComponent},
+      { path: 'pod', component: PodComponent},
+      { path: 'pod/:name', component: PodInfoComponent}
     ]
   }
 ];
