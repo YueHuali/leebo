@@ -32,6 +32,8 @@ import { ServiceGroupComponent } from './dashboard/overview-service-group/overvi
 import { OverviewServiceComponent } from './dashboard/overview-service/overview-service.component';
 import { DeploymentComponent } from './deployment/deployment.component';
 import { DeploymentInfoComponent } from './deployment/deployment-info/deployment-info.component';
+import { StorageComponent } from './storage/storage.component';
+import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { DeploymentInfoComponent } from './deployment/deployment-info/deployment
     ServiceGroupComponent,
     OverviewServiceComponent,
     DeploymentComponent,
-    DeploymentInfoComponent
+    DeploymentInfoComponent,
+    StorageComponent,
+    StorageCreateComponent
   ],
   imports: [
     BrowserModule,
