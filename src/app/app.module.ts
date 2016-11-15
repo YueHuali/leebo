@@ -29,6 +29,8 @@ import { CiCdComponent } from './ci-cd/ci-cd.component';
 import { ResourcesQuotaComponent } from './resources-quota/resources-quota.component';
 import {TemplateInfoComponent} from './ci-cd/template-info/template-info.component';
 import {ServiceCreateComponent} from './ci-cd/service-create/service-create.component';
+import { DeploymentComponent } from './deployment/deployment.component';
+import { DeploymentInfoComponent } from './deployment/deployment-info/deployment-info.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import {ServiceCreateComponent} from './ci-cd/service-create/service-create.comp
     CiCdComponent,
     TemplateInfoComponent,
     ServiceCreateComponent,
-    ResourcesQuotaComponent
+    ResourcesQuotaComponent,
+    DeploymentComponent,
+    DeploymentInfoComponent
   ],
   imports: [
     BrowserModule,
