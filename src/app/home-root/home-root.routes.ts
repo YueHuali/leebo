@@ -21,6 +21,10 @@ import {StorageComponent} from "../storage/storage.component";
 import {StorageCreateComponent} from "../storage/storage-create/storage-create.component";
 import { PodComponent } from '../pod/pod.component';
 import { PodInfoComponent } from '../pod/pod-info/pod-info.component';
+import { BuildsComponent } from '../builds/builds.component';
+import { BuildsDetailComponent } from '../builds/builds-detail/builds-detail.component';
+import { ImagesComponent } from '../images/images.component';
+import { ImagesDetailComponent } from '../images/images-detail/images-detail.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -49,7 +53,12 @@ export const HomeRootRoutes: Routes = [
       { path: 'storage', component: StorageComponent},
       { path: 'storage/create-storage', component: StorageCreateComponent},
       { path: 'pod', component: PodComponent},
-      { path: 'pod/:name', component: PodInfoComponent}
+      { path: 'pod/:name', component: PodInfoComponent},
+      { path: 'quota', component: ResourcesQuotaComponent},
+      { path: 'builds', component: BuildsComponent},
+      { path: 'builds/:name', component: BuildsDetailComponent},
+      { path: 'images', component: ImagesComponent},
+      { path: 'images/:name', component: ImagesDetailComponent}
     ]
   }
 ];
