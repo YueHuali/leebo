@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/dashboard"><i class="fa fa-dashboard"></i> 控制台</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/images">镜像</a>
+      </li>
+      <li class="breadcrumb-item active">{{name}}</li>
+    </ol>
+  </div>
+
+  <div class="col-md-12">
+    <div class="page-header">
+      <h3>{{name}}<small>7天前创建</small></h3>
+      <div class="btn-group">
+        <a href="javascript:void(0)" class="btn btn-sm btn-info">app</a>
+        <a href="javascript:void(0)" class="btn btn-sm btn-primary">{{name}}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 images-detail-info">
+
+
+    <div class="">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Docker pull spec:</label>
+        <div class="col-sm-6">
+          <p class="form-control-static">172.30.16.172:5000/fanpeilun/nodejs-mongodb-example</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <table class="table table-hover">
+        <thead class="bg-faded">
+        <tr>
+          <th>标签</th>
+          <th>来自</th>
+          <th>最新镜像</th>
+          <th>创建时间</th>
+          <th>Pull Spec</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="javascript:void(0)">latest</a>
+          </td>
+          <td>
+            <span class="font-italic">pushed</span>
+          </td>
+          <td>
+            <span class="label">47570c</span>
+          </td>
+          <td>
+            7天前
+          </td>
+          <td>
+            <span class="text-truncate">172.30.16.172:5000/fanpeilun/nodejs-mongodb-example@sha256:47570c4b1cca2c245026d3ea17f58c5672d5495c03dcf2e948e6d3047e198dcd</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
