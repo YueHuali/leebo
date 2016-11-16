@@ -53,7 +53,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'storage', component: StorageComponent},
       { path: 'storage/create-storage', component: StorageCreateComponent},
       { path: 'pod', component: PodComponent},
-      { path: 'pod/:name', component: PodInfoComponent}
+      { path: 'pod/:name', component: PodInfoComponent},
       { path: 'quota', component: ResourcesQuotaComponent},
       { path: 'builds', component: BuildsComponent},
       { path: 'builds/:name', component: BuildsDetailComponent},
