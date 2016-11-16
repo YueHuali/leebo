@@ -69,7 +69,7 @@ import { ImagesDetailComponent } from './images/images-detail/images-detail.comp
     StorageComponent,
     StorageCreateComponent,
     PodComponent,
-    PodInfoComponent
+    PodInfoComponent,
     ResourcesQuotaComponent,
     BuildsComponent,
     BuildsDetailComponent,
