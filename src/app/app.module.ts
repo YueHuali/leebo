@@ -28,6 +28,14 @@ import { ResourcesQuotaComponent } from './resources-quota/resources-quota.compo
 import { TemplateInfoComponent } from './ci-cd/template-info/template-info.component';
 import { ServiceCreateComponent } from './ci-cd/service-create/service-create.component';
 import { provideHttpInterceptor } from './shared/interceptor/http-interceptor-provider';
+import { ServiceGroupComponent } from './dashboard/overview-service-group/overview-service-group.component';
+import { OverviewServiceComponent } from './dashboard/overview-service/overview-service.component';
+import { DeploymentComponent } from './deployment/deployment.component';
+import { DeploymentInfoComponent } from './deployment/deployment-info/deployment-info.component';
+import { StorageComponent } from './storage/storage.component';
+import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
+import { PodComponent } from './pod/pod.component';
+import { PodInfoComponent } from './pod/pod-info/pod-info.component';
 import { BuildsComponent } from './builds/builds.component';
 import { BuildsDetailComponent } from './builds/builds-detail/builds-detail.component';
 import { ImagesComponent } from './images/images.component';
@@ -53,6 +61,15 @@ import { ImagesDetailComponent } from './images/images-detail/images-detail.comp
     CiCdComponent,
     TemplateInfoComponent,
     ServiceCreateComponent,
+    ResourcesQuotaComponent,
+    ServiceGroupComponent,
+    OverviewServiceComponent,
+    DeploymentComponent,
+    DeploymentInfoComponent,
+    StorageComponent,
+    StorageCreateComponent,
+    PodComponent,
+    PodInfoComponent
     ResourcesQuotaComponent,
     BuildsComponent,
     BuildsDetailComponent,

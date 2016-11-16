@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  projects: any[];
+  currentProject: String;
 
   ngOnInit() {
+    this.projects = ['项目A', '项目B', '项目C'];
+    this.currentProject = this.projects[0];
+  }
+
+  selectProject(project: string) {
+    this.currentProject = project;
   }
 
 }

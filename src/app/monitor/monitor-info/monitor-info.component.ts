@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Monitor} from "../monitor";
+import {Monitor} from '../monitor';
 
 @Component({
   selector: 'app-monitor-info',
@@ -8,7 +8,7 @@ import {Monitor} from "../monitor";
 })
 export class MonitorInfoComponent implements OnInit {
   @Input()
-  monitorTarget:Monitor;
+  monitorTarget: Monitor;
   public isCollapsed = true;
   constructor() { }
   ngOnInit() {
