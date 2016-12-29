@@ -4,6 +4,7 @@ import {HomeRootComponentGuard} from "./home-root.guard";
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {StorageComponent} from "../storage/storage.component";
 import {StorageCreateComponent} from "../storage/storage-create/storage-create.component";
+import {ClusterComponent} from '../cluster/cluster.component';
 
 
 export const HomeRootRoutes: Routes = [
@@ -14,6 +15,7 @@ export const HomeRootRoutes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'cluster', component: ClusterComponent},
       { path: 'storage', component: StorageComponent},
       { path: 'storage/create-storage', component: StorageCreateComponent},
 
