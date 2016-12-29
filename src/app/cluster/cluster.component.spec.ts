@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { RouteInfoComponent } from './route-info.component';
+import { ClusterComponent } from './cluster.component';
 
-describe('RouteInfoComponent', () => {
-  let component: RouteInfoComponent;
-  let fixture: ComponentFixture<RouteInfoComponent>;
+describe('ClusterComponent', () => {
+  let component: ClusterComponent;
+  let fixture: ComponentFixture<ClusterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RouteInfoComponent ]
+      declarations: [ ClusterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RouteInfoComponent);
+    fixture = TestBed.createComponent(ClusterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
