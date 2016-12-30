@@ -17,6 +17,7 @@ import { OverviewServiceComponent } from './dashboard/overview-service/overview-
 import { StorageComponent } from './storage/storage.component';
 import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
 import { ClusterComponent } from './cluster/cluster.component';
+import { NodeComponent } from './cluster/node/node.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ClusterComponent } from './cluster/cluster.component';
     OverviewServiceComponent,
     StorageComponent,
     StorageCreateComponent,
-    ClusterComponent
+    ClusterComponent,
+    NodeComponent
   ],
   imports: [
     BrowserModule,
