@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor } from '../interceptor/HttpInterceptor';
 import { Observable } from 'rxjs';
-import {BASE_IAAS_URI} from '../oc-info';
+import {BASE_OC_URI, BASE_IAAS_URI} from '../oc-info';
 /**
  * Created by victor on 2016/12/29.
  */
@@ -9,7 +9,11 @@ import {BASE_IAAS_URI} from '../oc-info';
 export class ClusterService {
   constructor(private http: HttpInterceptor) {}
 
-  createNode(name: string, host: string): Observable<any> {
+  getNodes(): Observable<any> {
+    return this.http.get(BASE_OC_URI + '/api/v1/nodes');
+  }
+
+  createNode(name: string, host: string) {
     let body = {
       "cluster": {
         "openshift_master_portal_net": "172.30.0.0/16",
@@ -39,11 +43,12 @@ export class ClusterService {
           }
         ]
       }
-    }
+    };
+
     return this.http.post(BASE_IAAS_URI + '/clusters/ocnode/', body);
   }
 
-  deleteNode(name: string, host: string, ip: string): Observable<any> {
+  deleteNode(name: string, host: string, ip: string) {
     let body = {
       "cluster": {
 

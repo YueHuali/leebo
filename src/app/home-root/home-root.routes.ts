@@ -5,6 +5,7 @@ import {DashboardComponent} from "../dashboard/dashboard.component";
 import {StorageComponent} from "../storage/storage.component";
 import {StorageCreateComponent} from "../storage/storage-create/storage-create.component";
 import {ClusterComponent} from '../cluster/cluster.component';
+import {NodeComponent} from '../cluster/node/node.component';
 
 
 export const HomeRootRoutes: Routes = [
@@ -16,6 +17,7 @@ export const HomeRootRoutes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'cluster', component: ClusterComponent},
+      { path: 'cluster/create-node', component: NodeComponent},
       { path: 'storage', component: StorageComponent},
       { path: 'storage/create-storage', component: StorageCreateComponent},
 
