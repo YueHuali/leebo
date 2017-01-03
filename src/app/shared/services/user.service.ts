@@ -10,7 +10,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
 
-  private _loginApi = 'http://localhost:3030/loginusr';
+  private _loginApi = 'http://192.168.1.97:3030/loginusr';
   private _logoutApi = this._apiBase + '/logout';
   private _authenticatedApi = this._apiBase + '/api/authenticated';
   private _registerApi = this._apiBase + '/api/users/register';

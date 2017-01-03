@@ -61,15 +61,6 @@
         <a href="javascript:;" class="nav-link dropdown-toggle" ngbDropdownToggle>
           <i class="fa fa-map-marker" aria-hidden="true"></i> {{currentDc.name}} <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu" aria-labelledby="single-button">
-          <li *ngFor="let item of datacents">
-            <a class="dropdown-item" href="javascript:void(0);" (click)="chooseDc(item.name)">
-              <i *ngIf="item.name === currentDc.name" class="fa fa-caret-right" aria-hidden="true"></i>
-              <label *ngIf="item.name != currentDc.name" >&nbsp;</label>
-              {{item.name}}
-            </a>
-          </li>
-        </ul>
       </li>
     </ul>
   </div>

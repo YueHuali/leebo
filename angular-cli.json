@@ -27,7 +27,9 @@
         "../node_modules/metismenu/dist/metisMenu.js",
         "../node_modules/tether/dist/js/tether.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
-        "./assets/js/sidebar.js"
+        "./assets/js/sidebar.js",
+        "./assets/js/cav.js",
+        "./assets/js/backgroundShaking.js"
       ],
       "environments": {
         "source": "environments/environment.ts",
