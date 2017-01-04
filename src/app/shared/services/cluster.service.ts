@@ -14,26 +14,21 @@ export class ClusterService {
   }
 
   createNode(name: string, host: string) {
+    let url = BASE_IAAS_URI + '/clusters/ocnode';
     let body = {
       "cluster": {
+        "ansible_ssh_user": "root",
+        "ansible_ssh_pass": "qydcos",
         "openshift_master_portal_net": "172.30.0.0/16",
         "osm_cluster_network_cidr": "10.128.0.0/14",
         "osm_host_subnet_length": 9,
-        "openshift_master_default_subdomain": "qyos3.com",
-        "openshift_master_cluster_hostname": "192.168.88.7",
-        "openshift_master_cluster_public_hostname": "192.168.1.190",
+        "openshift_master_default_subdomain": "cloudapp.qydcos.com",
+        "openshift_master_cluster_hostname": "172.28.90.21",
+        "openshift_master_cluster_public_hostname": "192.168.1.168",
         "masters": [
           {
             "name": "oc-master-1",
-            "host": "192.168.1.191"
-          },
-          {
-            "name": "oc-master-2",
-            "host": "192.168.1.192"
-          },
-          {
-            "name": "oc-master-3",
-            "host": "192.168.1.193"
+            "host": "192.168.1.168"
           }
         ],
         "nodes": [
@@ -44,29 +39,37 @@ export class ClusterService {
         ]
       }
     };
-
-    return this.http.post(BASE_IAAS_URI + '/clusters/ocnode/', body);
+    console.log('url=', url);
+    console.log('body=', JSON.stringify(body));
+    return this.http.post(url, body);
   }
 
   deleteNode(name: string, host: string, ip: string) {
+    let url = BASE_IAAS_URI + '/clusters/ocnode';
     let body = {
       "cluster": {
-
+        "ansible_ssh_user": "root",
+        "ansible_ssh_pass": "qydcos",
         "masters": [
           {
             "name": "oc-master-1",
-            "host": "192.168.1.191"
+            "host": "192.168.1.168"
           }
         ],
         "nodes": [
           {
             "name": name,
-            "host": host,
+            "host": '192.168.1.157',
             "ip": ip
           }
         ]
       }
-    }
-    return this.http.delete(BASE_IAAS_URI + '/clusters/ocnode/', body);
+    };
+    console.log('url=', url);
+    console.log('body=', JSON.stringify(body));
+
+    return this.http.delete(url, {
+      body: body
+    });
   }
 }
