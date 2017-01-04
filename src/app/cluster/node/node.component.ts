@@ -25,6 +25,7 @@ export class NodeComponent implements OnInit {
     this.clusterService.createNode(this.name, this.ip).subscribe(
       (res: Response) => {
         this.ngRouter.navigateByUrl('/cluster');
+        // console.log('response:'+res.toString());
       },
       (error: Response) => {
         alert('创建失败！ message =' + error.json().message);

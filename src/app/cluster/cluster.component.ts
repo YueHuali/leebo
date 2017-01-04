@@ -25,9 +25,10 @@ export class ClusterComponent implements OnInit {
       this.clusterService.deleteNode(name, host, ip).subscribe(
         (res: Response) => {
           this.ngRouter.navigateByUrl('/cluster');
+          // console.log('response:'+res.toString());
         },
         (error: Response) => {
-          alert('创建失败！ message =' + error.json().message);
+          alert('删除失败！ message =' + error.json().message);
         }
       );
     }
