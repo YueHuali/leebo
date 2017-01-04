@@ -1,0 +1,97 @@
+$primary-color: #009fe5;
+$main-bg-color: #666666;
+$border: 1px solid $primary-color;
+.login {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background-color: #363737;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .login-container {
+    width: 500px;
+    min-height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: transparent;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    border: $border;
+    border-radius: 300px;
+  }
+  .login-title {
+    //background: #424C50;
+    //position: relative;
+    color: lighten($primary-color, 50%);
+    padding: 50px;
+    height: 70px;
+    text-align: center;
+  }
+
+  .login-body {
+    padding: 50px 20px 10px 20px;
+    .form-content {
+      padding: 0 60px;
+    }
+    .form-group {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .text-sm.form-group {
+    font-size: 12px;
+  }
+
+  input[type="text"].form-control,
+  input[type="password"].form-control {
+    background: transparent;
+    color: lighten($primary-color, 50%);
+    border: $border;
+    border-radius: 20px;
+    &:hover, &:focus {
+      border-color: lighten($primary-color, 20%);
+    }
+    &.disabled, &:disabled {
+      opacity: .5;
+      background: $main-bg-color;
+    }
+  }
+
+  .btn.btn-primary {
+    background-color: transparent;
+    color: lighten($primary-color, 20%);
+    border-color: lighten($primary-color, 30%);
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+
+    &.disabled, &:disabled {
+      opacity: .5;
+      background: $main-bg-color;
+    }
+
+    &:hover {
+      color: lighten($primary-color, 30%);
+      border-color: lighten($primary-color, 40%);
+    }
+    &:active {
+      color: lighten($primary-color, 50%);
+    }
+  }
+
+  a {
+    &:hover {
+      color: lighten($primary-color, 30%);
+    }
+    &:active {
+      color: lighten($primary-color, 50%);
+    }
+  }
+}
+.canvas-bg {
+  width: 100%;
+  height: 100%;
+}

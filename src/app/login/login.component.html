@@ -1,21 +1,43 @@
-<div class="login-page">
-	<div class="row">
-		<div class="col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
-			<h1>登录 - 轻元</h1>
-			<form (ngSubmit)="loginUsr()" name="loginForm" role="form">
-				<div class="form-content">
-					<div class="form-group">
-						<input type="text" [(ngModel)]="user.username" name="username" class="form-control input-underline input-lg" placeholder="用户名">
-					</div>
+<div class="login">
+  <div class="canvas-bg" id="canvas-container">
+    <div id="canvas_full"></div>
+  </div>
+  <div class="login-container">
+    <div class="login-title">
+      <h5>
+        <a href="http://www.qingyuanos.com">
+          <img src="assets/images/logo.png" alt="Logo" height="50">
+        </a>
+        管理Portal
+      </h5>
+    </div>
+    <div class="login-body">
+      <form (ngSubmit)="loginUsr()" name="loginForm" role="form">
+        <div class="form-content">
+          <div class="form-group">
+            <input type="text" name="username" placeholder="用户名" autofocus autocomplete="off"
+                   class="form-control input-underline input-lg"
+                   [(ngModel)]="user.username" [disabled]="isSubmitting">
+          </div>
 
-					<div class="form-group">
-						<input type="password" [(ngModel)]="user.password" name="password" class="form-control input-underline input-lg" placeholder="密码">
-					</div>
-				</div>
-				<input type="submit" class="btn btn-primary rounded-btn" value="登录"/>
-				&nbsp;
-				<a class="btn btn-secondary rounded-btn" routerLink="/signup">注册</a>
-			</form>
-		</div>
-	</div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="密码"
+                   class="form-control input-underline input-lg"
+                   [(ngModel)]="user.password" [disabled]="isSubmitting">
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary"
+                    [disabled]="(user.username.length < 3) || user.password.length < 3 || isSubmitting">
+              <i class="fa fa-spin fa-spinner" *ngIf="isSubmitting"></i> 登&nbsp;&nbsp;录
+            </button>
+          </div>
+          <div class="form-group text-sm">
+            <p class="text-muted text-xs-center">
+              <a href="javascript:void(0)" class="forgot-btn">忘记密码？</a>
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
