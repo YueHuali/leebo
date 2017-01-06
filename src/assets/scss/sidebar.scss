@@ -33,6 +33,10 @@
     overflow-y: auto;
     overflow-x: hidden;
 
+    .menu {
+      background-color: $sidebar-color-primary;
+    }
+
     &::-webkit-scrollbar-track {
       background-color: darken($sidebar-color-primary, 6.5%);
     }
@@ -69,7 +73,7 @@
     // All links which are not active
     // have subdued color
     li a {
-      color: $sidebar-color-text;
+      color: $color-text-light;
       text-decoration: none;
     }
 
@@ -79,8 +83,9 @@
     li a:hover,
     li.open > a,
     li.open a:hover {
-      color: $sidebar-color-text-active;
+      //color: $sidebar-color-text-active;
       background-color: $sidebar-color-secondary;
+      color: $color-text-light;
     }
 
 
@@ -89,26 +94,28 @@
 
       // First level items links
       & > a {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         padding-left: 20px;
         padding-right: 10px;
+        border-top: 1px solid #3d4957;
+        color: $color-text-light;
       }
 
       // First level active links have primary background
       &.active > a,
       &.active > a:hover {
+        border-top: 0;
         background-color: $color-primary !important;
-        color: $color-text-inverse !important;
       }
 
       // First level active links have bit darker background
-      &.open > a {
+      &.active > a {
         background-color: darken($sidebar-color-primary, 3%);
       }
 
       // Open items links
-      &.open > a {
+      &.active > a {
         i.arrow {
           transform: rotate(90deg);
         }
@@ -166,7 +173,6 @@
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 5;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 15;
@@ -190,13 +196,15 @@
 
 //sidebar header
 .sidebar-header {
+  box-shadow: 0 1px 10px 0 rgba(50,50,50,.2);
+
   .brand {
     color: #fff;
     text-align: left;
     padding-left: 25px;
     line-height: $header-height;
-    font-size: 15px;
-    background: darken($brand-primary, 5%);
+    font-size: 20px;
+    background: $header-bg-color;
 
     @include media-down(sm) {
       line-height: $header-height-xs;
