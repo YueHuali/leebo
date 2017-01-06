@@ -20,48 +20,23 @@
       <form role="form">
         <fieldset class="form-group">
           <label class="must-type">* 名称</label>
-          <input name="name" class="form-control" placeholder="my-storage-request">
-          <p class="help-block text-describe">A unique name for the storage claim within the project.</p>
+          <input name="name" class="form-control" [(ngModel)]="name"  placeholder="名称">
         </fieldset>
 
         <fieldset class="form-group">
-          <label class="must-type">* 访问模式</label>
-          <br>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions"> Single User （RWO）&nbsp
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions"> Shared Access （RWX）
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions"> Read Only （ROX）
-          </label>
-          <p class="help-block text-describe">Permissions to the mounted volume.</p>
-        </fieldset>
+          <label class="must-type">* 存储协议</label>
+          <select class="form-control" name="type" [(ngModel)]="type">
+            <option value="NFS">NFS</option>
+            <option value="GLUSTERFS">GLUSTERFS</option>
+          </select>
+         </fieldset>
 
         <fieldset class="form-group">
           <label class="must-type">* 容量</label>
-          <div class="row">
-            <div class="col-xs-2">
-              <input type="number" class="form-control" ng-required="true" min="0">
-            </div>
-            <div class="col-xs-2">
-              <div class="row">
-                <div class="col-xs-7">
-                  <select class="form-control">
-                    <option>MB</option>
-                    <option>GB</option>
-                    <option>TB</option>
-                    <option>PB</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="help-block text-describe">Size of the storage request.</p>
+          <input name="size" [(ngModel)]="size"  class="form-control" ng-required="true" min="0">
         </fieldset>
 
-        <button type="button" (click)="create()" class="btn btn-primary">创建</button>
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">创建</button>
         <button class="btn btn-secondary" routerLink="/route">取消</button>
       </form>
     </div>

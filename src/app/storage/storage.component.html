@@ -30,28 +30,17 @@
                 <th>容量</th>
                 <th>访问模式</th>
                 <th>创建时间</th>
+                <th>操作</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td><a href="javascript:void(0)">test_1</a></td>
-                <td>可用</td>
-                <td>512 MB</td>
-                <td>独占(RWO)</td>
-                <td>一天前</td>
-              </tr>
-              <tr>
-                <td><a href="javascript:void(0)">test_2</a></td>
-                <td>可用</td>
-                <td>128 GB</td>
-                <td>共享(RWX)</td>
-                <td>一年前</td>
-              </tr><tr>
-                <td><a href="javascript:void(0)">test_3</a></td>
-                <td>可用</td>
-                <td>200 TB</td>
-                <td>只读(ROX)</td>
-                <td>七天前</td>
+              <tr *ngFor="let item of volumns">
+                <td><a routerLink="{{item.metadata.name}}" href="Javascript:void(0)">{{item.metadata.name}}</a></td>
+                <td>{{item.status.phase}}</td>
+                <td>{{item.spec.capacity.storage}}</td>
+                <td>{{item.spec.accessModes[0]}}</td>
+                <td>{{item.metadata.creationTimestamp}}</td>
+                <td *ngIf="item.status.phase==='Available'"><button class="btn btn-sm btn-danger" (click)="removeVomumn(item.metadata.uid)">删除</button></td>
               </tr>
               </tbody>
             </table>
