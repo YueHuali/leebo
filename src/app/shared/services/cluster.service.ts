@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor } from '../interceptor/HttpInterceptor';
 import { Observable } from 'rxjs';
-import {BASE_OC_URI, BASE_IAAS_URI} from '../oc-info';
+import {BASE_OC_URI, BASE_IAAS_URI, BASE_TASK_URI} from '../oc-info';
+import {Response} from '@angular/http';
 /**
  * Created by victor on 2016/12/29.
  */
@@ -34,7 +35,12 @@ export class ClusterService {
         "nodes": [
           {
             "name": name,
-            "host": host
+            "host": host,
+            "labels": {
+              "qy_role": "worker",
+              "qy_name": name,
+              "qy_external_ip": host
+            }
           }
         ]
       }
@@ -59,7 +65,7 @@ export class ClusterService {
         "nodes": [
           {
             "name": name,
-            "host": '192.168.1.157',
+            "host": host,
             "ip": ip
           }
         ]
@@ -71,5 +77,16 @@ export class ClusterService {
     return this.http.delete(url, {
       body: body
     });
+  }
+
+  checkProcess(res: Response): Observable<any> {
+    let taskJson = JSON.parse(res['_body']);
+    console.log('response task:'+JSON.stringify(taskJson));
+    console.log('response task id:'+taskJson['task']['id']);
+
+    let taskUrl = BASE_TASK_URI.replace('taskId', taskJson['task']['id']);
+    console.log('taskUrl=', taskUrl);
+
+    return this.http.get(taskUrl);
   }
 }
