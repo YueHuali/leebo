@@ -13,6 +13,7 @@ export class NodeComponent implements OnInit {
 
   name: string;
   ip: string;
+  taskStatus: any;
 
   constructor(private clusterService: ClusterService, private ngRouter: Router) {
   }
@@ -24,8 +25,15 @@ export class NodeComponent implements OnInit {
     console.log('node name=',this.name);
     this.clusterService.createNode(this.name, this.ip).subscribe(
       (res: Response) => {
-        this.ngRouter.navigateByUrl('/cluster');
-        // console.log('response:'+res.toString());
+        setInterval(function() {
+          this.clusterService.checkProcess(res).subscribe(
+            (data) => this.taskStatus = data.json()
+          );
+          if(this.taskStatus['task']['status'] === '3'){
+            location.reload();
+          }
+        }, 20000);
+        // this.ngRouter.navigateByUrl('/cluster');
       },
       (error: Response) => {
         alert('创建失败！ message =' + error.json().message);
