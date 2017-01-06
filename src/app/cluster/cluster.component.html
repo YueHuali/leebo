@@ -41,13 +41,13 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of nodes">
-                <td><a routerLink="{{item.metadata.name}}" href="Javascript:void(0)">{{item.metadata.name}}</a></td>
-                <td>{{item.spec.externalID}}</td>
+                <td><a routerLink="{{item.metadata.name}}" href="Javascript:void(0)">{{item.metadata.labels["qy_name"]?item.metadata.labels.qy_name:item.metadata.name}}</a></td>
+                <td>{{item.metadata.labels["qy_external_ip"]?item.metadata.labels.qy_external_ip:item.spec.externalID}}</td>
                 <td>{{item.status.addresses[1].address}}</td>
                 <td>{{item.status.capacity.cpu}}</td>
                 <td>{{item.status.capacity.memory}}</td>
                 <td>{{item.metadata.creationTimestamp}}</td>
-                <td><button class="btn btn-sm btn-danger" (click)="removeNode(item.metadata.name, item.spec.externalID, item.status.addresses[1].address)">删除</button></td>
+                <td *ngIf="item.metadata?.labels.qy_role==='worker'"><button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#infoModal" (click)="removeNode(item.metadata.name, item.spec.externalID, item.status.addresses[1].address)">删除</button></td>
               </tr>
               </tbody>
             </table>
@@ -58,4 +58,19 @@
   </div>
 
 
+</div>
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">删除节点</h4>
+      </div>
+      <div class="modal-body">
+        正在删除中...
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
 </div>
