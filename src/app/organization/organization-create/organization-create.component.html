@@ -1,0 +1,46 @@
+
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="/storage"><i class="fa fa-institution"></i> 组织</a>
+        </li>
+        <li class="breadcrumb-item active">
+          创建组织
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <form role="form">
+        <fieldset class="form-group">
+          <label class="must-type">* 组织名</label>
+          <input class="form-control" name="orgName" [(ngModel)]="orgName" required  placeholder="(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label class="must-type">* 组织别名</label>
+          <input class="form-control" name="orgDisplayName" [(ngModel)]="orgDisplayName" required placeholder="任意字符">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label class="must-type">* 管理员</label>
+          <input class="form-control" name="orgAdmin" [(ngModel)]="orgAdmin" required placeholder="请输入管理员名字">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label class="must-type"> 描述</label>
+          <input class="form-control" name="orgRemark" [(ngModel)]="orgRemark" placeholder="请输入组织描述">
+        </fieldset>
+
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">创建</button>
+        <button class="btn btn-secondary" routerLink="..">取消</button>
+      </form>
+    </div>
+  </div>
+</div>

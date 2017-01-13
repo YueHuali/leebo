@@ -54,6 +54,10 @@ export class OrganizationService {
     );
   }
 
+  getOrg(): Observable<any> {
+    return this.http.get(BASE_URI + '/uaa/organizations').map( res => res.json());
+  }
+
   protected userBindOrg(user: string, org: string, role: string) {
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = role;

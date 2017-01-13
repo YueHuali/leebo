@@ -48,6 +48,10 @@ export class HttpInterceptor extends Http {
     return this.intercept(super.delete(url, this.getRequestOptionArgs(options)));
   }
 
+  patch(url: string, body: any, options?: RequestOptionsArgs): Observable<Response> {
+    return this.intercept(super.patch(url, body, this.getRequestOptionArgs(options)));
+  }
+
   getRequestOptionArgs(options?: RequestOptionsArgs): RequestOptionsArgs {
     if (options == null) {
       options = new RequestOptions();
@@ -55,7 +59,11 @@ export class HttpInterceptor extends Http {
     if (options.headers == null) {
       options.headers = new Headers();
     }
-    options.headers.append('Content-Type', 'application/json');
+    if (options.headers.get('Content-Type') == null) {
+      options.headers.append('Content-Type', 'application/json');
+    }
+
+    options.headers.append('Accept', 'application/json');
     options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     options.withCredentials = false;
     return options;

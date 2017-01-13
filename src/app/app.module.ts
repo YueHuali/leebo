@@ -18,6 +18,8 @@ import { StorageComponent } from './storage/storage.component';
 import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
 import { ClusterComponent } from './cluster/cluster.component';
 import { NodeComponent } from './cluster/node/node.component';
+import { OrganizationComponent } from './organization/organization.component';
+import { OrganizationCreateComponent } from './organization/organization-create/organization-create.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NodeComponent } from './cluster/node/node.component';
     StorageComponent,
     StorageCreateComponent,
     ClusterComponent,
-    NodeComponent
+    NodeComponent,
+    OrganizationComponent,
+    OrganizationCreateComponent
   ],
   imports: [
     BrowserModule,
