@@ -30,10 +30,9 @@ export class NodeComponent implements OnInit {
             (data) => this.taskStatus = data.json()
           );
           if(this.taskStatus['task']['status'] === '3'){
-            location.reload();
+            this.ngRouter.navigateByUrl('/storage');
           }
         }, 20000);
-        // this.ngRouter.navigateByUrl('/cluster');
       },
       (error: Response) => {
         alert('创建失败！ message =' + error.json().message);

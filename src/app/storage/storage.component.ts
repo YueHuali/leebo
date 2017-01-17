@@ -20,10 +20,17 @@ export class StorageComponent implements OnInit {
     );
   }
 
-  removeNode(shareId: string) {
+  removeVolume(name: string, shareId: string) {
+    /*let body = this.storageService.getStorageByName(name).subscribe(
+      (res: Response) => {
+        console.log("body=" + res['_body']);
+      });*/
     if(confirm('确定要删除该存储？')) {
+      this.storageService.deletePV(name);
+
       this.storageService.deleteStorage(shareId).subscribe(
         (res: Response) => {
+
           this.ngRouter.navigateByUrl('/storage');
         },
         (error: Response) => {
