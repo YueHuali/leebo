@@ -20,6 +20,7 @@ import { ClusterComponent } from './cluster/cluster.component';
 import { NodeComponent } from './cluster/node/node.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { OrganizationCreateComponent } from './organization/organization-create/organization-create.component';
+import { ProcessbarComponent } from './shared/processbar/processbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OrganizationCreateComponent } from './organization/organization-create/
     ClusterComponent,
     NodeComponent,
     OrganizationComponent,
-    OrganizationCreateComponent
+    OrganizationCreateComponent,
+    ProcessbarComponent
   ],
   imports: [
     BrowserModule,

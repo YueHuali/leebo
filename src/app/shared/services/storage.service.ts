@@ -17,7 +17,7 @@ export class StorageService {
     return this.http.get(BASE_OC_URI + '/api/v1/persistentvolumes/' + name);
   }
 
-  createPV(name: string, size: number, export_locations: string) {
+  createPV(name: string, size: number, shareId: string, export_locations: string) {
     let addrArr = export_locations.split(':');
     let ip = addrArr[0];
     let path = addrArr[1];
@@ -28,7 +28,11 @@ export class StorageService {
       "apiVersion": "v1",
       "metadata": {
         "name": name,
-        "creationTimestamp": null
+        "creationTimestamp": null,
+        "labels":{
+            "shareId": shareId,
+            "vendor":"qingyuan"
+        }
       },
       "spec": {
         "capacity": {
@@ -54,14 +58,14 @@ export class StorageService {
   }
 
   deletePV(name: string) {
-    let url = BASE_OC_URI + '/api/v1/persistentvolumes';
+    let url = BASE_OC_URI + '/api/v1/persistentvolumes/' + name;
     console.log('url=', url);
-    this.getStorageByName(name).subscribe(
+    /*this.getStorageByName(name).subscribe(
       (res: Response) => {
         console.log("body=" + res['_body']);
         this.http.delete(url, JSON.parse(res['_body'])).subscribe();
-      });
-
+      });*/
+    this.http.delete(url).subscribe();
   }
 
 
