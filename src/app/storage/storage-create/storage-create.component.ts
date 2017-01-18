@@ -34,7 +34,7 @@ export class StorageCreateComponent implements OnInit {
               this.taskStatus = data.json();
               if(this.taskStatus['task']['status'] === 3){
                 let msg = JSON.parse(this.taskStatus['task']['message']);
-                this.storageService.createPV(this.name, this.size, msg['share']['export_locations']);
+                this.storageService.createPV(this.name, this.size, msg['share']['id'], msg['share']['export_locations']);
                 jQuery('#infoModal').modal('hide');
                 this.ngRouter.navigateByUrl('/storage');
                 console.log('done');
