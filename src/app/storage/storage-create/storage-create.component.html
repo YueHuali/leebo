@@ -17,15 +17,15 @@
 
   <div class="row">
     <div class="col-xl-12">
-      <form role="form">
+      <form role="form" (submit)="onSubmit()">
         <fieldset class="form-group">
           <label class="must-type">* 名称</label>
-          <input name="name" class="form-control" [(ngModel)]="name"  placeholder="名称">
+          <input name="name" class="form-control" [(ngModel)]="name" required placeholder="名称">
         </fieldset>
 
         <fieldset class="form-group">
           <label class="must-type">* 存储协议</label>
-          <select class="form-control" name="type" [(ngModel)]="type">
+          <select class="form-control" name="type" [(ngModel)]="type" required>
             <option value="NFS">NFS</option>
             <option value="GLUSTERFS">GLUSTERFS</option>
           </select>
@@ -33,27 +33,16 @@
 
         <fieldset class="form-group">
           <label class="must-type">* 容量</label>
-          <input name="size" [(ngModel)]="size"  class="form-control" ng-required="true" min="0">
+          <input name="size" [(ngModel)]="size"  class="form-control" required min="0">
         </fieldset>
 
-        <button type="button" data-toggle="modal" data-target="#infoModal" (click)="onSubmit()" class="btn btn-primary">创建</button>
-        <button class="btn btn-secondary" routerLink="/route">取消</button>
+        <button type="submit" data-toggle="modal" class="btn btn-primary">创建</button>
+        <button class="btn btn-secondary" routerLink="/storage">取消</button>
       </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">创建存储</h4>
-      </div>
-      <div class="modal-body">
-        正在创建中，请稍后...
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
+<div *ngIf="canShow">
+  <processbar [title]="removeTitle" [msg]="removeMsg"></processbar>
 </div>

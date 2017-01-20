@@ -29,11 +29,10 @@
 
           <fieldset class="form-group">
             <label class="must-type">* 节点地址</label>
-            <input class="form-control" placeholder="节点地址" name="host"
-                   [(ngModel)]="ip">
+            <input name="host" class="form-control" [(ngModel)]="ip" required placeholder="节点地址">
           </fieldset>
 
-          <button data-toggle="modal" data-target="#infoModal" type="submit" class="btn btn-primary">创建</button>
+          <button type="submit" data-toggle="modal" class="btn btn-primary">创建</button>
           <a class="btn btn-secondary" routerLink="/cluster">取消</a>
         </form>
       </div>
@@ -41,17 +40,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">创建节点</h4>
-      </div>
-      <div class="modal-body">
-        正在创建中，请稍后...
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
+<div *ngIf="canDisplay">
+  <processbar [title]="nodeTitle" [msg]="nodeMsg"></processbar>
 </div>
