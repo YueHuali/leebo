@@ -17,6 +17,9 @@ export class StorageCreateComponent implements OnInit {
   size: number;
   type: string;
   taskStatus: any;
+  removeTitle: string = "创建存储";
+  removeMsg: string = "正在创建中，请稍后...";
+  canShow: boolean = false;
 
   constructor(private storageService: StorageService, private taskService: TaskHandlerService, private ngRouter: Router) { }
 
@@ -52,7 +55,8 @@ export class StorageCreateComponent implements OnInit {
 
         }, 20000);
 
-
+        this.canShow = true;
+        jQuery('#infoModal').modal('show');
       },
       (error: Response) => {
         alert('创建失败！ message =' + error.json().message);
