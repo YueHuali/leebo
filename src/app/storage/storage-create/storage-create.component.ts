@@ -17,9 +17,8 @@ export class StorageCreateComponent implements OnInit {
   size: number;
   type: string;
   taskStatus: any;
-  removeTitle: string = "创建存储";
-  removeMsg: string = "正在创建中，请稍后...";
-  canShow: boolean = false;
+  createTitle: string = "创建存储";
+  createMsg: string = "正在创建中，请稍后...";
 
   constructor(private storageService: StorageService, private taskService: TaskHandlerService, private ngRouter: Router) { }
 
@@ -27,40 +26,40 @@ export class StorageCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.storageService.createStorage(this.name, this.size, this.type).subscribe(
-      (res: Response) => {
-        console.log('storage response from iaas: ', JSON.stringify(res));
-        let taskId = this.taskService.getTaskId(res);
-        let intId = setInterval(() => {
-          this.taskService.checkProcess(taskId).subscribe(
-            (data) => {
-              this.taskStatus = data.json();
-              if(this.taskStatus['task']['status'] === 3){
-                let msg = JSON.parse(this.taskStatus['task']['message']);
-                this.storageService.createPV(this.name, this.size, msg['share']['id'], msg['share']['export_locations']);
-                jQuery('#infoModal').modal('hide');
-                this.ngRouter.navigateByUrl('/storage');
-                console.log('done');
-                clearInterval(intId);
-              }else if(this.taskStatus['task']['status'] === 2){
-                jQuery('#infoModal').modal('hide');
-                this.ngRouter.navigateByUrl('/storage');
-                console.log('failed');
-                clearInterval(intId);
-              }else {
-                console.log('processing');
+
+      jQuery('#infoModal').modal('show');
+      this.storageService.createStorage(this.name, this.size, this.type).subscribe(
+        (res: Response) => {
+          console.log('storage response from iaas: ', JSON.stringify(res));
+          let taskId = this.taskService.getTaskId(res);
+          let intId = setInterval(() => {
+            this.taskService.checkProcess(taskId).subscribe(
+              (data) => {
+                this.taskStatus = data.json();
+                if(this.taskStatus['task']['status'] === 3){
+                  let msg = JSON.parse(this.taskStatus['task']['message']);
+                  this.storageService.createPV(this.name, this.size, msg['share']['id'], msg['share']['export_locations']);
+                  jQuery('#infoModal').modal('hide');
+                  this.ngRouter.navigateByUrl('/storage');
+                  console.log('done');
+                  clearInterval(intId);
+                }else if(this.taskStatus['task']['status'] === 2){
+                  jQuery('#infoModal').modal('hide');
+                  this.ngRouter.navigateByUrl('/storage');
+                  console.log('failed');
+                  clearInterval(intId);
+                }else {
+                  console.log('processing');
+                }
               }
-            }
-          );
+            );
 
-        }, 20000);
+          }, 20000);
+        },
+        (error: Response) => {
+          alert('创建失败！ message =' + error.json().message);
+        }
+      );
 
-        this.canShow = true;
-        jQuery('#infoModal').modal('show');
-      },
-      (error: Response) => {
-        alert('创建失败！ message =' + error.json().message);
-      }
-    );
   }
 }
