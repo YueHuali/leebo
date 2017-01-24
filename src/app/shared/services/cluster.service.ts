@@ -79,14 +79,4 @@ export class ClusterService {
     });
   }
 
-  checkProcess(res: Response): Observable<any> {
-    let taskJson = JSON.parse(res['_body']);
-    console.log('response task:'+JSON.stringify(taskJson));
-    console.log('response task id:'+taskJson['task']['id']);
-
-    let taskUrl = BASE_TASK_URI.replace('taskId', taskJson['task']['id']);
-    console.log('taskUrl=', taskUrl);
-
-    return this.http.get(taskUrl);
-  }
 }

@@ -57,20 +57,8 @@
     </div>
   </div>
 
-
 </div>
 
-<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">删除节点</h4>
-      </div>
-      <div class="modal-body">
-        正在删除中...
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
+<div *ngIf="canShow">
+  <processbar [title]="removeTitle" [msg]="removeMsg"></processbar>
 </div>

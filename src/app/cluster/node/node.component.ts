@@ -18,7 +18,6 @@ export class NodeComponent implements OnInit {
   taskStatus: any;
   nodeTitle: string = "创建节点";
   nodeMsg: string = "正在创建中，请稍后...";
-  canDisplay: boolean = false;
 
   constructor(private clusterService: ClusterService, private taskService: TaskHandlerService, private ngRouter: Router) {
   }
@@ -29,6 +28,7 @@ export class NodeComponent implements OnInit {
   onSubmit(): void {
     console.log("name=", this.name);
     console.log("ip=", this.ip);
+    jQuery('#infoModal').modal('show');
 
     this.clusterService.createNode(this.name, this.ip).subscribe(
       (res: Response) => {
@@ -57,8 +57,6 @@ export class NodeComponent implements OnInit {
 
         }, 20000);
 
-        this.canDisplay = true;
-        jQuery('#infoModal').modal('show');
       },
       (error: Response) => {
         alert('创建失败！ message =' + error.json().message);

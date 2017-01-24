@@ -2,19 +2,24 @@ import {Component, OnInit} from '@angular/core';
 import {ClusterService} from '../shared/services/cluster.service';
 import {Response} from '@angular/http';
 import {Router} from '@angular/router';
+import {TaskHandlerService} from '../shared/services/task-handler.service';
+declare let jQuery;
 
 @Component({
   selector: 'cluster',
   templateUrl: './cluster.component.html',
   styleUrls: ['./cluster.component.scss'],
-  providers: [ ClusterService ]
+  providers: [ ClusterService, TaskHandlerService ]
 })
 export class ClusterComponent implements OnInit {
 
   nodes: any[];
+  removeTitle: string = "删除节点";
+  removeMsg: string = "正在删除中...";
+  canShow: boolean = true;
   taskStatus: any;
 
-  constructor(private clusterService: ClusterService, private ngRouter: Router) { }
+  constructor(private clusterService: ClusterService, private taskService: TaskHandlerService, private ngRouter: Router) { }
 
   ngOnInit() {
     this.clusterService.getNodes().subscribe(
@@ -26,18 +31,28 @@ export class ClusterComponent implements OnInit {
     if(confirm('确定要删除该节点？')) {
       this.clusterService.deleteNode(name, host, ip).subscribe(
         (res: Response) => {
-          setInterval(function() {
-            this.clusterService.checkProcess(res).subscribe(
-              (data) => this.taskStatus = data.json()
+          let taskId = this.taskService.getTaskId(res);
+          let intId = setInterval(() => {
+            this.taskService.checkProcess(taskId).subscribe(
+              (data) => {
+                this.taskStatus = data.json();
+                if(this.taskStatus['task']['status'] === 3){
+                  jQuery('#infoModal').modal('hide');
+                  this.ngRouter.navigateByUrl('/cluster');
+                  console.log('done');
+                  clearInterval(intId);
+                }else if(this.taskStatus['task']['status'] === 2){
+                  jQuery('#infoModal').modal('hide');
+                  this.ngRouter.navigateByUrl('/cluster');
+                  console.log('failed');
+                  clearInterval(intId);
+                }else {
+                  console.log('processing');
+                }
+              }
             );
-            if(this.taskStatus['task']['status'] === '3'){
-              location.reload();
-            }else {
-              alert('deleting');
-            }
-          }, 20000);
 
-          // this.ngRouter.navigateByUrl('/cluster');
+          }, 20000);
         },
         (error: Response) => {
           alert('删除失败！ message =' + error.json().message);
