@@ -11,10 +11,6 @@ import 'rxjs/add/observable/throw';
 export class UserService {
 
   private _loginApi = 'http://192.168.1.97:3030/loginusr';
-  private _logoutApi = this._apiBase + '/logout';
-  private _authenticatedApi = this._apiBase + '/api/authenticated';
-  private _registerApi = this._apiBase + '/api/users/register';
-  private _userExistsApi = this._apiBase + '/api/users/exists';
 
   constructor (private http: Http, @Inject('apiBase') private _apiBase: string) {
 
@@ -28,15 +24,7 @@ export class UserService {
   }
 
   authenticated() {
-    let flag = !!localStorage.getItem('isAuthenticated');
-    console.log('isAuthenticated: ', flag);
-    return flag;
-  }
-
-  loginUsr(user) {
-    console.log(this.http, user);
-    return this.http.post('http://localhost:3030/loginusr', user)
-      .map(res => res.json());
+    return 'true' === localStorage.getItem('isAuthenticated');
   }
 
   logout() {
@@ -51,27 +39,6 @@ export class UserService {
     return true;
   }
 
-  register(user) {
-    let body = JSON.stringify(user);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.post(this._registerApi, body, <RequestOptionsArgs> {headers: headers, withCredentials: true})
-                    .map((res: Response) => res)
-                    .catch(this.handleError);
-  }
-
-  getUsers() {
-    return this.http.get(this._apiBase + "/api/users?limit=5&desc=true", <RequestOptionsArgs> {withCredentials: true})
-                  .map((res: Response) => res.json())
-                  .catch(this.handleError);
-  }
-
-  getMe() {
-    return this.http.get(this._apiBase + '/api/users/me/', <RequestOptionsArgs> {withCredentials: true})
-                  .map((res: Response) => res.json().me)
-                  .catch(this.handleError);
-  }
 
   private handleError (error: Response) {
     // in a real world app, we may send the server to some remote logging infrastructure
