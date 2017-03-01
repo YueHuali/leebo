@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
+import { NODE_SERVER } from '../oc-info';
 
 /**
  * Import interfaces that service depends on
@@ -10,7 +11,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class UserService {
 
-  private _loginApi = 'http://192.168.1.97:3030/loginusr';
+  private _loginApi = NODE_SERVER + '/loginusr';
 
   constructor (private http: Http, @Inject('apiBase') private _apiBase: string) {
 
