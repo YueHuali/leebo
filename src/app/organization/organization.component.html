@@ -39,7 +39,7 @@
                 <td>{{org.displayName}}</td>
                 <td>{{org.createBy}}</td>
                 <td>{{org.createAt | date}}</td>
-                <td><button class="btn btn-sm btn-danger">解散</button></td>
+                <td><button (click)="removeOrg(org.name)" class="btn btn-sm btn-danger">解散</button></td>
               </tr>
               </tbody>
             </table>
