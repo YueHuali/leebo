@@ -84,9 +84,9 @@ export class OrganizationService {
     let body = {name: orgName, displayName: displayName, remark: remark, createBy: createBy};
     let obs: Observable<any> = Observable.create(observable => {
       this.http.post(BASE_URI + '/uaa/organizations', body).map(res => res.json()).subscribe(
-        (resBody: any) => {
-          this.beOrgOwner(createBy, orgName).subscribe(res => observable.next(res));
-        },
+        // (resBody: any) => {
+        //   this.beOrgOwner(createBy, orgName).subscribe(res => observable.next(res));
+        // },
         (err: any) => {
           observable.next({'error': err});
         }
