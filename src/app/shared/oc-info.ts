@@ -1,6 +1,14 @@
-export const BASE_OC_URI = 'http://192.168.1.97:8080/paas';
-export const BASE_IAAS_URI = 'http://192.168.1.97:8080/qy-iaas/iaas/v1';
-export const BASE_TASK_URI = 'http://192.168.1.106:8081/v1/tasks/taskid/status';
-export const BASE_URI = 'http://192.168.1.97:8080';
+window['$'].ajax({
+  url: './assets/js/config.json',
+  async: false,
+  success: function (res) {
+    window['QY_CONFIG'] = res;
+  }
+});
+export const BASE_URI = window['QY_CONFIG'].api_gateway;
+export const BASE_OC_URI = BASE_URI + '/paas';
+export const BASE_IAAS_URI = BASE_URI + '/qy-iaas/iaas/v1';
+export const BASE_TASK_URI = BASE_URI + '/qy-task/v1/tasks/taskId/status';
+export const NODE_SERVER = window['QY_CONFIG'].node_server;
 export class OcInfo {
 }

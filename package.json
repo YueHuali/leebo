@@ -8,7 +8,9 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "clean": "rm -rf ./server/public && mkdir ./server/public",
+    "build-prod": "ng build -bh ./ -prod -o ./server/public/"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~2.1.0",
     "@angular/router": "~3.1.0",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.11",
+    "bootstrap": "^4.0.0-alpha.5",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1",

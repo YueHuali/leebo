@@ -35,12 +35,13 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of volumns">
-                <td><a routerLink="{{item.metadata.name}}" href="Javascript:void(0)">{{item.metadata.name}}</a></td>
+                <!--<td><a routerLink="{{item.metadata.name}}" href="Javascript:void(0)">{{item.metadata.name}}</a></td>-->
+                <td>{{item.metadata.name}}</td>
                 <td>{{item.status.phase}}</td>
                 <td>{{item.spec.capacity.storage}}</td>
                 <td>{{item.spec.accessModes[0]}}</td>
                 <td>{{item.metadata.creationTimestamp}}</td>
-                <td *ngIf="item.status.phase==='Available'"><button class="btn btn-sm btn-danger" (click)="removeVomumn(item.metadata.uid)">删除</button></td>
+                <td *ngIf="item.status.phase==='Available'"><button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#infoModal" (click)="removeVolume(item.metadata.name, item.metadata.labels.shareId)">删除</button></td>
               </tr>
               </tbody>
             </table>
@@ -49,5 +50,9 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="canShow">
+  <processbar [title]="removeTitle" [msg]="removeMsg"></processbar>
 </div>
 
