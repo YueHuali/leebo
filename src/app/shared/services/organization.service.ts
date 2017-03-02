@@ -49,7 +49,7 @@ export class OrganizationService {
   }
 
   getUserByOrg(org: string): Observable<any> {
-    return this.http.get(BASE_OC_URI + '/oapi/v1/users?labelSelector=org.' + org).map(
+    return this.http.get(BASE_URI + '/pservice/users?labelSelector=org.' + org).map(
       (res) => res.json()
     );
   }
@@ -76,8 +76,7 @@ export class OrganizationService {
   leaveOrg(user: string, org: string): Observable<any> {
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = null;
-    let option: RequestOptionsArgs = this.addContentType('application/strategic-merge-patch+json');
-    return this.http.patch(BASE_OC_URI + '/oapi/v1/users/' + user, body, option);
+    return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
   createOrg(orgName: string, createBy: string, displayName: string, remark: string): Observable<any> {
@@ -105,6 +104,14 @@ export class OrganizationService {
 
   getOrgByName(name: string): Observable<any> {
     return this.http.get(BASE_URI + '/uaa/organizations/' + name);
+  }
+
+  removeOrg(name: string): Observable<any> {
+    return this.http.delete(BASE_URI + "/uaa/organizations/" + name);
+  }
+
+  getProjectsByOrg(org: string) {
+    return this.http.get(BASE_OC_URI + '/oapi/v1/projects?labelSelector=organization%3D' + org);
   }
 
 }
