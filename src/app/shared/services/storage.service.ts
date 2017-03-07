@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpInterceptor} from '../interceptor/HttpInterceptor';
 import {Observable} from 'rxjs';
-import {BASE_OC_URI, BASE_IAAS_URI} from '../oc-info';
+import { BASE_OC_URI, BASE_IAAS_URI, IaaS_USER_ID, IaaS_PROJECT_ID } from '../oc-info';
 import {Response} from '@angular/http';
 
 @Injectable()
@@ -74,12 +74,12 @@ export class StorageService {
     let body = {
       "tenant": {
         "user": {
-          "id": "c774f0139d454df58aa20744832bb1c6",
+          "id": IaaS_USER_ID,
           "name": "admin",
           "password": "qydcos"
         },
         "project": {
-          "id": "64ed158db85f4d1c8c28948d1ecfcdf5",
+          "id": IaaS_PROJECT_ID,
           "name": "admin"
         }
       },
@@ -100,12 +100,12 @@ export class StorageService {
     let body = {
       "tenant": {
         "user": {
-          "id": "c774f0139d454df58aa20744832bb1c6",
+          "id": IaaS_USER_ID,
           "name": "admin",
           "password": "qydcos"
         },
         "project": {
-          "id": "64ed158db85f4d1c8c28948d1ecfcdf5",
+          "id": IaaS_PROJECT_ID,
           "name": "admin"
         }
       },

@@ -1,4 +1,6 @@
 {
   "api_gateway":"http://192.168.1.97:8080",
-  "node_server":"http://192.168.1.97:3030"
+  "node_server":"http://192.168.1.97:3030",
+  "iaas_user_id":"c774f0139d454df58aa20744832bb1c6",
+  "iaas_project_id":"64ed158db85f4d1c8c28948d1ecfcdf5"
 }
