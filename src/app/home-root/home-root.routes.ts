@@ -15,8 +15,10 @@ export const HomeRootRoutes: Routes = [
     component: HomeRootComponent,
     canActivate: [HomeRootComponentGuard],
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: '', component: ClusterComponent },
+      /*{ path: '', component: DashboardComponent },*/
+      /*{ path: 'dashboard', component: DashboardComponent },*/
+      { path: 'dashboard', component: ClusterComponent },
       { path: 'cluster', component: ClusterComponent},
       { path: 'cluster/create-node', component: NodeComponent},
       { path: 'storage', component: StorageComponent},
