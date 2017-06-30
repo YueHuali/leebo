@@ -1,8 +1,8 @@
-import { HttpInterceptor } from '../interceptor/HttpInterceptor';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BASE_OC_URI, BASE_URI } from '../oc-info';
-import { RequestOptions, RequestOptionsArgs, Headers } from '@angular/http';
+import {HttpInterceptor} from '../interceptor/HttpInterceptor';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE} from '../oc-info';
+import {RequestOptions, RequestOptionsArgs, Headers} from '@angular/http';
 /**
  * Created by hexiuyu on 2017/1/9.
  */
@@ -79,7 +79,26 @@ export class OrganizationService {
     return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
+  //Add to register iaas user with new project
+  registerIaasUser(username, projectName) {
+    let CONFIG = window['QY_CONFIG'];
+    let iaasEnabled = CONFIG['iaas_enabled'];
+    if (iaasEnabled === true) {
+      let objUrl = BASE_IAAS_SERVICE + '/iaasusers';
+      console.log('objUrl=', objUrl);
+      console.log('username=', username);
+      let objBody = {
+        "username": username,
+        "projectname": projectName
+      };
+      this.http.post(objUrl, objBody).subscribe();
+    }
+  }
+
   createOrg(orgName: string, createBy: string, displayName: string, remark: string): Observable<any> {
+
+    this.registerIaasUser(createBy, orgName);
+
     let body = {name: orgName, displayName: displayName, remark: remark, createBy: createBy};
     let obs: Observable<any> = Observable.create(observable => {
       this.http.post(BASE_URI + '/uaa/organizations', body).map(res => res.json()).subscribe(
