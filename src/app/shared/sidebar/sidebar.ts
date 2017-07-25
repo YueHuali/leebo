@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QY_CONFIG } from '../oc-info';
 
 @Component({
   // moduleId: module.id,
@@ -9,6 +10,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu: string = '';
+  iaasEnabled: boolean = false;
+
   eventCalled() {
     this.isActive = !this.isActive;
   }
@@ -18,5 +21,9 @@ export class SidebarComponent {
     } else {
       this.showMenu = element;
     }
+  }
+
+  ngOnInit() {
+    this.iaasEnabled = QY_CONFIG.iaas_enabled;
   }
 }

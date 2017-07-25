@@ -36,6 +36,22 @@
           </a>
         </li>
 
+        <li routerLinkActive="active" *ngIf="iaasEnabled">
+          <a href="javascript:void(0);">
+            <i class="fa fa-cogs mr-1"></i> 配置管理
+            <i class="fa arrow"></i>
+          </a>
+          <ul routerLinkActive="in">
+            <li routerLinkActive="active">
+              <a routerLink="/image">镜像管理 </a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a routerLink="/flavor">配额管理 </a>
+            </li>
+          </ul>
+        </li>
+
       </ul>
     </nav>
 
