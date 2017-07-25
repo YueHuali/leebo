@@ -34,6 +34,8 @@
     overflow-x: hidden;
 
     .menu {
+      position: relative;
+      top: $header-height;
       background-color: $sidebar-color-primary;
     }
 
@@ -196,6 +198,8 @@
 
 //sidebar header
 .sidebar-header {
+  position: fixed;
+  z-index: 100;
   box-shadow: 0 1px 10px 0 rgba(50,50,50,.2);
 
   .brand {
