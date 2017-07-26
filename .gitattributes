@@ -1,0 +1,6 @@
+src/assets/js/config.json merge=ours
+src/assets/images/logo.png merge=ours
+src/assets/_variables.scss merge=ours
+src/assets/scss/sidebar.scss merge=ours
+src/app/login/login.component.html merge=ours
+src/app/shared/sidebar/sidebar.html merge=ours
