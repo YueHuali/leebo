@@ -26,7 +26,7 @@ export class ResourceConfigService {
   removeImagesFromDb(imageIds: any[]) {
 
     let body = {"imageIds": imageIds};
-    console.log('importImagesToDb body=', body);
+    console.log('removeImagesFromDb body=', body);
     return this.http.delete(BASE_IAAS_SERVICE + '/vmimages', {body: body});
   }
 
@@ -35,6 +35,20 @@ export class ResourceConfigService {
   }
 
   getIaasFlavors(): Observable<any> {
-    return this.http.get(BASE_IAAS_SERVICE + '/resoruce/flavours');
+    return this.http.get(BASE_IAAS_SERVICE + '/resoruce/flavors');
+  }
+
+  importFlavorsToDb(flavors: any[]) {
+
+    let body = {"flavors": flavors};
+    console.log('importlavorsToDb body=', body);
+    return this.http.post(BASE_IAAS_SERVICE + '/flavours', body);
+  }
+
+  removeFlavorsFromDb(flavorIds: any[]) {
+
+    let body = {"flavorIds": flavorIds};
+    console.log('removeFlavorsFromDb body=', body);
+    return this.http.delete(BASE_IAAS_SERVICE + '/flavours', {body: body});
   }
 }
