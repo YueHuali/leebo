@@ -8,6 +8,8 @@ import {ClusterComponent} from '../cluster/cluster.component';
 import {NodeComponent} from '../cluster/node/node.component';
 import {OrganizationComponent} from '../organization/organization.component';
 import { OrganizationCreateComponent } from '../organization/organization-create/organization-create.component';
+import {FlavorComponent} from '../flavor/flavor.component';
+import {ImageComponent} from '../image/image.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -24,7 +26,9 @@ export const HomeRootRoutes: Routes = [
       { path: 'storage', component: StorageComponent},
       { path: 'storage/create-storage', component: StorageCreateComponent},
       { path: 'organization', component: OrganizationComponent},
-      { path: 'organization/create-organization', component: OrganizationCreateComponent}
+      { path: 'organization/create-organization', component: OrganizationCreateComponent},
+      { path: 'flavor', component: FlavorComponent},
+      { path: 'image', component: ImageComponent}
     ]
   }
 ];

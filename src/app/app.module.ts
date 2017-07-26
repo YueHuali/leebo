@@ -21,6 +21,10 @@ import { NodeComponent } from './cluster/node/node.component';
 import { OrganizationComponent } from './organization/organization.component';
 import { OrganizationCreateComponent } from './organization/organization-create/organization-create.component';
 import { ProcessbarComponent } from './shared/processbar/processbar.component';
+import { FlavorComponent } from './flavor/flavor.component';
+import { ImageComponent } from './image/image.component';
+import { ImportImageComponent } from './image/import-image/import-image.component';
+import { ImportFlavorComponent } from './flavor/import-flavor/import-flavor.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { ProcessbarComponent } from './shared/processbar/processbar.component';
     NodeComponent,
     OrganizationComponent,
     OrganizationCreateComponent,
-    ProcessbarComponent
+    ProcessbarComponent,
+    FlavorComponent,
+    ImageComponent,
+    ImportImageComponent,
+    ImportFlavorComponent
   ],
   imports: [
     BrowserModule,
