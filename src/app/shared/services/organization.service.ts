@@ -1,7 +1,7 @@
 import {HttpInterceptor} from '../interceptor/HttpInterceptor';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE} from '../oc-info';
+import { BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE, QY_CONFIG } from '../oc-info';
 import {RequestOptions, RequestOptionsArgs, Headers} from '@angular/http';
 /**
  * Created by hexiuyu on 2017/1/9.
@@ -81,8 +81,7 @@ export class OrganizationService {
 
   //Add to register iaas user with new project
   registerIaasUser(username, projectName) {
-    let CONFIG = window['QY_CONFIG'];
-    let iaasEnabled = CONFIG['iaas_enabled'];
+    let iaasEnabled = QY_CONFIG.iaas_enabled;
     if (iaasEnabled === true) {
       let objUrl = BASE_IAAS_SERVICE + '/iaasusers';
       console.log('objUrl=', objUrl);
