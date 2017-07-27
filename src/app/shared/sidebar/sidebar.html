@@ -4,8 +4,7 @@
     <div class="sidebar-header">
       <div class="brand">
         <!-- Logo -->
-        <img src="assets/images/logo-single.png" alt="Logo" height="45">
-        管理Portal
+        <a href="javascript:void(0)"><img src="assets/images/logo.png" alt="Logo" height="45"></a>
       </div>
     </div>
 
@@ -34,22 +33,6 @@
           <a routerLink="/organization">
             <i class="fa fa-institution"></i> 组织管理
           </a>
-        </li>
-
-        <li routerLinkActive="active" *ngIf="iaasEnabled">
-          <a href="javascript:void(0);">
-            <i class="fa fa-cogs mr-1"></i> 配置管理
-            <i class="fa arrow"></i>
-          </a>
-          <ul routerLinkActive="in">
-            <li routerLinkActive="active">
-              <a routerLink="/image">镜像管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/flavor">配额管理 </a>
-            </li>
-          </ul>
         </li>
 
       </ul>
