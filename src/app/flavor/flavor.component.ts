@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ResourceConfigService} from '../shared/services/resource-config.service';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'flavor',
@@ -12,6 +13,8 @@ export class FlavorComponent implements OnInit {
   flavors: any[];
   chkFlavorIds: any[];
   flavorList: any[];
+  importFlag: boolean = true;
+  removeFlag: boolean = true;
 
   removeFlavorIds: any[] = [];
 
@@ -48,7 +51,8 @@ export class FlavorComponent implements OnInit {
 
   importFlavorSubmit() {
     console.log('importFlavorSubmit chkIds:', this.chkFlavorIds);
-    if(this.chkFlavorIds.length > 0) {
+    if(this.chkFlavorIds.length > 0 && !isUndefined(this.chkFlavorIds)) {
+      this.importFlag = false;
       this.resourceConfigService.importFlavorsToDb(this.chkFlavorIds).subscribe(
         res => {
           location.reload();
@@ -78,8 +82,9 @@ export class FlavorComponent implements OnInit {
 
   removeFlavor() {
     console.log('Remove flavor chkIds:', this.removeFlavorIds);
-    if(this.removeFlavorIds.length > 0) {
+    if(this.removeFlavorIds.length > 0 && !isUndefined(this.removeFlavorIds) && this.removeFlag) {
       if(confirm("确认要移除？")){
+        this.removeFlag = false;
         this.resourceConfigService.removeFlavorsFromDb(this.removeFlavorIds).subscribe(
           res => {
             location.reload();
@@ -90,6 +95,8 @@ export class FlavorComponent implements OnInit {
           }
         );
       }
+    }else{
+      alert("请选择需要移除的配额");
     }
   }
 

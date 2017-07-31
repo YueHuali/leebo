@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ResourceConfigService} from '../shared/services/resource-config.service';
 import {Image} from './image';
+import {isUndefined} from 'util';
 
 @Component({
   selector: 'image',
@@ -14,6 +15,8 @@ export class ImageComponent implements OnInit {
   images: any[];
   chkImageIds: any[];
   imageList: any[];
+  importFlag: boolean = true;
+  removeFlag: boolean = true;
 
   removeImageIds: any[] = [];
 
@@ -50,7 +53,8 @@ export class ImageComponent implements OnInit {
 
   importImageSubmit() {
     console.log('importImageSubmit chkIds:', this.chkImageIds);
-    if(this.chkImageIds.length > 0) {
+    if(this.chkImageIds.length > 0 && !isUndefined(this.chkImageIds)) {
+      this.importFlag = false;
       let images = this.transformImage();
       this.resourceConfigService.importImagesToDb(images).subscribe(
         res => {
@@ -61,6 +65,8 @@ export class ImageComponent implements OnInit {
           alert(errorData['message']);
         }
       );
+    }else{
+      alert("请选择需要导入的镜像");
     }
   }
 
@@ -98,8 +104,9 @@ export class ImageComponent implements OnInit {
 
   removeImage() {
     console.log('Remove image chkIds:', this.removeImageIds);
-    if(this.removeImageIds.length > 0) {
+    if(this.removeImageIds.length > 0 && !isUndefined(this.removeImageIds) && this.removeFlag) {
       if(confirm("确认要移除？")){
+        this.removeFlag = false;
         this.resourceConfigService.removeImagesFromDb(this.removeImageIds).subscribe(
           res => {
             location.reload();
@@ -110,6 +117,8 @@ export class ImageComponent implements OnInit {
           }
         );
       }
+    }else{
+      alert("请选择需要移除的镜像");
     }
   }
 
