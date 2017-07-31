@@ -77,7 +77,7 @@
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="resetFlavorIds()">取消</button>
-          <button type="submit" class="btn btn-primary">导入</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!importFlag">导入</button>
         </div>
       </div>
     </div>
