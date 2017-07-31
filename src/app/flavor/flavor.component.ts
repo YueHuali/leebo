@@ -23,7 +23,16 @@ export class FlavorComponent implements OnInit {
     );
 
     this.resourceConfigService.getIaasFlavors().subscribe(
-      (data) => this.flavorList = data.json().flavors
+      (data) => {
+        this.flavorList = data.json().flavors;
+        for (let importFlavor of this.flavorList) {
+          for (let flavor of this.flavors) {
+            if(importFlavor.id === flavor.id){
+              importFlavor.isUsed = 'true';
+            }
+          }
+        }
+      }
     );
   }
 

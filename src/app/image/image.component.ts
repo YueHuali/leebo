@@ -25,7 +25,16 @@ export class ImageComponent implements OnInit {
     );
 
     this.resourceConfigService.getIaasImages().subscribe(
-      (data) => this.imageList = data.json().images
+      (data) => {
+        this.imageList = data.json().images;
+        for (let importImage of this.imageList) {
+          for (let image of this.images) {
+            if(importImage.id === image.id){
+              importImage.isUsed = 'true';
+            }
+          }
+        }
+      }
     );
   }
 
