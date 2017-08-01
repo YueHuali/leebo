@@ -9,8 +9,8 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "clean": "rm -rf ./server/public && mkdir ./server/public",
-    "build-prod": "ng build -bh ./ -prod -o ./server/public/"
+    "clean": "rm -rf ./server/admin && mkdir ./server/admin",
+    "build-prod": "ng build -bh ./ -prod -o ./server/admin/"
   },
   "private": true,
   "dependencies": {
@@ -34,6 +34,7 @@
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^2.1.2",
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.19-3",
