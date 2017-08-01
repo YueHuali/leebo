@@ -38,6 +38,10 @@ export class ResourceConfigService {
     return this.http.get(BASE_IAAS_SERVICE + '/resoruce/flavors');
   }
 
+  getIaasFlavorById(flavorId: any): Observable<any> {
+    return this.http.get(BASE_IAAS_SERVICE + '/flavours/' + flavorId);
+  }
+
   importFlavorsToDb(flavors: any[]) {
 
     let body = {"flavors": flavors};
