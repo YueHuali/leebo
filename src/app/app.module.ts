@@ -25,6 +25,7 @@ import { FlavorComponent } from './flavor/flavor.component';
 import { ImageComponent } from './image/image.component';
 import { ImportImageComponent } from './image/import-image/import-image.component';
 import { ImportFlavorComponent } from './flavor/import-flavor/import-flavor.component';
+import { DisplayFlavorComponent } from './flavor/display-flavor/display-flavor.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ImportFlavorComponent } from './flavor/import-flavor/import-flavor.comp
     FlavorComponent,
     ImageComponent,
     ImportImageComponent,
-    ImportFlavorComponent
+    ImportFlavorComponent,
+    DisplayFlavorComponent
   ],
   imports: [
     BrowserModule,
