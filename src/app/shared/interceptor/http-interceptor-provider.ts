@@ -7,7 +7,7 @@ import { HttpInterceptor } from './HttpInterceptor';
 /**
  * Created by John Zhang on 16/11/15.
  */
-function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, userService: UserService, router: Router){
+export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions, userService: UserService, router: Router){
   return new HttpInterceptor(xhrBackend, requestOptions, userService, router);
 }
 
