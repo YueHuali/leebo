@@ -34,6 +34,8 @@
     overflow-x: hidden;
 
     .menu {
+      position: relative;
+      top: $header-height;
       background-color: $sidebar-color-primary;
     }
 
@@ -43,9 +45,7 @@
   }
 
   .nav {
-
-    font-size: 16px;
-
+    font-size: 14px;
     // Common styles
     li {
       a:focus,
@@ -196,6 +196,9 @@
 
 //sidebar header
 .sidebar-header {
+  position: fixed;
+  z-index: 100;
+  width: $sidebar-width;
   box-shadow: 0 1px 10px 0 rgba(50,50,50,.2);
 
   .brand {

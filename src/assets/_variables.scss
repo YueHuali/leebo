@@ -1,7 +1,11 @@
 /*************************************************************
 *						App Variables
 **************************************************************/
-
+$font-family-sans-serif: -apple-system,BlinkMacSystemFont,Neue Haas Grotesk Text Pro,Arial Nova,Segoe UI,Helvetica Neue,\.PingFang SC,PingFang SC,Microsoft YaHei,Microsoft JhengHei,Source Han Sans SC,Noto Sans CJK SC,Source Han Sans CN,Noto Sans SC,Source Han Sans TC,Noto Sans CJK TC,Hiragino Sans GB,sans-serif;
+$font-size-base: .8rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:   1.05rem !default;
+$font-size-sm:   .675rem !default;
+$font-size-xs:   .55rem !default;
 
 /*************************************************************
 *					  Colors Definitions
@@ -17,7 +21,7 @@ $color-divider: $color-primary-dark !default;
 $color-bg: #f0f3f6 !default;
 
 $color-text: #7e8e9f !default;
-$color-text-light: #ffffff !default;
+$color-text-light: #eeeeee !default;
 $color-text-muted: #C2CCD6;
 $color-text-inverse: #678098 !default;
 $color-text-passive: #c5c5c5 !default;
@@ -53,7 +57,7 @@ $header-height: 55px !default;
 $header-height-xs: 55px !default;
 
 // Sidebar
-$sidebar-width: 230px !default;
+$sidebar-width: 200px !default;
 
 // Footer
 $footer-height: 50px !default;
