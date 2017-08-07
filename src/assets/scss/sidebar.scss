@@ -106,12 +106,12 @@
       &.active > a,
       &.active > a:hover {
         border-top: 0;
-        background-color: $color-primary !important;
+        background-color: $menu-active-bg-color !important;
       }
 
       // First level active links have bit darker background
       &.active > a {
-        background-color: darken($sidebar-color-primary, 3%);
+        background-color: $menu-active-bg-color;
       }
 
       // Open items links
@@ -159,7 +159,7 @@
       // Have brighter color
       &.active a {
         color: $sidebar-color-text-active;
-        background-color: darken($sidebar-color-primary, 5%);
+        background-color: darken($sidebar-color-primary, 10%);
       }
     }
   }

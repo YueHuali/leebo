@@ -11,7 +11,7 @@ $font-size-xs:   .55rem !default;
 *					  Colors Definitions
 **************************************************************/
 
-$color-primary: #36c6d3 !default;
+$color-primary: #009fe5;
 $color-primary-light: lighten($color-primary, 10%) !default;
 $color-primary-lighter: lighten($color-primary-light, 6%) !default;
 $color-primary-dark: darken($color-primary, 10%) !default;
@@ -58,7 +58,7 @@ $header-height-xs: 55px !default;
 
 // Sidebar
 $sidebar-width: 200px !default;
-
+$menu-active-bg-color: darken($color-primary, 6%);
 // Footer
 $footer-height: 50px !default;
 
@@ -66,7 +66,7 @@ $sidebar-color-primary: #364150 !default;
 $sidebar-color-secondary: darken($sidebar-color-primary, 6%) !default;
 
 $sidebar-color-text: fade-out($color-text-inverse, 0.5) !default;
-$sidebar-color-text-active: $color-text-inverse;
+$sidebar-color-text-active: $color-primary;
 
 // Dropdowns
 $dropbown-color-border: fade-out($color-text-light, 0.9) !default;

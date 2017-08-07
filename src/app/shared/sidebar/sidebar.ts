@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { QY_CONFIG } from '../oc-info';
 
 @Component({
@@ -7,7 +7,7 @@ import { QY_CONFIG } from '../oc-info';
   templateUrl: 'sidebar.html'
 })
 
-export class SidebarComponent {
+export class SidebarComponent implements AfterViewInit {
   isActive = false;
   showMenu: string = '';
   iaasEnabled: boolean = false;
@@ -26,4 +26,32 @@ export class SidebarComponent {
   ngOnInit() {
     this.iaasEnabled = QY_CONFIG.iaas_enabled;
   }
+  ngAfterViewInit(): void {
+    let $ = window['jQuery'];
+    $('#sidebar-collapse-btn').on('click', function(event){
+      event.preventDefault();
+
+      $('#app').toggleClass('sidebar-open');
+    });
+
+    $('#sidebar-overlay').on('click', function() {
+      $('#app').removeClass('sidebar-open');
+    });
+    $('.metismenu').metisMenu();
+
+    let $menuTabs = $('.menu-tabs');
+    $menuTabs.find('li').on('click', function(event) {
+      let $this = $(this);
+      if ($this.hasClass('active')) {
+        return;
+      }
+      $menuTabs.find('li.active').removeClass('active').each(function (i, element) {
+        let target = $(element).data('target');
+        $(target).slideUp()
+      });
+      let currentTarget = $this.addClass('active').data('target');
+      $(currentTarget).slideDown();
+    })
+  }
+
 }
