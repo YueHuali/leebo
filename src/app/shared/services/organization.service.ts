@@ -13,6 +13,10 @@ export class OrganizationService {
   constructor(private http: HttpInterceptor) {
   }
 
+  getUsers(): Observable<any> {
+    return this.http.get(BASE_URI + '/uaa/users').map( res => res.json());
+  }
+
   getUserOrg(user: string): Observable<any> {
     let obs: Observable<any> = Observable.create(observable => {
       this.http.get(BASE_OC_URI + '/oapi/v1/users/' + user).map(res => res.json()).subscribe(

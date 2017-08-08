@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestOptionsArgs } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
-import { NODE_SERVER } from '../oc-info';
+import {NODE_SERVER} from '../oc-info';
 
 /**
  * Import interfaces that service depends on
@@ -12,6 +12,8 @@ import { NODE_SERVER } from '../oc-info';
 export class UserService {
 
   private _loginApi = NODE_SERVER + '/loginusr';
+
+  private _registerApi = NODE_SERVER + '/addnewusr';
 
   constructor (private http: Http, @Inject('apiBase') private _apiBase: string) {
 
@@ -46,4 +48,13 @@ export class UserService {
     // instead of just logging it to the console
     return Observable.throw(error || "Server Error");
   }
+
+
+  register(user) {
+    return this.http.post(this._registerApi, user)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+
 }

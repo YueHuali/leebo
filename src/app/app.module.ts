@@ -26,6 +26,8 @@ import { ImageComponent } from './image/image.component';
 import { ImportImageComponent } from './image/import-image/import-image.component';
 import { ImportFlavorComponent } from './flavor/import-flavor/import-flavor.component';
 import { DisplayFlavorComponent } from './flavor/display-flavor/display-flavor.component';
+import {UserComponent} from './user/user.component';
+import {SignUpComponent} from './user/user-create/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { DisplayFlavorComponent } from './flavor/display-flavor/display-flavor.c
     ImageComponent,
     ImportImageComponent,
     ImportFlavorComponent,
-    DisplayFlavorComponent
+    DisplayFlavorComponent,
+    UserComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
