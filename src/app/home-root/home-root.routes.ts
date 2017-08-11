@@ -13,6 +13,7 @@ import {ImageComponent} from '../image/image.component';
 import {UserComponent} from '../user/user.component';
 import {SignUpComponent} from '../user/user-create/sign-up.component';
 import { QuotaComponent } from '../quota/quota.component';
+import {SubnetComponent} from '../iaas/subnet/subnet.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -34,7 +35,9 @@ export const HomeRootRoutes: Routes = [
       { path: 'quota', component: QuotaComponent},
       { path: 'image', component: ImageComponent},
       { path: 'user', component: UserComponent},
-      { path: 'user/create-user', component: SignUpComponent}
+      { path: 'user/create-user', component: SignUpComponent},
+      { path: 'subnet', component: SubnetComponent}
+
     ]
   }
 ];
