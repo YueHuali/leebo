@@ -28,6 +28,9 @@ import { ImportFlavorComponent } from './flavor/import-flavor/import-flavor.comp
 import { DisplayFlavorComponent } from './flavor/display-flavor/display-flavor.component';
 import {UserComponent} from './user/user.component';
 import {SignUpComponent} from './user/user-create/sign-up.component';
+import { QuotaComponent } from './quota/quota.component';
+import { QuotaStatus } from './shared/pipe/quotaStatus.pipe';
+import { ProjectNameComponent } from './quota/project-name/project-name.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import {SignUpComponent} from './user/user-create/sign-up.component';
     ImportFlavorComponent,
     DisplayFlavorComponent,
     UserComponent,
-    SignUpComponent
+    SignUpComponent,
+    QuotaComponent,
+    QuotaStatus,
+    ProjectNameComponent
   ],
   imports: [
     BrowserModule,
