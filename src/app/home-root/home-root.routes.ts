@@ -14,6 +14,8 @@ import {UserComponent} from '../user/user.component';
 import {SignUpComponent} from '../user/user-create/sign-up.component';
 import { QuotaComponent } from '../quota/quota.component';
 import {SubnetComponent} from '../iaas/subnet/subnet.component';
+import {FirewallComponent} from '../iaas/firewall/firewall.component';
+import {FloatingIpComponent} from '../iaas/floatingIp/floatingIp.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -36,7 +38,10 @@ export const HomeRootRoutes: Routes = [
       { path: 'image', component: ImageComponent},
       { path: 'user', component: UserComponent},
       { path: 'user/create-user', component: SignUpComponent},
-      { path: 'subnet', component: SubnetComponent}
+      { path: 'subnet', component: SubnetComponent},
+      { path: 'firewall', component: FirewallComponent},
+      { path: 'floatingIp', component: FloatingIpComponent},
+
 
     ]
   }
