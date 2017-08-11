@@ -34,6 +34,10 @@ import { ProjectNameComponent } from './quota/project-name/project-name.componen
 import {IaasStatusPipe} from './shared/pipe/iaas-status.pipe';
 import {ImportSubnetComponent} from './iaas/subnet/import-subnet/import-subnet.component';
 import {SubnetComponent} from './iaas/subnet/subnet.component';
+import {FirewallComponent} from './iaas/firewall/firewall.component';
+import {ImportFirewallComponent} from './iaas/firewall/import-firewall/import-firewall.component';
+import {ImportFloatingIpComponent} from './iaas/floatingIp/import-floatingIp/import-floatingIp.component';
+import {FloatingIpComponent} from './iaas/floatingIp/floatingIp.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,11 @@ import {SubnetComponent} from './iaas/subnet/subnet.component';
     SubnetComponent,
     ImportSubnetComponent,
     IaasStatusPipe,
+    FirewallComponent,
+    ImportFirewallComponent,
+    FloatingIpComponent,
+    ImportFloatingIpComponent
+
   ],
   imports: [
     BrowserModule,
