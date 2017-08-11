@@ -12,6 +12,7 @@ import {FlavorComponent} from '../flavor/flavor.component';
 import {ImageComponent} from '../image/image.component';
 import {UserComponent} from '../user/user.component';
 import {SignUpComponent} from '../user/user-create/sign-up.component';
+import { QuotaComponent } from '../quota/quota.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -30,6 +31,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'organization', component: OrganizationComponent},
       { path: 'organization/create-organization', component: OrganizationCreateComponent},
       { path: 'flavor', component: FlavorComponent},
+      { path: 'quota', component: QuotaComponent},
       { path: 'image', component: ImageComponent},
       { path: 'user', component: UserComponent},
       { path: 'user/create-user', component: SignUpComponent}

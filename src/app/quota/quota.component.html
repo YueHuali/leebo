@@ -1,0 +1,168 @@
+<div class="row">
+  <div class="col-lg-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+      </li>
+      <li class="breadcrumb-item active">
+        配额管理
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-block">
+        <table class="table">
+          <thead class="thead-inverse">
+          <tr>
+            <th>默认配额</th>
+            <th>主机</th>
+            <th>CPU</th>
+            <th>内存(MB)</th>
+            <th>存储(GIB)</th>
+            <th>公网IP</th>
+            <th>带宽</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td scope="row">1</td>
+            <td>{{quotaDefault.instance}}</td>
+            <td>{{quotaDefault.vCpu}}</td>
+            <td>{{quotaDefault.ram}}</td>
+            <td>{{quotaDefault.volume}}</td>
+            <td>{{quotaDefault.floatingIp}}</td>
+            <td>{{quotaDefault.bandwidth}}</td>
+            <td>
+              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updateDefaultQuota">修改</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-block">
+        <table class="table">
+          <thead class="thead-default">
+            <tr>
+              <th>申请配额</th>
+              <th>主机</th>
+              <th>CPU</th>
+              <th>内存(MB)</th>
+              <th>存储(GIB)</th>
+              <th>公网IP</th>
+              <th>带宽</th>
+              <th>状态</th>
+              <th>申请人</th>
+              <th>组织</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of auditList;let idx = index">
+              <td scope="row">{{idx+1}}</td>
+              <td>{{item.instance}}</td>
+              <td>{{item.vCpu}}</td>
+              <td>{{item.ram}}</td>
+              <td>{{item.volume}}</td>
+              <td>{{item.floatingIp}}</td>
+              <td>{{item.bandwidth}}</td>
+              <td>{{item.apply | quotaStatus}}</td>
+              <td>{{item.iaasUser.username}}</td>
+              <td><project-name [uuid]="item.projectUuid"></project-name></td>
+              <td *ngIf="item.apply === 0">
+                <button type="button" (click)="updateQuotaRecord(1, item)"  class="btn btn-sm btn-success">通过</button>
+                <button type="button" (click)="updateQuotaRecord(2, item)"  class="btn btn-sm btn-danger">拒绝</button>
+              </td>
+              <td *ngIf="item.apply > 0">
+                <button type="button" disabled class="btn btn-sm btn-success">通过</button>
+                <button type="button" disabled class="btn btn-sm btn-danger">拒绝</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="updateDefaultQuota" role="dialog" aria-labelledby="updateDefaultQuotaModal" aria-hidden="true">
+  <form #resizeForm="ngForm" (ngSubmit)="updateDefault()">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateVMModal">修改默认配额</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+                  <form class="col-md">
+                    <div class="form-group">
+                      <label>云主机</label>
+                      <div class="input-group">
+                        <input name="instance" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.instance" value="{{quotaDefault.instance}}" placeholder="当前默认云主机：{{quotaDefault.instance}}">
+                        <div class="input-group-addon">台</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>CPU</label>
+                      <div class="input-group">
+                        <input name="vCpu" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.vCpu" value="{{quotaDefault.vCpu}}" placeholder="当前默认CPU：{{quotaDefault.vCpu}}">
+                        <div class="input-group-addon">核</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>内存</label>
+                      <div class="input-group">
+                        <input name="ram" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.ram" value="{{quotaDefault.ram}}" placeholder="当前默认内存：{{quotaDefault.ram}}">
+                        <div class="input-group-addon">MB</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>存储</label>
+                      <div class="input-group">
+                        <input name="volume" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.volume" value="{{quotaDefault.volume}}" placeholder="当前默认存储：{{quotaDefault.volume}}">
+                        <div class="input-group-addon">GiB</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>公网IP</label>
+                      <div class="input-group">
+                        <input name="floatingIp" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.floatingIp" value="{{quotaDefault.floatingIp}}" placeholder="当前默认公网IP：{{quotaDefault.floatingIp}}">
+                        <div class="input-group-addon">个</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>带宽</label>
+                      <div class="input-group">
+                        <input name="bandwith" type="number" min="1" class="form-control" [(ngModel)]="newQuotaDefault.bandwidth" value="{{quotaDefault.bandwidth}}" placeholder="当前默认带宽：{{quotaDefault.bandwidth}}">
+                        <div class="input-group-addon">M</div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" >调整大小</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
