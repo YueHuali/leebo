@@ -55,4 +55,8 @@ export class ResourceConfigService {
     console.log('removeFlavorsFromDb body=', body);
     return this.http.delete(BASE_IAAS_SERVICE + '/flavours', {body: body});
   }
+
+  getIaasProjects(): Observable<any> {
+    return this.http.get(BASE_IAAS_SERVICE + '/projects');
+  }
 }

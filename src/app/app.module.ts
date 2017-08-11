@@ -31,6 +31,9 @@ import {SignUpComponent} from './user/user-create/sign-up.component';
 import { QuotaComponent } from './quota/quota.component';
 import { QuotaStatus } from './shared/pipe/quotaStatus.pipe';
 import { ProjectNameComponent } from './quota/project-name/project-name.component';
+import {IaasStatusPipe} from './shared/pipe/iaas-status.pipe';
+import {ImportSubnetComponent} from './iaas/subnet/import-subnet/import-subnet.component';
+import {SubnetComponent} from './iaas/subnet/subnet.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { ProjectNameComponent } from './quota/project-name/project-name.componen
     SignUpComponent,
     QuotaComponent,
     QuotaStatus,
-    ProjectNameComponent
+    ProjectNameComponent,
+    SubnetComponent,
+    ImportSubnetComponent,
+    IaasStatusPipe,
   ],
   imports: [
     BrowserModule,
