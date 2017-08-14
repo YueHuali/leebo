@@ -11,87 +11,102 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-block">
-        <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-            <th>默认配额</th>
-            <th>主机</th>
-            <th>CPU</th>
-            <th>内存(GB)</th>
-            <th>存储(GIB)</th>
-            <th>公网IP</th>
-            <th>带宽</th>
-            <th>操作</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>{{quotaDefault.instance}}</td>
-            <td>{{quotaDefault.vCpu}}</td>
-            <td>{{quotaDefault.ram}}</td>
-            <td>{{quotaDefault.volume}}</td>
-            <td>{{quotaDefault.floatingIp}}</td>
-            <td>{{quotaDefault.bandwidth}}</td>
-            <td>
-              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updateDefaultQuota">修改</button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+<ul class="nav nav-tabs" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" (click)="tabAuditList()" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true">申请配额</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="tabDefault()" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">默认配额</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <table class="table">
+              <thead class="thead-default">
+              <tr>
+                <th>#</th>
+                <th>主机</th>
+                <th>CPU</th>
+                <th>内存(MB)</th>
+                <th>存储(GIB)</th>
+                <th>公网IP</th>
+                <th>带宽</th>
+                <th>状态</th>
+                <th>申请人</th>
+                <th>组织</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of auditList;let idx = index">
+                <td scope="row">{{idx+1}}</td>
+                <td>{{item.instance}}</td>
+                <td>{{item.vCpu}}</td>
+                <td>{{item.ram}}</td>
+                <td>{{item.volume}}</td>
+                <td>{{item.floatingIp}}</td>
+                <td>{{item.bandwidth}}</td>
+                <td>{{item.apply | quotaStatus}}</td>
+                <td>{{item.iaasUser.username}}</td>
+                <td><project-name [uuid]="item.projectUuid"></project-name></td>
+                <td>{{item.createTime | date:'y年M月d日 H:mm:ss'}}</td>
+                <td *ngIf="item.apply === 0">
+                  <button type="button" (click)="updateQuotaRecord(1, item)"  class="btn btn-sm btn-success">通过</button>
+                  <button type="button" (click)="updateQuotaRecord(2, item)"  class="btn btn-sm btn-danger">拒绝</button>
+                </td>
+                <td *ngIf="item.apply > 0">
+                  <button type="button" disabled class="btn btn-sm btn-success">通过</button>
+                  <button type="button" disabled class="btn btn-sm btn-danger">拒绝</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-block">
-        <table class="table">
-          <thead class="thead-default">
-            <tr>
-              <th>申请配额</th>
-              <th>主机</th>
-              <th>CPU</th>
-              <th>内存(MB)</th>
-              <th>存储(GIB)</th>
-              <th>公网IP</th>
-              <th>带宽</th>
-              <th>状态</th>
-              <th>申请人</th>
-              <th>组织</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of auditList;let idx = index">
-              <td scope="row">{{idx+1}}</td>
-              <td>{{item.instance}}</td>
-              <td>{{item.vCpu}}</td>
-              <td>{{item.ram}}</td>
-              <td>{{item.volume}}</td>
-              <td>{{item.floatingIp}}</td>
-              <td>{{item.bandwidth}}</td>
-              <td>{{item.apply | quotaStatus}}</td>
-              <td>{{item.iaasUser.username}}</td>
-              <td><project-name [uuid]="item.projectUuid"></project-name></td>
-              <td *ngIf="item.apply === 0">
-                <button type="button" (click)="updateQuotaRecord(1, item)"  class="btn btn-sm btn-success">通过</button>
-                <button type="button" (click)="updateQuotaRecord(2, item)"  class="btn btn-sm btn-danger">拒绝</button>
-              </td>
-              <td *ngIf="item.apply > 0">
-                <button type="button" disabled class="btn btn-sm btn-success">通过</button>
-                <button type="button" disabled class="btn btn-sm btn-danger">拒绝</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
+  <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <table class="table">
+              <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>主机</th>
+                <th>CPU</th>
+                <th>内存(GB)</th>
+                <th>存储(GIB)</th>
+                <th>公网IP</th>
+                <th>带宽</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td scope="row">1</td>
+                <td>{{quotaDefault.instance}}</td>
+                <td>{{quotaDefault.vCpu}}</td>
+                <td>{{quotaDefault.ram}}</td>
+                <td>{{quotaDefault.volume}}</td>
+                <td>{{quotaDefault.floatingIp}}</td>
+                <td>{{quotaDefault.bandwidth}}</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#updateDefaultQuota">修改</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>

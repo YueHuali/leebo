@@ -125,7 +125,7 @@ export class OrganizationService {
   }
 
   getOrgByName(name: string): Observable<any> {
-    return this.http.get(BASE_URI + '/uaa/organizations/' + name);
+    return this.http.get(BASE_URI + '/uaa/organizations/' + name).map(res => res.json());
   }
 
   removeOrg(name: string): Observable<any> {

@@ -60,4 +60,12 @@ export class QuotaComponent implements OnInit {
       };
     });
   }
+
+  tabDefault() {
+    window['$']('#pills-home-tab').tab('show');
+  }
+
+  tabAuditList() {
+    window['$']('#pills-profile-tab').tab('show');
+  }
 }
