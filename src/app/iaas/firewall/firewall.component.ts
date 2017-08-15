@@ -2,16 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {Firewall} from './firewall';
 import {isUndefined} from 'util';
 import {FirewallImportService} from '../../shared/services/iaas/firewall-import.service';
+import {ResourceConfigService} from '../../shared/services/resource-config.service';
 
 @Component({
   selector: 'firewall',
   templateUrl: './firewall.component.html',
   styleUrls: ['./firewall.component.scss'],
-  providers: [ FirewallImportService ]
+  providers: [ FirewallImportService, ResourceConfigService ]
 })
 
 export class FirewallComponent implements OnInit {
 
+  projectList: any[];
   firewalls: any[];
   chkFirewallIds: any[];
   firewallList: any[];
@@ -20,9 +22,13 @@ export class FirewallComponent implements OnInit {
 
   removeFirewallIds: any[] = [];
 
-  constructor(private firewallImportService: FirewallImportService) { }
+  constructor(private firewallImportService: FirewallImportService, private resourceConfigService: ResourceConfigService) { }
 
   ngOnInit() {
+    this.resourceConfigService.getIaasProjects().subscribe(
+      (data) => this.projectList = data.json()
+    );
+
     this.firewallImportService.getFirewalls().subscribe(
       (data) => this.firewalls = data.json()
     );
@@ -34,6 +40,11 @@ export class FirewallComponent implements OnInit {
           for (let firewall of this.firewalls) {
             if(importFirewall.id === firewall.id){
               importFirewall.isUsed = 'true';
+            }
+          }
+          for (let project of this.projectList) {
+            if(importFirewall.tenant_id === project.id) {
+              importFirewall.projectName = project.name;
             }
           }
         }

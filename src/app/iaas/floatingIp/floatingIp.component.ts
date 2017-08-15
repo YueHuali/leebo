@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FloatingIp} from './FloatingIp';
 import {isUndefined} from 'util';
 import {FloatingIpImportService} from '../../shared/services/iaas/floatingIp-import.service';
+import {ResourceConfigService} from '../../shared/services/resource-config.service';
 
 @Component({
   selector: 'floatingIp',
@@ -12,6 +13,7 @@ import {FloatingIpImportService} from '../../shared/services/iaas/floatingIp-imp
 
 export class FloatingIpComponent implements OnInit {
 
+  projectList: any[];
   floatingIps: any[];
   chkFloatingIpIds: any[];
   floatingIpList: any[];
@@ -20,9 +22,13 @@ export class FloatingIpComponent implements OnInit {
 
   removeFloatingIpIds: any[] = [];
 
-  constructor(private floatingIpImportService: FloatingIpImportService) { }
+  constructor(private floatingIpImportService: FloatingIpImportService, private resourceConfigService: ResourceConfigService) { }
 
   ngOnInit() {
+    this.resourceConfigService.getIaasProjects().subscribe(
+      (data) => this.projectList = data.json()
+    );
+
     this.floatingIpImportService.getFloatingIps().subscribe(
       (data) => this.floatingIps = data.json()
     );
@@ -34,6 +40,11 @@ export class FloatingIpComponent implements OnInit {
           for (let floatingIp of this.floatingIps) {
             if(importFloatingIp.id === floatingIp.id){
               importFloatingIp.isUsed = 'true';
+            }
+          }
+          for (let project of this.projectList) {
+            if(importFloatingIp.tenant_id === project.id) {
+              importFloatingIp.projectName = project.name;
             }
           }
         }
@@ -58,7 +69,7 @@ export class FloatingIpComponent implements OnInit {
       let floatingIps = this.transformFloatingIp();
       this.floatingIpImportService.importFloatingIpsToDb(floatingIps).subscribe(
         res => {
-          // location.reload();
+          location.reload();
         },
         error => {
           let errorData = error.json();

@@ -96,7 +96,7 @@ export class FlavorComponent implements OnInit {
         );
       }
     }else{
-      alert("请选择需要移除的配额");
+      alert("请选择需要移除的配置");
     }
   }
 

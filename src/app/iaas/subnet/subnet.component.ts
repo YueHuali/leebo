@@ -42,6 +42,11 @@ export class SubnetComponent implements OnInit {
               importSubnet.isUsed = 'true';
             }
           }
+          for (let project of this.projectList) {
+            if(importSubnet.tenant_id === project.id) {
+              importSubnet.projectName = project.name;
+            }
+          }
         }
       }
     );
