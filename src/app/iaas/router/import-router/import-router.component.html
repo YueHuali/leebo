@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col col-6">
     <div class="form-group">
-      <!--导入防火墙-->
       <table class="table">
         <thead>
         <tr>
@@ -12,11 +11,12 @@
           <!--<th>创建时间</th>-->
         </tr>
         </thead>
-        <tbody  *ngIf="importFirewallList">
-        <tr *ngFor="let item of importFirewallList">
+        <tbody  *ngIf="importRouterList">
+        <tr *ngFor="let item of importRouterList">
           <template [ngIf]="item?.isUsed!='true' && item?.projectName">
-          <td><input type="checkbox" (change)="checkFirewallImport($event, item.id)" [value]="item.id">{{item.id}}</td>
+          <td><input type="checkbox" (change)="checkRouterImport($event, item.id)" [value]="item.id">{{item.id}}</td>
           <td>{{item.name}}</td>
+          <td>{{item?.projectName}}</td>
           <!--<td>{{item.status}}</td>-->
           <!--<td>{{item.created_at}}</td>-->
           </template>

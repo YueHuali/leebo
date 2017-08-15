@@ -47,7 +47,8 @@
               </thead>
               <tbody  *ngIf="subnets">
               <tr *ngFor="let item of subnets">
-                <td><input type="checkbox" (change)="checkSubnetRemove($event, item.id)" [value]="item.id"> {{item.id}}</td>
+                <template [ngIf]="item.status==='3'">
+                <td><span *ngIf="!item.taskId"><input type="checkbox" (change)="checkSubnetRemove($event, item.id)" [value]="item.id"></span> {{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td *ngIf="item.subnetBindMap!==null">已绑定</td>
                 <td *ngIf="item.subnetBindMap===null">{{item.status | iaasStatus}}</td>
@@ -58,6 +59,7 @@
                   <span *ngIf="item.subnetBindMap!==null">{{item.subnetBindMap.routerName}}</span>
                 </td>
                 <td>{{item.createTime | date}}</td>
+                </template>
               </tr>
               </tbody>
             </table>

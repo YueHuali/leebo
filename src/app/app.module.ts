@@ -38,6 +38,10 @@ import {FirewallComponent} from './iaas/firewall/firewall.component';
 import {ImportFirewallComponent} from './iaas/firewall/import-firewall/import-firewall.component';
 import {ImportFloatingIpComponent} from './iaas/floatingIp/import-floatingIp/import-floatingIp.component';
 import {FloatingIpComponent} from './iaas/floatingIp/floatingIp.component';
+import {VmComponent} from './iaas/vm/vm.component';
+import {ImportVmComponent} from './iaas/vm/import-vm/import-vm.component';
+import {RouterComponent} from './iaas/router/router.component';
+import {ImportRouterComponent} from './iaas/router/import-router/import-router.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,11 @@ import {FloatingIpComponent} from './iaas/floatingIp/floatingIp.component';
     FirewallComponent,
     ImportFirewallComponent,
     FloatingIpComponent,
-    ImportFloatingIpComponent
+    ImportFloatingIpComponent,
+    VmComponent,
+    ImportVmComponent,
+    RouterComponent,
+    ImportRouterComponent
 
   ],
   imports: [
