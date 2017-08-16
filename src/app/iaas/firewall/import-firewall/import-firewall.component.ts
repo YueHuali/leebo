@@ -16,7 +16,7 @@ export class ImportFirewallComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkFloatingIpImport(event, id) {
+  checkFirewallImport(event, id) {
     let checked = event.target.checked;
     if (checked === true) {
       this.importFirewallIds.push(id);
