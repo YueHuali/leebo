@@ -8,7 +8,7 @@ import {ResourceConfigService} from '../../shared/services/resource-config.servi
   selector: 'floatingIp',
   templateUrl: './floatingIp.component.html',
   styleUrls: ['./floatingIp.component.scss'],
-  providers: [ FloatingIpImportService ]
+  providers: [ FloatingIpImportService, ResourceConfigService ]
 })
 
 export class FloatingIpComponent implements OnInit {
