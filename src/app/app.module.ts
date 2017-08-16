@@ -44,6 +44,7 @@ import {RouterComponent} from './iaas/router/router.component';
 import {ImportRouterComponent} from './iaas/router/import-router/import-router.component';
 import {IaasStorageComponent} from './iaas/storage/iaas-storage.component';
 import {ImportIaasStorageComponent} from './iaas/storage/import-storage/import-iaas-storage.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import {ImportIaasStorageComponent} from './iaas/storage/import-storage/import-i
     HomeRootComponentGuard,
     UnauthenticatedGuard,
     {provide: 'apiBase', useValue: '/'},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     provideHttpInterceptor()
   ],
   bootstrap: [AppComponent]
