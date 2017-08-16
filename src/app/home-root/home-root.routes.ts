@@ -18,6 +18,7 @@ import {FirewallComponent} from '../iaas/firewall/firewall.component';
 import {FloatingIpComponent} from '../iaas/floatingIp/floatingIp.component';
 import {VmComponent} from '../iaas/vm/vm.component';
 import {RouterComponent} from '../iaas/router/router.component';
+import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -45,6 +46,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'floatingIp', component: FloatingIpComponent},
       { path: 'router', component: RouterComponent},
       { path: 'vm', component: VmComponent},
+      { path: 'iaasStorage', component: IaasStorageComponent},
 
     ]
   }
