@@ -69,7 +69,7 @@ export class VmComponent implements OnInit {
       let vms = this.transformVm();
       this.vmImportService.importVmsToDb(vms).subscribe(
         res => {
-          // location.reload();
+          location.reload();
         },
         error => {
           let errorData = error.json();
