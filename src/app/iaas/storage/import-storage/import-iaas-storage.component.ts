@@ -23,6 +23,7 @@ export class ImportIaasStorageComponent implements OnInit {
   }
 
   selectProject(projectId: any) {
+    this.storagesForPrj = null;
     console.log("import storage projectId=", projectId);
     this.storageImportService.getStorageByProjectId(projectId).subscribe(
       (data) => {
