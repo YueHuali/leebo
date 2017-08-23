@@ -38,8 +38,7 @@
                 <th>ID</th>
                 <th>子网名称</th>
                 <th>状态</th>
-                <th>ip</th>
-                <th>子网掩码</th>
+                <th>CIDR</th>
                 <th>网关</th>
                 <th>路由器</th>
                 <th>创建时间</th>
@@ -52,8 +51,7 @@
                 <td>{{item.name}}</td>
                 <td *ngIf="item.subnetBindMap!==null">已绑定</td>
                 <td *ngIf="item.subnetBindMap===null">{{item.status | iaasStatus}}</td>
-                <td>{{item.ip}}</td>
-                <td>{{item.mask}}</td>
+                <td>{{item.ip}}/{{item.mask}}</td>
                 <td>{{item.gateway}}</td>
                 <td>
                   <span *ngIf="item.subnetBindMap!==null">{{item.subnetBindMap.routerName}}</span>

@@ -78,6 +78,7 @@ export class ImageComponent implements OnInit {
           let image = new Image();
           image.id = this.chkImageIds[i];
           image.name = this.imageList[j].name;
+          image.size = this.imageList[j].size;
           images.push(image);
           console.log('image=', JSON.stringify(image));
           break;

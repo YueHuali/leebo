@@ -88,7 +88,7 @@ export class FloatingIpComponent implements OnInit {
         if(this.chkFloatingIpIds[i] === this.floatingIpList[j].id) {
           let floatingIp = new FloatingIp();
           floatingIp.id = this.chkFloatingIpIds[i];
-          floatingIp.name = this.floatingIpList[j].id;
+          floatingIp.name = this.floatingIpList[j].floating_ip_address;
           floatingIp.floating_ip_address = this.floatingIpList[j].floating_ip_address;
           floatingIp.tenant_id = this.floatingIpList[j].tenant_id;
           floatingIps.push(floatingIp);
