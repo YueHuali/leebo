@@ -27,11 +27,23 @@
               <thead>
               <tr>
                 <th>用户名</th>
+                <th>所属组织[在组织内角色]</th>
+                <th>操作</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let user of users?.body">
                 <td>{{user.username}}</td>
+                <td>
+                  <span *ngFor="let info of user.orgInfo">
+                    {{info.displayName}}[{{info.role === 'admin'?'管理员':'成员'}}]<br/>
+                  </span>
+                </td>
+                <td>
+                  <a routerLink="/user/update-pwd/{{user.username}}/{{user.id}}">
+                    <button class="btn btn-sm btn-danger">修改密码</button>
+                  </a>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -41,4 +53,3 @@
     </div>
   </div>
 </div>
-

@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
-import {NODE_SERVER} from '../oc-info';
+import {BASE_URI, NODE_SERVER} from '../oc-info';
 
 /**
  * Import interfaces that service depends on
@@ -52,9 +52,18 @@ export class UserService {
 
   register(user) {
     return this.http.post(this._registerApi, user)
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+      return res.json();
+      })
       .catch(this.handleError);
   }
+
+  updatePwd(user:any) {
+    return this.http.post(BASE_URI + '/uaa/update-pwd', user)
+      .map((res) => res.json())
+      .catch(this.handleError);
+  }
+
 
 
 }

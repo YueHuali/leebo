@@ -19,6 +19,7 @@ import {FloatingIpComponent} from '../iaas/floatingIp/floatingIp.component';
 import {VmComponent} from '../iaas/vm/vm.component';
 import {RouterComponent} from '../iaas/router/router.component';
 import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
+import {UpdatePwdComponent} from '../user/user-updatepwd/update-pwd.component';
 
 export const HomeRootRoutes: Routes = [
   {
@@ -47,7 +48,7 @@ export const HomeRootRoutes: Routes = [
       { path: 'router', component: RouterComponent},
       { path: 'vm', component: VmComponent},
       { path: 'iaasStorage', component: IaasStorageComponent},
-
+      { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent}
     ]
   }
 ];
