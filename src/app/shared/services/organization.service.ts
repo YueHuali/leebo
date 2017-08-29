@@ -136,5 +136,12 @@ export class OrganizationService {
     return this.http.get(BASE_OC_URI + '/oapi/v1/projects?labelSelector=organization%3D' + org);
   }
 
+  updatePwd(user:any) {
+    return this.http.post(BASE_URI + '/uaa/update-pwd', user)
+      .map((res) => {
+        return res.json();
+      });
+  }
+
 }
 
