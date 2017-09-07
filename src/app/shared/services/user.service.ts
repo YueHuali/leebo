@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Headers, Http, Response} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
-import {BASE_URI, NODE_SERVER} from '../oc-info';
+import {BASE_URI, NODE_SERVER, QY_CONFIG} from '../oc-info';
 
 /**
  * Import interfaces that service depends on
@@ -64,6 +64,10 @@ export class UserService {
       .catch(this.handleError);
   }
 
-
-
+  getUserDetail(accessToken: string) {
+    let headers = new Headers();
+    headers.append('Authorization', `Bearer ${accessToken}`);
+    return this.http.get(`${BASE_URI}/uaa/user`, {headers: headers})
+      .map(res => res.json());
+  }
 }

@@ -3,6 +3,8 @@ import { Router} from '@angular/router';
 import { Http } from '@angular/http';
 import { UserService } from '../shared/services/user.service';
 import 'rxjs/Rx';
+import {BASE_URI} from "../shared/oc-info";
+import {HttpInterceptor} from "../shared/interceptor/HttpInterceptor";
 declare let backgroundShaking;
 
 /**
@@ -20,8 +22,9 @@ export class LoginComponent implements OnInit {
   public user: any;
 
   private isSubmitting: boolean = false;
+  private showNotAdminMessage: boolean = false;
 
-  constructor(private _http: Http, private router: Router, private _userService: UserService) {
+  constructor(private router: Router, private _userService: UserService) {
 
   }
 
@@ -33,11 +36,10 @@ export class LoginComponent implements OnInit {
 
   loginUsr() {
     this.isSubmitting = true;
-    console.log(this._http, this.user);
     this._userService.login(this.user)
         .subscribe(
           data => {
-            this.loginSuccess(data);
+            this.handleLoginResponse(data);
           },
           error => {
             let res = error.json();
@@ -50,7 +52,7 @@ export class LoginComponent implements OnInit {
         );
   }
 
-  loginSuccess(data) {
+  handleLoginResponse(data) {
     if (data.error) {
       alert(data.error);
       return false;
@@ -59,6 +61,34 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('refresh_token', data.token.access_token);
     localStorage.setItem('username', data.user.username);
     localStorage.setItem('isAuthenticated', 'true');
+
+    this._userService.getUserDetail(data.token.access_token).subscribe({
+      next: value => {
+        if (value && value.authorities) {
+          let roles = value.authorities;
+          let isAdmin = false;
+          for (let role of roles) {
+            if (role.authority === 'ROLE_ADMIN') {
+              isAdmin = true;
+              break;
+            }
+          }
+          this.showNotAdminMessage = !isAdmin;
+          if (!isAdmin) {
+            this._userService.logout();
+          } else {
+            this.loginSuccess();
+          }
+        }
+      },
+      error: err => {
+        console.log('get user detail failed');
+      }
+    });
+
+  }
+
+  loginSuccess() {
     let redirectUrl = localStorage.getItem('lastVisitUrl');
     if (!redirectUrl || '/login' === redirectUrl) {
       redirectUrl = '/';
@@ -66,4 +96,6 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('lastVisitUrl');
     this.router.navigate([redirectUrl]);
   }
+
+
 }
