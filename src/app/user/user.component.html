@@ -43,6 +43,12 @@
                   <a routerLink="/user/update-pwd/{{user.username}}/{{user.id}}">
                     <button class="btn btn-sm btn-danger">修改密码</button>
                   </a>
+                  <a>
+                    <button [disabled]="user.canNotJoin" class="btn btn-sm btn-danger" type="button" (click)="openJoinOrg(user)">加入组织</button>
+                  </a>
+                  <a>
+                    <button [disabled]="!user.orgInfo" type="button" class="btn btn-sm btn-danger" (click)="openLeaveOrg(user)">移出组织</button>
+                  </a>
                 </td>
               </tr>
               </tbody>
@@ -52,4 +58,86 @@
       </div>
     </div>
   </div>
+</div>
+
+
+
+<div class="modal fade" id="userJoinOrg" role="dialog" aria-labelledby="userJoinOrgModal" aria-hidden="true">
+  <form #userJoinOrgForm="ngForm" (ngSubmit)="joinOrg()">
+    <div class="modal-dialog modal-lg" role="document" style="width: 40%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">邀请用户加入组织</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+
+                    <div class="form-group">
+                      <label>组织</label>
+                      <div class="input-group">
+                        <select [(ngModel)]="orgName" name="orgName" class="form-control" required  ngModel>
+                          <option value="">请选择组织</option>
+                          <option *ngFor="let item of orgs" value="{{item.name}}">{{item.displayName}}</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" >加入组织</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="modal fade" id="userLeaveOrg" role="dialog" aria-labelledby="userLeaveOrgModal" aria-hidden="true">
+  <form #userLeaveOrgForm="ngForm" (ngSubmit)="leaveOrg()">
+    <div class="modal-dialog modal-lg" role="document" style="width: 40%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">移出组织</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+
+                    <div class="form-group">
+                      <label>组织</label>
+                      <div class="input-group">
+                        <select [(ngModel)]="leaveOrgName" name="leaveOrgName" class="form-control" required  ngModel>
+                          <option value="">请选择组织</option>
+                          <option *ngFor="let item of orgs" value="{{item.name}}">{{item.displayName}}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" >移出组织</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
