@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FloatingIp} from './FloatingIp';
+import {FloatingIp} from './floatingIp';
 import {isUndefined} from 'util';
 import {FloatingIpImportService} from '../../shared/services/iaas/floatingIp-import.service';
 import {ResourceConfigService} from '../../shared/services/resource-config.service';
