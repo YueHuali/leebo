@@ -12,13 +12,22 @@ import { Router } from '@angular/router';
 export class OrganizationCreateComponent implements OnInit {
 
   orgName: string;
-  orgAdmin: string;
+  orgAdmin: string = '';
   orgDisplayName: string;
   orgRemark: string;
-
+  orgs: any;
+  users: any;
   constructor(private organizationService: OrganizationService, private ngRouter: Router) { }
 
   ngOnInit() {
+    this.organizationService.getOrg().subscribe(
+      response => this.orgs = response.body
+    );
+    this.organizationService.getUsers().subscribe(
+      response => {
+        this.users = response.body;
+      }
+    );
   }
 
   onSubmit() {
@@ -30,6 +39,17 @@ export class OrganizationCreateComponent implements OnInit {
         alert('创建失败！ message =' + error.json().message);
       }
     );
+  }
+
+  exist(name: string) {
+    if (this.orgs){
+      for (const org of this.orgs){
+        if(org.name === name){
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
 }
