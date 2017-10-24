@@ -37,6 +37,7 @@
               <tr>
                 <th>ID</th>
                 <th>名称</th>
+                <th>组织</th>
                 <th>状态</th>
                 <th>创建时间</th>
               </tr>
@@ -46,6 +47,7 @@
                 <template [ngIf]="item.status==='3'">
                 <td><span *ngIf="!item.taskId"><input type="checkbox" (change)="checkFirewallRemove($event, item.id)" [value]="item.id"></span> {{item.id}}</td>
                 <td>{{item.name}}</td>
+                <td>{{item?.iaasProject?.name}}</td>
                 <td>{{item.status | iaasStatus}}</td>
                 <td>{{item.createTime | date}}</td>
                 </template>

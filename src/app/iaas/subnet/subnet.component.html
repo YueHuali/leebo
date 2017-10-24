@@ -37,6 +37,7 @@
               <tr>
                 <th>ID</th>
                 <th>子网名称</th>
+                <th>组织</th>
                 <th>状态</th>
                 <th>CIDR</th>
                 <th>网关</th>
@@ -49,6 +50,7 @@
                 <template [ngIf]="item.status==='3'">
                 <td><span *ngIf="!item.taskId"><input type="checkbox" (change)="checkSubnetRemove($event, item.id)" [value]="item.id"></span> {{item.id}}</td>
                 <td>{{item.name}}</td>
+                <td>{{item?.iaasProject?.name}}</td>
                 <td *ngIf="item.subnetBindMap!==null">已绑定</td>
                 <td *ngIf="item.subnetBindMap===null">{{item.status | iaasStatus}}</td>
                 <td>{{item.ip}}/{{item.mask}}</td>
