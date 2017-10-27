@@ -48,7 +48,7 @@
                 <template [ngIf]="item.status==='3'">
                 <td><span *ngIf="!item.taskId"><input type="checkbox" (change)="checkFloatingIpRemove($event, item.id)" [value]="item.id"></span> {{item.id}}</td>
                 <td>{{item.name}}</td>
-                <td>{{item?.iaasProject?.name}}</td>
+                <td>{{item?.projectName}}</td>
                 <td>{{item.ip_address}}</td>
                 <td>{{item.status | iaasStatus}}</td>
                 <td>{{item.createTime | date}}</td>
