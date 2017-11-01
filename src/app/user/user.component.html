@@ -81,7 +81,7 @@
                     <div class="form-group">
                       <label>组织</label>
                       <div class="input-group">
-                        <select [(ngModel)]="orgName" name="orgName" class="form-control" required  ngModel>
+                        <select [(ngModel)]="orgName" name="orgName" class="form-control" required  ngModel style="padding-top: 5px">
                           <option value="">请选择组织</option>
                           <option *ngFor="let item of orgs" value="{{item.name}}">{{item.displayName}}</option>
                         </select>
@@ -121,9 +121,9 @@
                     <div class="form-group">
                       <label>组织</label>
                       <div class="input-group">
-                        <select [(ngModel)]="leaveOrgName" name="leaveOrgName" class="form-control" required  ngModel>
+                        <select [(ngModel)]="leaveOrgName" name="leaveOrgName" class="form-control" required  ngModel style="padding-top: 5px">
                           <option value="">请选择组织</option>
-                          <option *ngFor="let item of orgs" value="{{item.name}}">{{item.displayName}}</option>
+                          <option *ngFor="let item of orgsLeave" value="{{item.name}}">{{item.displayName}}</option>
                         </select>
                       </div>
                     </div>
