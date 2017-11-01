@@ -16,6 +16,8 @@ export class UserComponent implements OnInit {
 
   orgs: any;
 
+  orgsLeave: any;
+
   orgName; any = '';
 
   bindUserName: any;
@@ -63,6 +65,8 @@ export class UserComponent implements OnInit {
     window['$']('#userLeaveOrg').modal('show');
     this.leaveOrgName = '';
     this.bindUserName = user.username;
+    this.orgsLeave = user.orgInfo;
+
   }
 
   leaveOrg() {
@@ -83,8 +87,6 @@ export class UserComponent implements OnInit {
         this.initInfo();
       }
     });
-
-
   }
 
 
@@ -94,52 +96,22 @@ export class UserComponent implements OnInit {
       response => {
         this.users = response;
         this.users.body.forEach(user => {
-          this.organizationService.getUserOrg(user.username).subscribe(res => {
-            user.orgInfo = res;
-            if (user.username === this.curruentUser) {
-              this.orgs = user.orgInfo;
-              user.canNotJoin = true;
-              if (user.orgInfo) {
-                 this.adminOrgs = user.orgInfo.filter((org) => {
-                   return org.role === 'admin';
-                 });
-              }
-            } else {
+          this.organizationService.getOrg().subscribe(res => {
+            this.orgs = res.body;
+            this.organizationService.getUserOrg(user.username).subscribe( resp => {
+              user.orgInfo = resp;
               if (user.orgInfo === null) {
                 user.canNotJoin = false;
               }else {
-                if (this.adminOrgs) {
-                  let set = new Set();
-                  set.add(true);
-                  for (let i = 0; i < this.adminOrgs.length; i++) {
-                    set.add(this.checkItemInArray(user.orgInfo, this.adminOrgs[i].name));
-                  }
-                  if (set.size === 1) {
-                     user.canNotJoin = true;
-                  }
+                if (this.orgs.length === user.orgInfo.length) {
+                  user.canNotJoin = true;
                 }
-              }
-            };
+              };
+            });
           });
         });
       }
     );
   }
-
-  // 检查某个元素是否在指定数组里面有数据
-  checkItemInArray(arr: any, str: any) {
-
-    let isIn = false;
-
-    arr.forEach((item) => {
-      if (item.name === str) {
-        isIn = true;
-      }
-    });
-
-    return isIn;
-
-  }
-
 
 }

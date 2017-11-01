@@ -2,16 +2,19 @@ import {HttpInterceptor} from '../interceptor/HttpInterceptor';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import { BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE, QY_CONFIG } from '../oc-info';
-import {RequestOptions, RequestOptionsArgs, Headers} from '@angular/http';
+import {RequestOptions, RequestOptionsArgs, Headers, Http} from '@angular/http';
 /**
  * Created by hexiuyu on 2017/1/9.
  */
 @Injectable()
 export class OrganizationService {
 
+  requestOptions: RequestOptions;
 
-  constructor(private http: HttpInterceptor) {
+  constructor(private http: HttpInterceptor, private httpSpecial: Http) {
   }
+
+
 
   getUsers(): Observable<any> {
     return this.http.get(BASE_URI + '/uaa/users').map( res => res.json());
@@ -63,6 +66,9 @@ export class OrganizationService {
   }
 
   protected userBindOrg(user: string, org: string, role: string) {
+
+    this.registerIaasUser(user, org);
+
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = role;
     let option: RequestOptionsArgs = this.addContentType('application/strategic-merge-patch+json');
@@ -85,6 +91,9 @@ export class OrganizationService {
 
   //Add to register iaas user with new project
   registerIaasUser(username, projectName) {
+
+    this.getRequestOptionArgs(this.requestOptions, projectName);
+
     let iaasEnabled = QY_CONFIG.iaas_enabled;
     if (iaasEnabled === true) {
       let objUrl = BASE_IAAS_SERVICE + '/iaasusers';
@@ -94,7 +103,8 @@ export class OrganizationService {
         "username": username,
         "projectname": projectName
       };
-      this.http.post(objUrl, objBody).subscribe();
+      this.http.intercept(this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName))).subscribe();
+      //this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName) ).subscribe();
     }
   }
 
@@ -142,6 +152,27 @@ export class OrganizationService {
         return res.json();
       });
   }
+
+
+  getRequestOptionArgs(options?: RequestOptionsArgs, projectName?: string): RequestOptionsArgs {
+    if (options == null) {
+      options = new RequestOptions();
+    }
+    if (options.headers == null) {
+      options.headers = new Headers();
+    }
+    if (options.headers.get('Content-Type') == null) {
+      options.headers.append('Content-Type', 'application/json');
+    }
+
+    options.headers.append('Accept', 'application/json');
+    options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+    options.headers.append('API-ORGANIZATION', projectName);
+    alert('projectName:' + projectName);
+    options.withCredentials = false;
+    return options;
+  }
+
 
 }
 
