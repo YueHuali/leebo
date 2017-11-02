@@ -168,7 +168,6 @@ export class OrganizationService {
     options.headers.append('Accept', 'application/json');
     options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     options.headers.append('API-ORGANIZATION', projectName);
-    alert('projectName:' + projectName);
     options.withCredentials = false;
     return options;
   }
