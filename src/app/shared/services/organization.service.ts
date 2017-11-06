@@ -84,6 +84,7 @@ export class OrganizationService {
   }
 
   leaveOrg(user: string, org: string): Observable<any> {
+    this.http.delete(BASE_IAAS_SERVICE + '/iaasUsers/' + user + '/organization/' + org).subscribe();
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = null;
     return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
@@ -168,7 +169,6 @@ export class OrganizationService {
     options.headers.append('Accept', 'application/json');
     options.headers.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
     options.headers.append('API-ORGANIZATION', projectName);
-    alert('projectName:' + projectName);
     options.withCredentials = false;
     return options;
   }
