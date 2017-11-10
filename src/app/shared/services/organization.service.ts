@@ -71,8 +71,7 @@ export class OrganizationService {
 
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = role;
-    let option: RequestOptionsArgs = this.addContentType('application/strategic-merge-patch+json');
-    return this.http.patch(BASE_OC_URI + '/oapi/v1/users/' + user, body, option);
+    return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
   confirmJoinOrg(user: string, org: string): Observable<any> {
