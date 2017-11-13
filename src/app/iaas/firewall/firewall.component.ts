@@ -90,6 +90,7 @@ export class FirewallComponent implements OnInit {
           firewall.id = this.chkFirewallIds[i];
           firewall.name = this.firewallList[j].name;
           firewall.tenant_id = this.firewallList[j].tenant_id;
+          firewall.rules = this.firewallList[j].security_group_rules;
           firewalls.push(firewall);
           console.log('firewall=', JSON.stringify(firewall));
           break;
