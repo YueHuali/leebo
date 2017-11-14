@@ -3,12 +3,13 @@ import {UserService} from '../shared/services/user.service';
 import {OrganizationService} from "../shared/services/organization.service";
 import any = jasmine.any;
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {GroupService} from '../shared/services/group.service';
 
 @Component({
   selector: 'user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  providers: [ OrganizationService ]
+  providers: [ OrganizationService ,GroupService]
 })
 export class UserComponent implements OnInit {
 
@@ -30,7 +31,10 @@ export class UserComponent implements OnInit {
 
   canNotJoin: boolean = true;
 
-  constructor(private userService: UserService , private organizationService: OrganizationService, private router: Router) { }
+  constructor(private userService: UserService ,
+                private organizationService: OrganizationService,
+                private router: Router,
+                private groupService: GroupService) { }
 
   ngOnInit() {
     this.initInfo();
@@ -59,6 +63,14 @@ export class UserComponent implements OnInit {
         this.router.navigateByUrl('/use');
       }
     );
+    this.groupService.getGroupByName(this.orgName + '-adm').subscribe(
+      response => {
+        response.users.push(this.bindUserName);
+        this.groupService.replaceGroup(response.metadata.name, response).subscribe();
+      }
+    );
+
+
   }
 
   openLeaveOrg(user) {
@@ -87,6 +99,13 @@ export class UserComponent implements OnInit {
         this.initInfo();
       }
     });
+
+    this.groupService.getGroupByName(this.leaveOrgName + '-adm').subscribe(
+      response => {
+        response.users.splice(response.users.indexOf(this.bindUserName), 1);
+        this.groupService.replaceGroup(response.metadata.name, response).subscribe();
+      }
+    );
   }
 
 

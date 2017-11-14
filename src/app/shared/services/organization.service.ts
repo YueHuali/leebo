@@ -104,7 +104,6 @@ export class OrganizationService {
         "projectname": projectName
       };
       this.http.intercept(this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName))).subscribe();
-      //this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName) ).subscribe();
     }
   }
 
