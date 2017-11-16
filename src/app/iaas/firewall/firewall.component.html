@@ -72,7 +72,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <import-firewall [importFirewallList]="firewallList" (onSave)="saveChkFirewallIds($event)"></import-firewall>
+          <import-firewall [importFirewallList]="firewalls" (onSave)="saveChkFirewallIds($event)"></import-firewall>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="resetFirewallIds()">取消</button>
