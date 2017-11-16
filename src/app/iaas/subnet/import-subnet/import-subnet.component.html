@@ -4,7 +4,7 @@
     <option *ngFor="let project of this.importProectList; let i=index" value="{{project.id}}">{{project.name}}</option>
   </select></div>-->
   <div class="col-lg-12">
-      <table class="table table-responsive">
+      <table class="table">
         <thead>
         <tr>
           <!--<th>ID</th>-->
@@ -12,7 +12,7 @@
           <th>组织</th>
           <th>CIDR</th>
           <th>网关</th>
-          <th>创建时间</th>
+          <!--<th>创建时间</th>-->
         </tr>
         </thead>
         <tbody  *ngIf="importSubnetList">
@@ -22,7 +22,7 @@
           <td>{{item?.projectName}}</td>
           <td>{{item.cidr}}</td>
           <td>{{item.gateway_ip}}</td>
-          <td>{{item.created_at}}</td>
+          <!--<td>{{item.created_at}}</td>-->
           </template>
         </tr>
         </tbody>
