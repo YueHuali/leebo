@@ -3,4 +3,5 @@ export class FloatingIp {
   name: string;
   floating_ip_address: string;
   tenant_id: string;
+  portId:string;
 }
