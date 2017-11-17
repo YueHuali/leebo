@@ -91,6 +91,10 @@ export class FloatingIpComponent implements OnInit {
           floatingIp.name = this.floatingIpList[j].floating_ip_address;
           floatingIp.floating_ip_address = this.floatingIpList[j].floating_ip_address;
           floatingIp.tenant_id = this.floatingIpList[j].tenant_id;
+
+          floatingIp.portId=this.floatingIpList[j].port_id;
+
+
           floatingIps.push(floatingIp);
           console.log('floatingIp=', JSON.stringify(floatingIp));
           break;
