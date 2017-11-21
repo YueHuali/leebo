@@ -93,6 +93,8 @@ export class RouterComponent implements OnInit {
           if(this.routerList[j].external_gateway_info ) {
             if (this.routerList[j].external_gateway_info.external_fixed_ips) {
               router.subnet_id = this.routerList[j].external_gateway_info.external_fixed_ips[0].subnet_id;
+              router.ip_address = this.routerList[j].external_gateway_info.external_fixed_ips[0].ip_address;
+              router.network_id = this.routerList[j].external_gateway_info.network_id;
             }
           }
           routers.push(router);
