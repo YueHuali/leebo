@@ -90,6 +90,13 @@ export class RouterComponent implements OnInit {
           router.id = this.chkRouterIds[i];
           router.name = this.routerList[j].name;
           router.tenant_id = this.routerList[j].tenant_id;
+          if(this.routerList[j].external_gateway_info ) {
+            if (this.routerList[j].external_gateway_info.external_fixed_ips) {
+              router.subnet_id = this.routerList[j].external_gateway_info.external_fixed_ips[0].subnet_id;
+              router.ip_address = this.routerList[j].external_gateway_info.external_fixed_ips[0].ip_address;
+              router.network_id = this.routerList[j].external_gateway_info.network_id;
+            }
+          }
           routers.push(router);
           console.log('router=', JSON.stringify(router));
           break;
