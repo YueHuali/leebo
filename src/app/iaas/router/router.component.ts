@@ -96,6 +96,10 @@ export class RouterComponent implements OnInit {
               router.ip_address = this.routerList[j].external_gateway_info.external_fixed_ips[0].ip_address;
               router.network_id = this.routerList[j].external_gateway_info.network_id;
             }
+          }else {
+            router.subnet_id='null';
+            router.ip_address='null';
+            router.network_id='null';
           }
           routers.push(router);
           console.log('router=', JSON.stringify(router));
