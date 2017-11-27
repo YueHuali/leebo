@@ -6,14 +6,27 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class ImportFirewallComponent implements OnInit {
-  @Input() importFirewallList: any;
+  @Input() importFirewallList: any[];
+  @Input() importProjectList: any[];
   @Output() onSave = new EventEmitter();
   importFirewallIds: any[] = [];
+  orgName: any = "所有组织";
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  check(item:any){
+    if(this.orgName==='所有组织'){
+      return true;
+    }else {
+      if(this.orgName===item.projectName){
+        return true;
+      }
+      return false;
+    }
   }
 
   checkFirewallImport(event, id) {
