@@ -1,8 +1,10 @@
 import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {ResourceConfigService} from '../../../shared/services/resource-config.service';
 
 @Component({
   selector: 'app-import-subnet',
-  templateUrl: './import-subnet.component.html'
+  templateUrl: './import-subnet.component.html',
+  providers: [  ResourceConfigService ]
 })
 export class ImportSubnetComponent implements OnInit {
   @Input() importProectList: any;
@@ -10,12 +12,28 @@ export class ImportSubnetComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   importSubnetIds: any[] = [];
   subnetListInProject: any;
+  orgName: any;
+  projectList: any[];
 
-  constructor() {
+  constructor(private resourceConfigService : ResourceConfigService) {
   }
 
   ngOnInit() {
     // this.subnetListInProject = this.importSubnetList;
+    this.orgName='所有组织';
+    this.resourceConfigService.getIaasProjects().subscribe(
+      (data) => this.projectList = data.json()
+    );
+  }
+
+  checkItem(item: any){
+    if(this.orgName === '所有组织'){
+      return true;
+    }else if(this.orgName === item.projectName){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   checkSubnetImport(event, id) {
