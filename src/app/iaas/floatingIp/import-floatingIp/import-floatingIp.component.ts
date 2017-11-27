@@ -5,14 +5,27 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './import-floatingIp.component.html'
 })
 export class ImportFloatingIpComponent implements OnInit {
-  @Input() importFloatingIpList: any;
+  @Input() importFloatingIpList: any[];
+  @Input() importProjectList: any[];
   @Output() onSave = new EventEmitter();
   importFloatingIpIds: any[] = [];
+  orgName: any = "所有组织";
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  check(item:any){
+    if(this.orgName==='所有组织'){
+      return true;
+    }else {
+      if(this.orgName===item.projectName){
+        return true;
+      }
+      return false;
+    }
   }
 
   checkFloatingIpImport(event, id) {

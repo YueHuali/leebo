@@ -74,7 +74,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <import-floatingIp [importFloatingIpList]="floatingIpList" (onSave)="saveChkFloatingIpIds($event)"></import-floatingIp>
+          <import-floatingIp [importFloatingIpList]="floatingIpList" [importProjectList]="projectList" (onSave)="saveChkFloatingIpIds($event)"></import-floatingIp>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="resetFloatingIpIds()">取消</button>
