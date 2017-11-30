@@ -37,19 +37,19 @@ export class OrganizationService {
           if (userOrgNames.length > 0) {
             this.http.get(BASE_URI + '/uaa/organizations?name=' + userOrgNames.join(',')).map(res => res.json()).subscribe(
               (resBody: any) => {
-                  for (let item of resBody.body) {
-                    let orgInfo = {};
-                    orgInfo['name'] = item['name'];
-                    orgInfo['displayName'] = item['displayName'];
-                    item['createBy'] === user ? orgInfo['role'] = 'admin' : orgInfo['role'] = 'member';
-                    userOrgInfos.push(orgInfo);
-                  }
+                for (let item of resBody.body) {
+                  let orgInfo = {};
+                  orgInfo['name'] = item['name'];
+                  orgInfo['displayName'] = item['displayName'];
+                  item['createBy'] === user ? orgInfo['role'] = 'admin' : orgInfo['role'] = 'member';
+                  userOrgInfos.push(orgInfo);
+                }
                 observable.next(userOrgInfos);
               }
             );
           }
 
-      });
+        });
     });
 
     return obs;
@@ -74,22 +74,45 @@ export class OrganizationService {
     return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
-  confirmJoinOrg(user: string, org: string): Observable<any> {
-    return this.userBindOrg(user, org, 'member');
+
+  protected userJoinOrg(user: string, org: string) {
+    if (QY_CONFIG.iaas_enabled === true) { // 配置了Iaas
+      return this.registerIaasUser(user, org);
+    }else { // 没有配置Iaas 直接注册Paas
+      return this.addUserToPaasOrg(user, org, 'member');
+    }
+  }
+
+  addUserToPaasOrg(user: string, org: string, role: string) {
+    let body =  {metadata : {labels: {}}};
+    body.metadata.labels['org.' + org] = role;
+    return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
+  }
+
+  confirmJoinOrg(user: string, org: string) {
+    return this.userJoinOrg(user, org);
   }
 
   beOrgOwner(user: string, org: string): Observable<any> {
     return this.userBindOrg(user, org, 'admin');
   }
 
-  leaveOrg(user: string, org: string): Observable<any> {
-    this.http.delete(BASE_IAAS_SERVICE + '/iaasUsers/' + user + '/organization/' + org).subscribe();
+  leaveOrg(user: string, org: string) {
+    this.removeIaasUser(user, org).subscribe();
+    return this.removeUserToPaasOrg(user, org);
+  }
+
+  removeUserToPaasOrg(user: string, org: string): Observable<any> {
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = null;
     return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
-  //Add to register iaas user with new project
+  removeIaasUser(user: string, org: string): Observable<any> {
+    return this.http.delete(BASE_IAAS_SERVICE + '/iaasUsers/' + user + '/organization/' + org);
+  }
+
+  // Add to register iaas user with new project
   registerIaasUser(username, projectName) {
 
     this.getRequestOptionArgs(this.requestOptions, projectName);
@@ -100,16 +123,16 @@ export class OrganizationService {
       console.log('objUrl=', objUrl);
       console.log('username=', username);
       let objBody = {
-        "username": username,
-        "projectname": projectName
+        'username': username,
+        'projectname': projectName
       };
-      this.http.intercept(this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName))).subscribe();
+      return this.http.intercept(this.httpSpecial.post(objUrl, objBody, this.getRequestOptionArgs(this.requestOptions, projectName)));
     }
   }
 
   createOrg(orgName: string, createBy: string, displayName: string, remark: string): Observable<any> {
 
-    this.registerIaasUser(createBy, orgName);
+    this.registerIaasUser(createBy, orgName).subscribe();
 
     let body = {name: orgName, displayName: displayName, remark: remark, createBy: createBy};
     let obs: Observable<any> = Observable.create(observable => {
@@ -138,14 +161,14 @@ export class OrganizationService {
   }
 
   removeOrg(name: string): Observable<any> {
-    return this.http.delete(BASE_URI + "/uaa/organizations/" + name);
+    return this.http.delete(BASE_URI + '/uaa/organizations/' + name);
   }
 
   getProjectsByOrg(org: string) {
     return this.http.get(BASE_OC_URI + '/oapi/v1/projects?labelSelector=organization%3D' + org);
   }
 
-  updatePwd(user:any) {
+  updatePwd(user: any) {
     return this.http.post(BASE_URI + '/uaa/update-pwd', user)
       .map((res) => {
         return res.json();
