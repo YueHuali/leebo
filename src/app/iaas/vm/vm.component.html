@@ -72,7 +72,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <import-vm [importVmList]="vms" (onSave)="saveChkVmIds($event)"></import-vm>
+          <import-vm [importVmList]="vmList" (onSave)="saveChkVmIds($event)"></import-vm>
         </div>
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal" (click)="resetVmIds()">取消</button>

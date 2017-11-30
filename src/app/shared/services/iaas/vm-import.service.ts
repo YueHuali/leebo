@@ -16,6 +16,10 @@ export class VmImportService {
     return this.http.get(BASE_IAAS_SERVICE + '/resoruce/vms');
   }
 
+  getIaasVmDetail( vmId: any) {
+    return this.http.get(BASE_IAAS_SERVICE + '/resoruce/' + vmId);
+  }
+
   importVmsToDb(vms: any[]) {
 
     let body = {"vms": vms};
