@@ -19,7 +19,7 @@ export class VmComponent implements OnInit {
   vmList: any[];
   importFlag: boolean = true;
   removeFlag: boolean = true;
-
+  vmDetail: any;
   removeVmIds: any[] = [];
 
   constructor(private vmImportService: VmImportService, private resourceConfigService: ResourceConfigService) { }
@@ -42,15 +42,18 @@ export class VmComponent implements OnInit {
               importVm.isUsed = 'true';
             }
           }
-          for (let project of this.projectList) {
-            if(importVm.tenant_id === project.id) {
-              importVm.projectName = project.name;
+          this.vmImportService.getIaasVmDetail(importVm.id).subscribe((data) => {
+            this.vmDetail = data.json().server;
+            for(let project of this.projectList) {
+              if( project.id === this.vmDetail.tenant_id ) {
+                importVm.projectName = project.name;
+              }
             }
-          }
+          });
         }
-      }
-    );
+      });
   }
+
 
   saveChkVmIds(chkIds) {
     console.log('saveChkVmIds chkIds:', chkIds);
