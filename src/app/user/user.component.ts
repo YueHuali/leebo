@@ -61,9 +61,9 @@ export class UserComponent implements OnInit {
 
 
   joinOrg() {
-    this.organizationService.confirmJoinOrg(this.bindUserName, this.orgName).subscribe(
-      (res) => {
-        if (QY_CONFIG.iaas_enabled !== true) { // 只有paas 则直接判断paas请求是否成功
+    if (!QY_CONFIG.iaas_enabled) { // 如果只有paas存在
+      this.organizationService.confirmJoinPaas(this.bindUserName, this.orgName).subscribe(
+        (res) => {
           if (res.ok) { // 如果paas成功则 继续下一步加入group
             this.groupService.getGroupByName(this.orgName + '-adm').subscribe(
               response => {
@@ -71,45 +71,61 @@ export class UserComponent implements OnInit {
                 this.groupService.replaceGroup(response.metadata.name, response).subscribe();
               }
             );
-            alert('加入组织成功');
+            alert('加入组织成功1');
             this.initInfo();
           }else { // 失败的话  则需要回退注册成功的用户
             alert('加入组织失败');
           }
-        }else { // 有iaas  则先判断iaas用户是否添加成功
-          if (res.ok) { // 如果注册Iaas用户成功  则继续注册paas
-            this.organizationService.addUserToPaasOrg(this.bindUserName, this.orgName, 'member').subscribe((resp) => {
-                if (resp.ok) { // 如果注册paas成功则 继续下一步加入group
-                  this.groupService.getGroupByName(this.orgName + '-adm').subscribe(
-                    response => {
-                      response.users.push(this.bindUserName);
-                      this.groupService.replaceGroup(response.metadata.name, response).subscribe();
-                    }
-                  );
-                  alert('加入组织成功');
-                  this.initInfo();
-                }else { // 失败的话  则需要回退注册成功的用户
-                  this.organizationService.removeIaasUser(this.bindUserName, this.orgName);
-                  alert('加入组织失败');
-                }
-              },
-              error2 => {
-                alert('加入组织失败');
-              }
-            );
-          }else {
-            alert('加入组织失败');
-          }
+          window['$']('#userJoinOrg').modal('hide');
+          this.router.navigateByUrl('/user');
+        },
+        (error) => {
+          alert('加入组织失败');
+          this.initInfo();
+          window['$']('#userJoinOrg').modal('hide');
+          this.router.navigateByUrl('/user');
         }
-        window['$']('#userJoinOrg').modal('hide');
-        this.router.navigateByUrl('/user');
-      }, error  => {
-        alert('加入组织失败');
-        this.initInfo();
-        window['$']('#userJoinOrg').modal('hide');
-        this.router.navigateByUrl('/use');
-      }
-    );
+      );
+    }
+    if (QY_CONFIG.iaas_enabled) { // 有iaas存在 无论paas存不存在都会调用一次paas接口(系统现状) 但是要先走paas再走iaas(出于paas回退较iaas简单,iaas回退还有一些基础资源比如keypair,子网,防火墙等)
+        this.organizationService.confirmJoinPaas(this.bindUserName, this.orgName).subscribe(
+          (res) => {
+            if (res.ok) {
+                 this.organizationService.registerIaasUser(this.bindUserName, this.orgName).subscribe(
+                   (resp) => {
+                     if (resp.ok) {// 如果注册iaas成功 则继续下一步加入group
+                       this.groupService.getGroupByName(this.orgName + '-adm').subscribe(
+                         response => {
+                           response.users.push(this.bindUserName);
+                           this.groupService.replaceGroup(response.metadata.name, response).subscribe();
+                         }
+                       );
+                       alert('加入组织成功');
+                       this.initInfo();
+                     }else {// 注册iaas失败 则回退paas
+                       alert('加入组织失败');
+                       this.organizationService.removeUserToPaasOrg(this.bindUserName, this.orgName);
+                     }
+                   },
+                   (error2) => {
+                     alert('加入组织失败');
+                     this.organizationService.removeUserToPaasOrg(this.bindUserName, this.orgName);
+                   }
+                 );
+            }else { // 加入组织失败 由于没有操作iaas 所以不需要回退
+              alert('加入组织失败');
+            }
+            window['$']('#userJoinOrg').modal('hide');
+            this.router.navigateByUrl('/user');
+          },
+          (error) => {
+            alert('加入组织失败');
+            this.initInfo();
+            window['$']('#userJoinOrg').modal('hide');
+            this.router.navigateByUrl('/user');
+          }
+        );
+    }
   }
 
   openLeaveOrg(user) {

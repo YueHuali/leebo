@@ -75,22 +75,16 @@ export class OrganizationService {
   }
 
 
-  protected userJoinOrg(user: string, org: string) {
-    if (QY_CONFIG.iaas_enabled === true) { // 配置了Iaas
-      return this.registerIaasUser(user, org);
-    }else { // 没有配置Iaas 直接注册Paas
-      return this.addUserToPaasOrg(user, org, 'member');
-    }
-  }
-
   addUserToPaasOrg(user: string, org: string, role: string) {
     let body =  {metadata : {labels: {}}};
     body.metadata.labels['org.' + org] = role;
     return this.http.patch(BASE_URI + '/pservice/users/' + user, body);
   }
 
-  confirmJoinOrg(user: string, org: string) {
-    return this.userJoinOrg(user, org);
+
+
+  confirmJoinPaas(user: string, org: string) {
+    return this.addUserToPaasOrg(user, org, 'member');
   }
 
   beOrgOwner(user: string, org: string): Observable<any> {
