@@ -77,7 +77,7 @@ export class FloatingIpComponent implements OnInit {
         }
       );
     }else{
-      alert("请选择需要导入的镜像");
+      alert("请选择需要导入的公网");
     }
   }
 
@@ -91,10 +91,7 @@ export class FloatingIpComponent implements OnInit {
           floatingIp.name = this.floatingIpList[j].floating_ip_address;
           floatingIp.floating_ip_address = this.floatingIpList[j].floating_ip_address;
           floatingIp.tenant_id = this.floatingIpList[j].tenant_id;
-
           floatingIp.portId=this.floatingIpList[j].port_id;
-
-
           floatingIps.push(floatingIp);
           console.log('floatingIp=', JSON.stringify(floatingIp));
           break;
@@ -135,7 +132,7 @@ export class FloatingIpComponent implements OnInit {
         );
       }
     }else{
-      alert("请选择需要移除的镜像");
+      alert("请选择需要移除的公网");
     }
   }
 
