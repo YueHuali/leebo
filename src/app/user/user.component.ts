@@ -71,7 +71,7 @@ export class UserComponent implements OnInit {
                 this.groupService.replaceGroup(response.metadata.name, response).subscribe();
               }
             );
-            alert('加入组织成功1');
+            alert('加入组织成功');
             this.initInfo();
           }else { // 失败的话  则需要回退注册成功的用户
             alert('加入组织失败');
