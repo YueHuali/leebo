@@ -19,7 +19,7 @@ export class FloatingIpComponent implements OnInit {
   floatingIpList: any[];
   importFlag: boolean = true;
   removeFlag: boolean = true;
-
+  orgName: any = "所有组织";
   removeFloatingIpIds: any[] = [];
 
   constructor(private floatingIpImportService: FloatingIpImportService, private resourceConfigService: ResourceConfigService) { }
@@ -50,6 +50,16 @@ export class FloatingIpComponent implements OnInit {
         }
       }
     );
+  }
+
+  showData(item: any) {
+    if(this.orgName === "所有组织"){
+      return true;
+    }else if(this.orgName === item.projectName) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   saveChkFloatingIpIds(chkIds) {
