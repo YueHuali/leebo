@@ -13,6 +13,7 @@ import {ResourceConfigService} from '../../shared/services/resource-config.servi
 
 export class RouterComponent implements OnInit {
 
+  orgName: any;
   projectList: any[];
   routers: any[];
   chkRouterIds: any[];
@@ -25,6 +26,7 @@ export class RouterComponent implements OnInit {
   constructor(private routerImportService: RouterImportService, private resourceConfigService: ResourceConfigService) { }
 
   ngOnInit() {
+    this.orgName = '所有组织';
     this.resourceConfigService.getIaasProjects().subscribe(
       (data) => this.projectList = data.json()
     );
@@ -50,6 +52,16 @@ export class RouterComponent implements OnInit {
         }
       }
     );
+  }
+
+  checkItem(item: any){
+    if(this.orgName === '所有组织'){
+      return true;
+    }else if(this.orgName === item.projectName){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   saveChkRouterIds(chkIds) {

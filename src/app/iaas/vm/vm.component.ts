@@ -13,6 +13,7 @@ import {ResourceConfigService} from '../../shared/services/resource-config.servi
 
 export class VmComponent implements OnInit {
 
+  orgName: any;
   projectList: any[];
   vms: any[];
   chkVmIds: any[];
@@ -25,6 +26,7 @@ export class VmComponent implements OnInit {
   constructor(private vmImportService: VmImportService, private resourceConfigService: ResourceConfigService) { }
 
   ngOnInit() {
+    this.orgName = '所有组织';
     this.resourceConfigService.getIaasProjects().subscribe(
       (data) => this.projectList = data.json()
     );
@@ -54,6 +56,15 @@ export class VmComponent implements OnInit {
       });
   }
 
+  checkItem(item: any){
+    if(this.orgName === '所有组织'){
+      return true;
+    }else if(this.orgName === item.projectName){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   saveChkVmIds(chkIds) {
     console.log('saveChkVmIds chkIds:', chkIds);
