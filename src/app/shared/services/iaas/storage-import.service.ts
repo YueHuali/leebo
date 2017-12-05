@@ -30,8 +30,8 @@ export class StorageImportService {
     return this.http.delete(BASE_IAAS_SERVICE + '/removeStorages', {body: body});
   }
 
-  getStorageByProjectId(projectId: any) {
-    return this.http.get(BASE_IAAS_SERVICE + '/resoruce/storages/' + projectId);
+  getAllStorageByAdmin() {
+    return this.http.get(BASE_IAAS_SERVICE + '/resoruce/storages' );
   }
 
 
