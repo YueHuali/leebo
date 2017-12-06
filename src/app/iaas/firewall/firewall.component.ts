@@ -19,7 +19,7 @@ export class FirewallComponent implements OnInit {
   firewallList: any[];
   importFlag: boolean = true;
   removeFlag: boolean = true;
-
+  orgName: any = "所有组织";
   removeFirewallIds: any[] = [];
 
   constructor(private firewallImportService: FirewallImportService, private resourceConfigService: ResourceConfigService) { }
@@ -50,6 +50,16 @@ export class FirewallComponent implements OnInit {
         }
       }
     );
+  }
+
+  showData(item: any) {
+    if(this.orgName === "所有组织"){
+      return true;
+    }else if(this.orgName === item.projectName) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   saveChkFirewallIds(chkIds) {
