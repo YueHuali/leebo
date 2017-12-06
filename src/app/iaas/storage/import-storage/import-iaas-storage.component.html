@@ -4,7 +4,7 @@
     <div class="form-group">
       <div *ngIf="importProectList">
         <select class="form-control" name="project" (change)="selectProject($event.target.value)" style="padding-top: 5px">
-          <option value="">组织</option>
+          <option value="所有组织">所有组织</option>
           <option *ngFor="let project of this.importProectList; let i=index" value="{{project.id}}">{{project.name}}</option>
         </select></div>
       <table class="table">
@@ -13,16 +13,18 @@
           <th>ID</th>
           <th>名称</th>
           <th>容量</th>
+          <th>组织</th>
           <!--<th>创建时间</th>-->
         </tr>
         </thead>
         <tbody  *ngIf="storagesForPrj">
         <tr *ngFor="let item of storagesForPrj">
-          <template [ngIf]="item?.isUsed!='true'">
+          <template [ngIf]="item?.isUsed!='true'  && check(item)">
           <td><input type="checkbox" (change)="checkStorageImport($event, item.id)" [value]="item.id">{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>{{item.size}}</td>
           <!--<td>{{item.created_at}}</td>-->
+            <td>{{itemOrgName}}</td>
           </template>
         </tr>
         </tbody>

@@ -14,18 +14,16 @@ export class ImportIaasStorageComponent implements OnInit {
   @Output() onSave = new EventEmitter();
   importStorageIds: any[] = [];
   storagesForPrj: any;
-
+  checkedStorage:any;
+  itemOrgName:any;
   constructor(private storageImportService: StorageImportService) {
   }
 
   ngOnInit() {
-
-  }
-
-  selectProject(projectId: any) {
+    this.checkedStorage='所有组织';
     this.storagesForPrj = null;
-    console.log("import storage projectId=", projectId);
-    this.storageImportService.getStorageByProjectId(projectId).subscribe(
+    console.log("import storage ");
+    this.storageImportService.getAllStorageByAdmin().subscribe(
       (data) => {
         this.storagesForPrj = data.json().volumes;
         for (let importStorage of this.storagesForPrj) {
@@ -38,8 +36,31 @@ export class ImportIaasStorageComponent implements OnInit {
         }
       }
     );
-   }
+  }
 
+  selectProject(projectId: any) {
+        this.checkedStorage=projectId;
+   }
+  check(item:any){
+    this.checkOrgName(item);
+    if(this.checkedStorage==='所有组织'){
+      return true;
+    }else {
+      if(this.checkedStorage===item["os-vol-tenant-attr:tenant_id"]){
+        return true;
+      }
+      return false;
+    }
+  }
+  checkOrgName(item:any){
+    this.itemOrgName='';
+        for(let i=0;i<this.importProectList.length;i++){
+             if(this.importProectList[i].id===item["os-vol-tenant-attr:tenant_id"]){
+                  this.itemOrgName=this.importProectList[i].name;
+                  break;
+             }
+        }
+  }
   checkStorageImport(event, id) {
     let checked = event.target.checked;
     if (checked === true) {
