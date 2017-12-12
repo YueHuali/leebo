@@ -11,6 +11,7 @@ import {ResourceConfigService} from '../../shared/services/resource-config.servi
 })
 
 export class IaasStorageComponent implements OnInit {
+  orgName: any;
   projectList: any[];
   storages: any[];
   chkStorageIds: any[];
@@ -23,6 +24,7 @@ export class IaasStorageComponent implements OnInit {
   constructor(private storageImportService: StorageImportService, private resourceConfigService: ResourceConfigService) { }
 
   ngOnInit() {
+    this.orgName = '所有组织';
     this.resourceConfigService.getIaasProjects().subscribe(
       (data) => this.projectList = data.json()
     );
@@ -31,6 +33,16 @@ export class IaasStorageComponent implements OnInit {
       (data) => this.storages = data.json()
     );
 
+  }
+
+  checkItem(item: any){
+    if(this.orgName === '所有组织'){
+      return true;
+    }else if(this.orgName === item.projectName){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   saveChkStorageIds(chkIds) {
