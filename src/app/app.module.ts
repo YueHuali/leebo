@@ -38,6 +38,8 @@ import {FirewallComponent} from './iaas/firewall/firewall.component';
 import {ImportFirewallComponent} from './iaas/firewall/import-firewall/import-firewall.component';
 import {ImportFloatingIpComponent} from './iaas/floatingIp/import-floatingIp/import-floatingIp.component';
 import {FloatingIpComponent} from './iaas/floatingIp/floatingIp.component';
+import {ImportExtnetComponent} from './iaas/extnet/import-extnet/import-extnet.component';
+import {ExtnetComponent} from './iaas/extnet/extnet.component';
 import {VmComponent} from './iaas/vm/vm.component';
 import {ImportVmComponent} from './iaas/vm/import-vm/import-vm.component';
 import {RouterComponent} from './iaas/router/router.component';
@@ -77,7 +79,9 @@ import {UpdatePwdComponent} from './user/user-updatepwd/update-pwd.component';
     FirewallComponent,
     ImportFirewallComponent,
     FloatingIpComponent,
+    ExtnetComponent,
     ImportFloatingIpComponent,
+    ImportExtnetComponent,
     VmComponent,
     ImportVmComponent,
     RouterComponent,

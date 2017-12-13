@@ -20,7 +20,8 @@ import {VmComponent} from '../iaas/vm/vm.component';
 import {RouterComponent} from '../iaas/router/router.component';
 import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
 import {UpdatePwdComponent} from '../user/user-updatepwd/update-pwd.component';
-
+import {ExtnetComponent} from '../iaas/extnet/extnet.component';
+import {ImportExtnetComponent} from '../iaas/extnet/import-extnet/import-extnet.component';
 export const HomeRootRoutes: Routes = [
   {
     path: '',
@@ -48,6 +49,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'router', component: RouterComponent},
       { path: 'vm', component: VmComponent},
       { path: 'iaasStorage', component: IaasStorageComponent},
+      { path: 'extnet', component: ExtnetComponent},
+      { path: 'extnet/import-extnet', component: ImportExtnetComponent},
       { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent}
     ]
   }

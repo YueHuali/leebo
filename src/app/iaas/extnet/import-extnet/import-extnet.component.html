@@ -1,0 +1,56 @@
+<div>
+  <div class="row">
+    <div class="col-xl-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="/extnet"><i class="fa fa-institution"></i> 外网</a>
+        </li>
+        <li class="breadcrumb-item active">
+          导入外网
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <form role="form" #extnetForm="ngForm">
+        <fieldset class="form-group">
+          <label class="must-type">外网名称</label>
+          <input class="form-control" name="extnetName" #name="ngModel" [(ngModel)]="createExtnet.name" required pattern="(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?" placeholder="请输入外网名称">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+            <div *ngIf="name.errors.pattern">
+              外网名称格式不合法，正确格式如：'MyValue' 或者 'my_value' 或者 '12345'
+            </div>
+            <div *ngIf="name.errors.required">
+              外网名称为必填项
+            </div>
+          </div>
+          <div *ngIf="exist(createExtnet.name)" class="alert alert-danger">
+            此外网名称已存在系统中
+          </div>
+        </fieldset>
+
+        <div class="row">
+          <div class="col-xl-12">
+            <h5>说明：</h5>
+            <p>外网是公网IP的集合，可被应用到云主机的网络设置中。在外网创建后，可在此外网中增加公网IP，便于管理公网IP集合。</p>
+          </div>
+        </div>
+
+        <button type="button" (click)="createExtnetSubmit()" [disabled]="extnetForm.invalid||exist(orgName)" class="btn btn-primary">导入</button>
+        <button class="btn btn-secondary" routerLink="..">取消</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
