@@ -12,9 +12,9 @@ export class ExtnetImportService {
     return this.http.get(BASE_IAAS_SERVICE + '/extnets');
   }
 
-  createExtnetToDb(name: any[]) {
+  createExtnetToDb(extnet: any[]) {
 
-    let body = {"ExtnetName": name};
+    let body =extnet;
     console.log('addExtnetToDb body=', body);
     return this.http.post(BASE_IAAS_SERVICE + '/createExtnet', body);
   }

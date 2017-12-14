@@ -22,11 +22,11 @@ export class ImportExtnetComponent implements OnInit {
   }
 
   createExtnetSubmit() {
-    console.log('importExtnetSubmit chkIds:', this.createExtnet.name);
+    console.log('importExtnetSubmit chkIds:', this.createExtnet.name+'  '+this.createExtnet.uuid);
     if(this.createExtnet.name.length > 0 && !isUndefined(this.createExtnet.name)) {
       this.importFlag = false;
 
-      this.extnetImportService.createExtnetToDb(this.createExtnet.name).subscribe(
+      this.extnetImportService.createExtnetToDb(this.createExtnet).subscribe(
         res => {
           this.ngRouter.navigateByUrl('/extnet');
         },
