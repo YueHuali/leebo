@@ -28,7 +28,7 @@ export class VolumeTypeCreateComponent implements OnInit {
   }
 
   createVolumeTypeSubmit() {
-    console.log('createVolumeTypeSubmit chkIds:', this.createVolumeType.name+'  '+this.createVolumeType.uuid);
+    console.log('createVolumeTypeSubmit chkNames:', this.createVolumeType.name+'  '+this.createVolumeType.display_name);
     if(this.createVolumeType.name.length > 0 && !isUndefined(this.createVolumeType.name)) {
       this.createFlag = false;
 
