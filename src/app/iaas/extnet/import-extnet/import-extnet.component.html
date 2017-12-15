@@ -1,0 +1,76 @@
+<div>
+  <div class="row">
+    <div class="col-xl-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="/extnet"><i class="fa fa-institution"></i> 外网</a>
+        </li>
+        <li class="breadcrumb-item active">
+          导入外网
+        </li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12">
+      <form role="form" #extnetForm="ngForm">
+        <fieldset class="form-group">
+          <label class="must-type">*外网名称</label>
+          <input class="form-control" name="extnetName" #name="ngModel" [(ngModel)]="createExtnet.name" required pattern="(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?" placeholder="请输入外网名称">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+            <div *ngIf="name.errors.pattern">
+              外网名称格式不合法，正确格式如：'MyValue' 或者 'my_value' 或者 '12345'
+            </div>
+            <div *ngIf="name.errors.required">
+              外网名称为必填项
+            </div>
+          </div>
+          <div *ngIf="exist(createExtnet.name)" class="alert alert-danger">
+            此外网名称已存在系统中
+          </div>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+          <label class="must-type">* 外网标识码</label>
+          <input class="form-control" name="extnetUUID" #uuid="ngModel" [(ngModel)]="createExtnet.uuid" required pattern="(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?" placeholder="请输入外网标识码">
+          <div *ngIf="uuid.invalid && (uuid.dirty || uuid.touched)"
+               class="alert alert-danger">
+            <div *ngIf="uuid.errors.pattern">
+              外网UUID格式不合法，正确格式如：'MyValue' 或者 'my_value' 或者 '12345'
+            </div>
+            <div *ngIf="uuid.errors.required">
+              外网UUID为必填项
+            </div>
+          </div>
+          <div *ngIf="exist(orgName)" class="alert alert-danger">
+            此外网UUID已存在系统中
+          </div>
+        </fieldset>
+
+
+
+        <div class="row">
+          <div class="col-xl-12">
+            <h5>说明：</h5>
+            <p>外部网络通常也被称为"provider"网络。租户可以创建路由器连接到此外部网络上，从而实现虚拟网络和物理网络之间的互通。</p>
+          </div>
+        </div>
+
+        <button type="button" (click)="createExtnetSubmit()" [disabled]="extnetForm.invalid||exist(orgName)" class="btn btn-primary">导入</button>
+        <button class="btn btn-secondary" routerLink="..">取消</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
