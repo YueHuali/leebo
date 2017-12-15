@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { IaasStorageComponent } from './iaas-storage.component';
+import { VolumeTypeComponent } from './volumeType.component';
 
-describe('StorageComponent', () => {
-  let component: IaasStorageComponent;
-  let fixture: ComponentFixture<IaasStorageComponent>;
+describe('VolumeTypeComponent', () => {
+  let component: VolumeTypeComponent;
+  let fixture: ComponentFixture<VolumeTypeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IaasStorageComponent ]
+      declarations: [ VolumeTypeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IaasStorageComponent);
+    fixture = TestBed.createComponent(VolumeTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

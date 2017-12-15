@@ -16,6 +16,8 @@ import { ServiceGroupComponent } from './dashboard/overview-service-group/overvi
 import { OverviewServiceComponent } from './dashboard/overview-service/overview-service.component';
 import { StorageComponent } from './storage/storage.component';
 import { StorageCreateComponent } from './storage/storage-create/storage-create.component';
+import { VolumeTypeComponent } from './iaas/volumeType/volumeType.component';
+import { VolumeTypeCreateComponent } from './iaas/volumeType/volumeType-create/volumeType-create.component';
 import { ClusterComponent } from './cluster/cluster.component';
 import { NodeComponent } from './cluster/node/node.component';
 import { OrganizationComponent } from './organization/organization.component';
@@ -56,6 +58,8 @@ import {UpdatePwdComponent} from './user/user-updatepwd/update-pwd.component';
     OverviewServiceComponent,
     StorageComponent,
     StorageCreateComponent,
+    VolumeTypeComponent,
+    VolumeTypeCreateComponent,
     ClusterComponent,
     NodeComponent,
     OrganizationComponent,

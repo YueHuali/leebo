@@ -18,6 +18,8 @@ import {FirewallComponent} from '../iaas/firewall/firewall.component';
 import {FloatingIpComponent} from '../iaas/floatingIp/floatingIp.component';
 import {VmComponent} from '../iaas/vm/vm.component';
 import {RouterComponent} from '../iaas/router/router.component';
+import {VolumeTypeComponent} from '../iaas/volumeType/volumeType.component';
+import {VolumeTypeCreateComponent} from '../iaas/volumeType/volumeType-create/volumeType-create.component';
 import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
 import {UpdatePwdComponent} from '../user/user-updatepwd/update-pwd.component';
 
@@ -46,6 +48,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'firewall', component: FirewallComponent},
       { path: 'floatingIp', component: FloatingIpComponent},
       { path: 'router', component: RouterComponent},
+      { path: 'volumeType', component: VolumeTypeComponent},
+      { path: 'volumeType/volumeType-create', component: VolumeTypeCreateComponent},
       { path: 'vm', component: VmComponent},
       { path: 'iaasStorage', component: IaasStorageComponent},
       { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent}
