@@ -30,20 +30,21 @@
           <div *ngIf="existName(createVolumeType.name)" class="alert alert-danger">
             此名称已存在系统中
           </div>
+          <span>“名称”应为OpenStack上已创建的某个云硬盘类型名称。</span>
         </fieldset>
 
         <fieldset class="form-group">
-          <label class="must-type">* 存储类型</label>
-          <!-- 具备条件时应使用下拉框选择存储类型。现在条件不具备，暂时使用手动命名的方式 2017.12.14标记 -->
-          <input name="display_name" class="form-control" #display_name="ngModel" [(ngModel)]="createVolumeType.display_name" required required placeholder="存储类型">
+          <label class="must-type">* 显示名</label>
+          <!-- 具备条件时应使用下拉框选择显示名。现在条件不具备，暂时使用手动命名的方式 2017.12.14标记 -->
+          <input name="display_name" class="form-control" #display_name="ngModel" [(ngModel)]="createVolumeType.display_name" required required placeholder="显示名">
           <div *ngIf="display_name.invalid && (display_name.dirty || display_name.touched)"
                class="alert alert-danger">
             <div *ngIf="display_name.errors.required">
-              类型为必填项
+              显示名为必填项
             </div>
           </div>
           <div *ngIf="existDisplayName(createVolumeType.display_name)" class="alert alert-danger">
-            此类型已存在系统中
+            此显示名已存在系统中
           </div>
         </fieldset>
 
@@ -51,8 +52,7 @@
           <div class="col-xl-12">
             <h5>说明：</h5>
             <p>云硬盘类型标签可以在创建云硬盘的时候指定。
-              它通常映射到用来创建这些云硬盘的存储后端 驱动的特性集合。例如“性能”、“SSD”、“备份”等。 这等同于cinder type-create命令。
-              一旦云硬盘类型被创建，点击"查看扩展规格"按钮 去设置云硬盘类型的扩展规格键值对。</p>
+              它通常映射到用来创建这些云硬盘的存储后端 驱动的特性集合。例如“性能”、“SSD”、“备份”等。</p>
           </div>
         </div>
 
