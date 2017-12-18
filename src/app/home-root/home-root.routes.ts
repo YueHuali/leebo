@@ -24,6 +24,7 @@ import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
 import {UpdatePwdComponent} from '../user/user-updatepwd/update-pwd.component';
 import {ExtnetComponent} from '../iaas/extnet/extnet.component';
 import {ImportExtnetComponent} from '../iaas/extnet/import-extnet/import-extnet.component';
+import {ZoneComponent} from "../iaas/zone/zone.component"
 export const HomeRootRoutes: Routes = [
   {
     path: '',
@@ -55,7 +56,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'iaasStorage', component: IaasStorageComponent},
       { path: 'extnet', component: ExtnetComponent},
       { path: 'extnet/import-extnet', component: ImportExtnetComponent},
-      { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent}
+      { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent},
+      { path: 'zone', component:ZoneComponent}
     ]
   }
 ];
