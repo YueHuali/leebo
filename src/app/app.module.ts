@@ -50,6 +50,8 @@ import {IaasStorageComponent} from './iaas/storage/iaas-storage.component';
 import {ImportIaasStorageComponent} from './iaas/storage/import-storage/import-iaas-storage.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {UpdatePwdComponent} from './user/user-updatepwd/update-pwd.component';
+import {ZoneComponent} from "./iaas/zone/zone.component";
+import {ImportZoneComponent} from "./iaas/zone/import-zone/import-zone.component"
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import {UpdatePwdComponent} from './user/user-updatepwd/update-pwd.component';
     OrganizationCreateComponent,
     ProcessbarComponent,
     FlavorComponent,
+    ZoneComponent,
+    ImportZoneComponent,
     ImageComponent,
     ImportImageComponent,
     ImportFlavorComponent,
