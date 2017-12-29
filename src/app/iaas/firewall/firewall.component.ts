@@ -113,6 +113,7 @@ export class FirewallComponent implements OnInit {
   checkFirewallRemove(event, id) {
     let checked = event.target.checked;
     if (checked === true) {
+      this.removeFlag = true;
       this.removeFirewallIds.push(id);
     } else {
       for (let i = 0; i < this.removeFirewallIds.length; i++) {
@@ -132,7 +133,11 @@ export class FirewallComponent implements OnInit {
         this.removeFlag = false;
         this.firewallImportService.removeFirewallsFromDb(this.removeFirewallIds).subscribe(
           res => {
-            location.reload();
+            if (res.json() && res.json()['success']) {
+               location.reload();
+            } else {
+              alert(res.json()['message']);
+           }
           },
           error => {
             let errorData = error.json();
