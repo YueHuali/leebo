@@ -42,8 +42,8 @@
               <tbody>
               <tr *ngFor="let zone of zones">
                 <td><span *ngIf="!zone.taskId"><input type="checkbox" (change)="checkZoneRemove($event, zone.id)" [value]="zone.id"></span> {{zone.name}}</td>
-                <td>{{zone.display_name}}</td>
-                <td>{{zone.create_time | date}}</td>
+                <td>{{zone.displayName}}</td>
+                <td>{{zone.createTime | date}}</td>
                 <td><button data-toggle="modal" class="btn btn-sm btn-danger" (click)="changeName(zone.id)">修改显示名称</button></td>
               </tr>
               </tbody>
@@ -82,7 +82,7 @@
     <div class="modal-dialog modal-lg" role="document" style="width:30%">
       <div class="modal-content" style="width:500px">
         <div class="modal-header" style="width:500px">
-          <h5 class="modal-title" id="changeNameModalLabel">更换显示名称</h5>
+          <h5 class="modal-title" id="changeNameModalLabel">修改显示名称</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="关闭" >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -91,11 +91,11 @@
           <div class="row">
             <div class="col col-6">
               <div class="form-group">
-                <div class="input-group" style="margin-bottom: 20px;width: 100%;padding-left: 10px;">
+                <div class="input-group" style="margin-bottom: 20px;width: 100%;padding-left: 10px;padding-right: 5px">
                   区域名称:&nbsp;&nbsp;&nbsp;
                   <input type="text" class="form-control" id="oldName" readonly [(ngModel)]="oldName" [ngModelOptions]="{standalone: true}">
                 </div>
-                <div class="input-group" style="width: 100% ;padding-left: 10px;">
+                <div class="input-group" style="width: 100% ;padding-left: 10px;padding-right: 5px">
                   请输入显示名称:&nbsp;&nbsp;&nbsp;<input type="text" #displayName="ngModel" class="form-control" id="newName" [(ngModel)]="newDisplayName" required placeholder="任意字符" [ngModelOptions]="{standalone: true}">
                   <div *ngIf="displayName.invalid && (displayName.dirty || displayName.touched)"
                        class="alert alert-danger">
