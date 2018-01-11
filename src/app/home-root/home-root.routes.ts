@@ -1,7 +1,6 @@
 import {Routes} from '@angular/router';
 import {HomeRootComponent} from './home-root.component';
 import {HomeRootComponentGuard} from './home-root.guard';
-import {DashboardComponent} from '../dashboard/dashboard.component';
 import {StorageComponent} from '../storage/storage.component';
 import {StorageCreateComponent} from '../storage/storage-create/storage-create.component';
 import {ClusterComponent} from '../cluster/cluster.component';
@@ -24,7 +23,9 @@ import {IaasStorageComponent} from '../iaas/storage/iaas-storage.component';
 import {UpdatePwdComponent} from '../user/user-updatepwd/update-pwd.component';
 import {ExtnetComponent} from '../iaas/extnet/extnet.component';
 import {ImportExtnetComponent} from '../iaas/extnet/import-extnet/import-extnet.component';
-import {ZoneComponent} from "../iaas/zone/zone.component"
+import {ZoneComponent} from '../iaas/zone/zone.component';
+import {QuotaCheckComponent} from '../quotaCheck/quotaCheck.component';
+
 export const HomeRootRoutes: Routes = [
   {
     path: '',
@@ -57,7 +58,8 @@ export const HomeRootRoutes: Routes = [
       { path: 'extnet', component: ExtnetComponent},
       { path: 'extnet/import-extnet', component: ImportExtnetComponent},
       { path: 'user/update-pwd/:name/:id', component: UpdatePwdComponent},
-      { path: 'zone', component:ZoneComponent}
+      { path: 'zone', component: ZoneComponent},
+      { path: 'quotaCheck', component: QuotaCheckComponent}
     ]
   }
 ];

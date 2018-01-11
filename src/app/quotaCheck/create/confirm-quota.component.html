@@ -1,0 +1,55 @@
+<form #theForm="ngForm">
+<div class="row">
+  <div class="col col-6">
+    <div class="form-group" *ngIf="quotaParam">
+      <div class="form-group" style="margin-top: 20px;">
+        <table style="margin-left: 100px; border: 1px solid transparent;">
+          <tr>
+            <td  style="width: 100px">名称：</td>
+            <td>{{quotaParam.name}}</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">CPU(限制)：</td>
+            <td>{{quotaParam.limitsCPU}}核</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">内存(限制)：</td>
+            <td>{{quotaParam.limitsMemory}}</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">Pods：</td>
+            <td>{{quotaParam.pods}}个</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">CPU(要求)：</td>
+            <td>{{quotaParam.requestsCPU}}核</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">内存(要求)：</td>
+            <td>{{quotaParam.requestsMemory}}</td>
+          </tr>
+          <tr>
+            <td  style="width: 100px">审批理由：</td>
+            <td>
+              <textarea type="text" class="form-control" id="reason" name="name" [(ngModel)]="quotaParam.checkReason"  #reason="ngModel" required placeholder="请输入理由" autocomplete="off"></textarea>
+              <div *ngIf="reason.invalid && (reason.dirty || reason.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="reason.errors.required">
+                  请填写理由
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="submit" (click)="updateQuota('3', quotaParam)" class="btn btn-sm btn-success" [disabled]="theForm.invalid">通过</button>
+  <button type="submit" (click)="updateQuota('2', quotaParam)" class="btn btn-sm btn-danger" [disabled]="theForm.invalid">拒绝</button>
+  <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+</div>
+</form>
