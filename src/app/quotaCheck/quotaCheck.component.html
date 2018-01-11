@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-lg-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+      </li>
+      <li class="breadcrumb-item active">
+        配额审批
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <table class="table">
+              <thead class="thead-default">
+              <tr>
+                <th>#</th>
+                <th>名称</th>
+                <th>CPU(限制)</th>
+                <th>内存(限制)</th>
+                <th>Pods</th>
+                <th>CPU(要求)</th>
+                <th>内存(要求)</th>
+                <th>状态</th>
+                <th>申请人</th>
+                <th>组织</th>
+                <th>创建时间</th>
+                <th>审批原因</th>
+                <th>操作</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of auditList;let idx = index">
+                <td scope="row">{{idx+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.limitsCPU}}</td>
+                <td>{{item.limitsMemory}}</td>
+                <td>{{item.pods}}</td>
+                <td>{{item.requestsCPU}}</td>
+                <td>{{item.requestsMemory}}</td>
+                <td>
+                  <div *ngIf="item.status ==='1' ">
+                    <p style="color: blue">审批中</p>
+                  </div>
+                  <div *ngIf="item.status ==='2' ">
+                    <p style="color: red">审批未通过</p>
+                  </div>
+                  <div *ngIf="item.status ==='3' ">
+                    <p style="color: green">审批通过</p>
+                  </div>
+                </td>
+                <td>{{item.createMan}}</td>
+                <td>{{item.project}}</td>
+                <td>{{item.createTime | date}}</td>
+                <td>
+                  {{item.checkReason}}
+                </td>
+                <td *ngIf="item.status ==='1'">
+                  <a href="javascript:void(0)" data-toggle="modal" data-target="#checkModal">
+                    <button type="button" (click)="updateQuotaRecord(item)" class="btn btn-primary">审批</button>
+                  </a>
+                </td>
+                <td *ngIf="item.status !=='1'">
+                  <button type="button" disabled class="btn btn-primary">审批</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+  <form #dbForm="ngForm" >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="checkModalLabel">填写审批原因</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-confirm-quota  [quotaParam]="param"></app-confirm-quota>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
