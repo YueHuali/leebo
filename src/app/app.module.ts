@@ -50,8 +50,10 @@ import {IaasStorageComponent} from './iaas/storage/iaas-storage.component';
 import {ImportIaasStorageComponent} from './iaas/storage/import-storage/import-iaas-storage.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {UpdatePwdComponent} from './user/user-updatepwd/update-pwd.component';
-import {ZoneComponent} from "./iaas/zone/zone.component";
-import {ImportZoneComponent} from "./iaas/zone/import-zone/import-zone.component"
+import {ZoneComponent} from './iaas/zone/zone.component';
+import {ImportZoneComponent} from './iaas/zone/import-zone/import-zone.component';
+import {QuotaCheckComponent} from './quotaCheck/quotaCheck.component';
+import {ConfirmQuotaComponent} from './quotaCheck/create/confirm-quota.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import {ImportZoneComponent} from "./iaas/zone/import-zone/import-zone.component
     ImportRouterComponent,
     IaasStorageComponent,
     ImportIaasStorageComponent,
-    UpdatePwdComponent
+    UpdatePwdComponent,
+    QuotaCheckComponent,
+    ConfirmQuotaComponent,
   ],
   imports: [
     BrowserModule,
