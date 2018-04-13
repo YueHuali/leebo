@@ -10,22 +10,16 @@
 
     <nav class="menu">
       <ul class="nav metismenu" id="sidebar-menu">
-        <!--<li routerLinkActive="active">
-          <a routerLink="/dashboard">
-            <i class="fa fa-fw fa-dashboard"></i> 概况
-            &lt;!&ndash;<i class="fa fa-arrow-right arrow"></i>&ndash;&gt;
-          </a>
-        </li>-->
 
         <li routerLinkActive="active">
           <a routerLink="/cluster">
-            <i class="fa fa-th-list"></i> 集群管理
+            <i class="fa fa-th-list"></i> 组管理
           </a>
         </li>
 
         <li routerLinkActive="active">
           <a routerLink="/storage">
-            <i class="fa fa-hdd-o"></i> 存储管理
+            <i class="fa fa-hdd-o"></i> 节点管理
           </a>
         </li>
 
@@ -33,68 +27,6 @@
           <a routerLink="/organization">
             <i class="fa fa-institution"></i> 组织管理
           </a>
-        </li>
-
-        <li>
-          <a routerLink="/user">
-            <i class="fa fa-user-md"></i> 用户管理
-          </a>
-        </li>
-
-        <li routerLinkActive="active" *ngIf="iaasEnabled">
-          <a href="javascript:void(0);">
-            <i class="fa fa-cogs mr-1"></i>资源管理
-            <i class="fa arrow"></i>
-          </a>
-          <ul routerLinkActive="in">
-            <li routerLinkActive="active">
-              <a routerLink="/image">镜像管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/flavor">配置管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/vm">虚拟机管理 </a>
-            </li>
-            
-            <li routerLinkActive="active">
-              <a routerLink="/zone">区域管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/extnet">外网管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/subnet">子网管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/router">路由器管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/floatingIp">公网管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/firewall">防火墙管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/iaasStorage">云硬盘管理 </a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/volumeType">云硬盘存储类型管理</a>
-            </li>
-
-            <li routerLinkActive="active">
-              <a routerLink="/quota">配额管理 </a>
-            </li>
-          </ul>
         </li>
 
       </ul>
