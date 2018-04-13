@@ -15,6 +15,8 @@ import {UnauthenticatedGuard} from './unauthenticated.guard';
 import {provideHttpInterceptor} from './shared/interceptor/http-interceptor-provider';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {HomeRootComponentGuard} from './home-root/home-root.guard';
+import {NodeComponent} from './node/node.component';
+import {GroupComponent} from './group/group.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {HomeRootComponentGuard} from './home-root/home-root.guard';
     routedComponents,
     OrganizationComponent,
     OrganizationCreateComponent,
-    ProcessbarComponent
+    ProcessbarComponent,
+    NodeComponent,
+    GroupComponent
 
   ],
   imports: [
