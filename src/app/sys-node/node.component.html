@@ -1,0 +1,161 @@
+<div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <i class="fa fa-hdd-o"></i> 节点
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div ngbDropdown class="d-inline-block pull-right">
+        <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>操作</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a class="dropdown-item" data-toggle="modal" data-target="#addGroupModal" >加入组</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#addGroupModal">退出组</a>
+          <a class="dropdown-item" (click)="nodeDeploy()">部署节点</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#assignNodeModal">分配节点</a>
+          <a class="dropdown-item" data-toggle="modal" data-target="#assignNodeModal">回收节点</a>
+          <a class="dropdown-item" (click)="nodeDelete()">删除</a>
+        </div>
+      </div>
+
+      <button class="btn btn-sm pull-left off-side btn-info" href="javascript:void(0)" data-toggle="modal" data-target="#newModal">
+        <i class="fa fa-plus"></i> 创建
+      </button>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card card-default">
+        <div class="card-block">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th></th>
+                <th>序号</th>
+                <th>节点名</th>
+                <th>IP</th>
+                <th>CPU</th>
+                <th>内存</th>
+                <th>组名</th>
+                <th>组织名</th>
+                <th>状态</th>
+                <th>创建人</th>
+                <th>创建时间</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let node of nodes; let index=index">
+                <td><input type="radio" [(ngModel)]="nodeRadio" value="{{node.uuid}}"/></td>
+                <td scope="row">{{index+1}}</td>
+                <td>{{node.name}}</td>
+                <td>{{node.ip}}</td>
+                <td>{{node.cpu}}</td>
+                <td>{{node.memory}}</td>
+                <td>
+                  <div *ngFor="let nodeGrp of node.nodeGroups">
+                    {{nodeGrp.name}}
+                  </div>
+                </td>
+                <td>
+                  <div *ngFor="let org of node.organizations">
+                    {{org.name}}
+                  </div>
+                </td>
+                <td>{{node.status}}</td>
+                <td>{{node.createMan}}</td>
+                <td>{{node.createTime | date}}</td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="addGroupModalLabel" aria-hidden="true">
+  <form #nodeForm="ngForm" (ngSubmit)="addNodeToGroup()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addGroupModalLabel">加入组操作</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <join-group [node]="newNode" [groupList]="groups"></join-group>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!ableFlag" >创建</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" (click)="removeNodeFromGroup()">退组</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="modal fade" id="assignNodeModal" tabindex="-1" role="dialog" aria-labelledby="assignNodeModalLabel" aria-hidden="true">
+  <form #nodeForm="ngForm" (ngSubmit)="nodeAssign()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="assignNodeModalLabel">分配节点操作</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <assign-to-org [orgs]="organizations" [org]="newOrg"></assign-to-org>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!ableFlag" >分配</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" (click)="nodeReclaim()">回收节点</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalNode" aria-hidden="true">
+  <form #nodeForm="ngForm" (ngSubmit)="nodeSubmit()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newModalNode">添加节点</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <create-node [node]="newNode" [groupList]="groups"></create-node>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!ableFlag" >创建</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+

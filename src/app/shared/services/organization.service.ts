@@ -1,7 +1,7 @@
 import {HttpInterceptor} from '../interceptor/HttpInterceptor';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import { BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE, QY_CONFIG } from '../oc-info';
+import {BASE_OC_URI, BASE_URI, BASE_IAAS_SERVICE, QY_CONFIG, BASE_RESMAN_URI} from '../oc-info';
 import {RequestOptions, RequestOptionsArgs, Headers, Http} from '@angular/http';
 /**
  * Created by hexiuyu on 2017/1/9.
@@ -14,6 +14,9 @@ export class OrganizationService {
   constructor(private http: HttpInterceptor, private httpSpecial: Http) {
   }
 
+  getOrg(): Observable<any> {
+    return this.http.get(BASE_RESMAN_URI + '/organization/getAllOrganization').map( res => res.json());
+  }
 
 
   getUsers(): Observable<any> {
@@ -61,9 +64,7 @@ export class OrganizationService {
     );
   }
 
-  getOrg(): Observable<any> {
-    return this.http.get(BASE_URI + '/uaa/organizations').map( res => res.json());
-  }
+
 
   protected userBindOrg(user: string, org: string, role: string) {
 

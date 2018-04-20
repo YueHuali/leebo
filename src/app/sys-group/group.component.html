@@ -1,0 +1,123 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink=""><i class="fa fa-dashboard"></i> 控制台</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <i class="fa fa-eercast"></i> 组管理
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <!--<button  routerLink="create-sys-group-sys-node" class="btn btn-sm pull-left off-side btn-info"  >创建组</button>-->
+      <button class="btn btn-sm pull-left off-side btn-info" href="javascript:void(0)" data-toggle="modal" data-target="#newModal" [disabled]="flag">
+        <i class="fa fa-plus"></i> 创建组
+      </button>
+
+      <div ngbDropdown class="d-inline-block pull-right">
+        <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>操作</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <a class="dropdown-item" data-toggle="modal" data-target="#checkModal">分配组</a>
+          <a class="dropdown-item" (click)="groupReclaim()">回收组</a>
+          <a class="dropdown-item" (click)="groupDelete()">删除</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-default">
+        <div class="card-block">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th></th>
+                <th>序号</th>
+                <th>组名</th>
+                <th>组标签</th>
+                <th>创建人</th>
+                <th>创建时间</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let group of groups; let index=index">
+                  <td><input type="radio" [(ngModel)]="groupRadio" value="{{group.uuid}}"/></td>
+                  <td scope="row">{{index+1}}</td>
+                  <td>
+                    <a href="Javascript:void(0)" data-toggle="modal" data-target="#checkModal" (click)="setLineNum(item,idx+1)">
+                      {{group.name}}
+                    </a>
+                  </td>
+                  <td>{{group.nodeGroupLabel}}</td>
+                  <td>{{group.createMan}}</td>
+                  <td>{{group.createTime | date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+  <form #groupForm="ngForm" (ngSubmit)="groupAssign()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="checkModalLabel">分配组</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <assign-to-org [orgs]="organizations" [org]="newOrg"></assign-to-org>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!ableFlag" >分配</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" (click)="groupReclaim()">回收组</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="checkModalLabel" aria-hidden="true">
+  <form #groupForm="ngForm" (ngSubmit)="groupSubmit()">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newModalLabel">新建组</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <create-group [group]="newGroup"></create-group>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" [disabled]="!ableFlag" >创建</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+

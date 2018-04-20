@@ -15,8 +15,13 @@ import {UnauthenticatedGuard} from './unauthenticated.guard';
 import {provideHttpInterceptor} from './shared/interceptor/http-interceptor-provider';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {HomeRootComponentGuard} from './home-root/home-root.guard';
-import {NodeComponent} from './node/node.component';
-import {GroupComponent} from './group/group.component';
+import {NodeComponent} from './sys-node/node.component';
+import {GroupComponent} from './sys-group/group.component';
+import {CreateGroupComponent} from './sys-group/create-group/create-group.component';
+import {AssignToOrgComponent} from './sys-group/assign-to-org/assign-to-org.component';
+import {GroupService} from './shared/services/group.service';
+import {CreateNodeComponent} from './sys-node/create-node/create-node.component';
+import {JoinGroupComponent} from './sys-node/join-group/join-group.component';
 
 
 @NgModule({
@@ -27,8 +32,11 @@ import {GroupComponent} from './group/group.component';
     OrganizationCreateComponent,
     ProcessbarComponent,
     NodeComponent,
-    GroupComponent
-
+    GroupComponent,
+    CreateGroupComponent,
+    AssignToOrgComponent,
+    CreateNodeComponent,
+    JoinGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +49,7 @@ import {GroupComponent} from './group/group.component';
   exports: [RouterModule],
   providers: [
     UserService,
+    GroupService,
     HomeRootComponentGuard,
     UnauthenticatedGuard,
     {provide: 'apiBase', useValue: '/'},

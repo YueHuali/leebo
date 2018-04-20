@@ -22,7 +22,7 @@ describe('GroupComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create-sys-group', () => {
     expect(component).toBeTruthy();
   });
 });

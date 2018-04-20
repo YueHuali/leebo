@@ -28,17 +28,17 @@
               <tr>
                 <th>代码</th>
                 <th>名称</th>
-                <th>管理员</th>
-                <th>创建时间</th>
+                <!--<th>管理员</th>
+                <th>创建时间</th>-->
                 <th>操作</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let org of organizations?.body">
+              <tr *ngFor="let org of organizations">
                 <td>{{org.name}}</td>
-                <td>{{org.displayName}}</td>
-                <td>{{org.createBy}}</td>
-                <td>{{org.createAt | date}}</td>
+                <td>{{org.name}}</td>
+                <!--<td>{{org.createBy}}</td>
+                <td>{{org.createAt | date}}</td>-->
                 <td><button (click)="removeOrg(org.name)" class="btn btn-sm btn-danger">解散</button></td>
               </tr>
               </tbody>

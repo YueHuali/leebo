@@ -3,8 +3,8 @@ import {HomeRootComponent} from './home-root.component';
 import {HomeRootComponentGuard} from './home-root.guard';
 import {OrganizationComponent} from '../organization/organization.component';
 import {OrganizationCreateComponent} from '../organization/organization-create/organization-create.component';
-import {GroupComponent} from '../group/group.component';
-import {NodeComponent} from '../node/node.component';
+import {GroupComponent} from '../sys-group/group.component';
+import {NodeComponent} from '../sys-node/node.component';
 export const HomeRootRoutes: Routes = [
   {
     path: '',

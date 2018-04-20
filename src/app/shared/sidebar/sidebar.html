@@ -18,15 +18,45 @@
         </li>
 
         <li routerLinkActive="active">
-          <a routerLink="/group">
-            <i class="fa fa-th-list"></i> 组管理
+          <a href="javascript:void(0);">
+            <i class="fa fa-cogs">&nbsp;</i>系统管理
+            <i class="fa arrow"></i>
           </a>
+          <ul routerLinkActive="in">
+
+            <li routerLinkActive="active">
+              <a routerLink="/group">
+                <i class="fa fa-th-list"></i> 组管理
+              </a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a routerLink="/node">
+                <i class="fa fa-hdd-o"></i> 节点管理
+              </a>
+            </li>
+          </ul>
         </li>
 
         <li routerLinkActive="active">
-          <a routerLink="/node">
-            <i class="fa fa-hdd-o"></i> 节点管理
+          <a href="javascript:void(0);">
+            <i class="fa fa-cogs">&nbsp;</i>组织管理
+            <i class="fa arrow"></i>
           </a>
+          <ul routerLinkActive="in">
+
+            <li routerLinkActive="active">
+              <a routerLink="/orgGroup">
+                <i class="fa fa-th-list"></i> 组管理
+              </a>
+            </li>
+
+            <li routerLinkActive="active">
+              <a routerLink="/orgNode">
+                <i class="fa fa-hdd-o"></i> 节点管理
+              </a>
+            </li>
+          </ul>
         </li>
 
       </ul>
