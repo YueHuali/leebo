@@ -5,18 +5,18 @@
 
         <fieldset class="form-group">
           <label class="must-type">* 节点名</label>
-          <input name="name" class="form-control" [(ngModel)]="node.name" required placeholder="节点名">
+          <input name="name" class="form-control" [(ngModel)]="node.name" required placeholder="节点名" required>
         </fieldset>
 
 
         <fieldset class="form-group">
           <label class="must-type">* IP地址</label>
-          <input name="ip" [(ngModel)]="node.ip"  class="form-control" required placeholder="IP地址">
+          <input name="ip" [(ngModel)]="node.ip"  class="form-control" required placeholder="IP地址" required>
         </fieldset>
 
         <fieldset class="form-group">
           <label class="must-type">* 组</label>
-          <select class="form-control" name="group" [(ngModel)]="node.group">
+          <select class="form-control" name="group" [(ngModel)]="node.group" required>
             <option *ngFor="let group of groupList" value="{{group.uuid}}">{{group.name}}</option>
           </select>
         </fieldset>

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GroupService} from '../shared/services/group.service';
-import {navigateSelf} from '../shared/oc-info';
 import {Router} from '@angular/router';
 import {OrganizationService} from '../shared/services/organization.service';
 
@@ -63,29 +62,37 @@ export class GroupComponent implements OnInit {
   }
 
   groupAssign() {
-    this.ableFlag = false;
-    this.groupService.assignGroup(this.groupRadio, this.newOrg.id).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        const errorData = error.json();
-        alert(errorData['message']);
-      }
-    ) ;
+    if (!this.groupRadio) {
+      alert('请选择需要分配的组');
+    } else {
+      this.ableFlag = false;
+      this.groupService.assignGroup(this.groupRadio, this.newOrg.id).subscribe(
+        res => {
+          location.reload();
+        },
+        error => {
+          const errorData = error.json();
+          alert(errorData['message']);
+        }
+      );
+    }
   }
 
   groupReclaim() {
-    this.ableFlag = false;
+    if (!this.groupRadio) {
+      alert('请选择需要回收的组');
+    } else {
+      this.ableFlag = false;
 
-    this.groupService.reclaimGroup(this.groupRadio, this.newOrg.id).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        const errorData = error.json();
-        alert(errorData['message']);
-      }
-    ) ;
+      this.groupService.reclaimGroup(this.groupRadio, this.newOrg.id).subscribe(
+        res => {
+          location.reload();
+        },
+        error => {
+          const errorData = error.json();
+          alert(errorData['message']);
+        }
+      );
+    }
   }
 }

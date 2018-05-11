@@ -17,7 +17,8 @@ export class NodeService {
 
     const body = {
       'name': newNode.name,
-      'ip': newNode.ip
+      'ip': newNode.ip,
+      'group': newNode.group
     };
     console.log('body=', body);
     return this.http.post(objUrl, body);

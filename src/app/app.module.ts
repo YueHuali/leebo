@@ -22,6 +22,9 @@ import {AssignToOrgComponent} from './sys-group/assign-to-org/assign-to-org.comp
 import {GroupService} from './shared/services/group.service';
 import {CreateNodeComponent} from './sys-node/create-node/create-node.component';
 import {JoinGroupComponent} from './sys-node/join-group/join-group.component';
+import {OrgGroupComponent} from './org-group/org-group.component';
+import {OrgNodeComponent} from './org-node/org-node.component';
+import {OrgNodeService} from './shared/services/orgNode.service';
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import {JoinGroupComponent} from './sys-node/join-group/join-group.component';
     CreateGroupComponent,
     AssignToOrgComponent,
     CreateNodeComponent,
-    JoinGroupComponent
+    JoinGroupComponent,
+    OrgGroupComponent,
+    OrgNodeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +55,7 @@ import {JoinGroupComponent} from './sys-node/join-group/join-group.component';
   providers: [
     UserService,
     GroupService,
+    OrgNodeService,
     HomeRootComponentGuard,
     UnauthenticatedGuard,
     {provide: 'apiBase', useValue: '/'},

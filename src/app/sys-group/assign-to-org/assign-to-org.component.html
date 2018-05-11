@@ -5,7 +5,7 @@
         <table style="margin-left: 100px; border: 1px solid transparent;">
           <tr>
             <td  style="width: 100px">组织：</td>
-            <select class="form-control"  [(ngModel)]="org.id" name="orgId">
+            <select class="form-control"  [(ngModel)]="org.id" name="orgId" required>
               <option *ngFor="let org of orgs" value="{{org.uuid}}">{{org.name}}</option>
             </select>
           </tr>

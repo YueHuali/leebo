@@ -116,29 +116,37 @@ export class NodeComponent implements OnInit {
   }
 
   nodeAssign() {
-    this.ableFlag = false;
-    this.nodeService.assignNodeToOrg(this.nodeRadio, this.newOrg.id).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        const errorData = error.json();
-        alert(errorData['message']);
-      }
-    ) ;
+    if (!this.nodeRadio) {
+      alert('请选择需要加入组的节点');
+    } else {
+      this.ableFlag = false;
+      this.nodeService.assignNodeToOrg(this.nodeRadio, this.newOrg.id).subscribe(
+        res => {
+          location.reload();
+        },
+        error => {
+          const errorData = error.json();
+          alert(errorData['message']);
+        }
+      );
+    }
   }
 
   nodeReclaim() {
-    this.ableFlag = false;
+    if (!this.nodeRadio) {
+      alert('请选择需要加入组的节点');
+    } else {
+      this.ableFlag = false;
 
-    this.nodeService.reclaimNodeFromOrg(this.nodeRadio, this.newOrg.id).subscribe(
-      res => {
-        location.reload();
-      },
-      error => {
-        const errorData = error.json();
-        alert(errorData['message']);
-      }
-    ) ;
+      this.nodeService.reclaimNodeFromOrg(this.nodeRadio, this.newOrg.id).subscribe(
+        res => {
+          location.reload();
+        },
+        error => {
+          const errorData = error.json();
+          alert(errorData['message']);
+        }
+      );
+    }
   }
 }
